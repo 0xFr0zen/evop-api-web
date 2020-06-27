@@ -5,7 +5,7 @@ $myconfig = $json['db'];
 class MyAdminDBConnector extends DBConnector {
     
     function __construct(){
-        var_dump($myconfig['admin']);
+        var_dump($myconfig);
         parent::__construct(
             $myconfig['admin']['username'],
             $myconfig['admin']['password'],

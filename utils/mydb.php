@@ -3,7 +3,7 @@ include_once __DIR__.'/../../essentials/DBConnector.php';
 $myconfig = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true)['db']['connectors'];
 class MyAdminDBConnector extends DBConnector {
     
-    public function __construct(){
+    function __construct(){
         parent::__construct(
             $myconfig['admin']['username'],
             $myconfig['admin']['password'],
@@ -13,7 +13,7 @@ class MyAdminDBConnector extends DBConnector {
 }
 class MyCompanyDBConnector extends DBConnector {
     
-    public function __construct(){
+    function __construct(){
         parent::__construct(
             $myconfig['company']['username'],
             $myconfig['company']['password'],

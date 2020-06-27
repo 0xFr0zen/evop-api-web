@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__.'/../../essentials/DBConnector.php';
 $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
-$myconfig = $json['db']['connectors'];
+$myconfig = $json['db'];
 class MyAdminDBConnector extends DBConnector {
     
     function __construct(){

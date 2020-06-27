@@ -1,0 +1,22 @@
+{
+    "db": {
+        "connectors": {
+            "admin" : {
+                "username": "evop_admin",
+                "password": "M8q3eb*4",
+                "database": "evop-user"
+            },
+            "company" : {
+                "username": "evop_admin",
+                "password": "M8q3eb*4",
+                "database": "evop-user"
+            }
+        }
+    },
+    "timeout": {
+        "login-status": {
+            "value": 10,
+            "duration-type": "minutes"
+        }
+    }
+}

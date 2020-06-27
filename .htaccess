@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteRule ^qr-code\/(.*)(?:\/)?$ http://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&bgcolor=fff&color=4b6584&data=$1
+RewriteRule ^mod-requests(?:\/)?$ index.php?modrequests
+RewriteRule ^mod-card\/(.*)\/(.*)\/(.*)\/(.*)\/(.*)(?:\/)?$ mod-card.php?did=$1&ip=$2&sid=$3&t=$4&c=$5
+RewriteRule ^mod-login-status(?:\/)?$ index.php?loginstatus
+RewriteRule ^mod-login\/(.*)\/(.*)(?:\/)?$ index.php?loginstatus&sid=$1&did=$2
+RewriteRule ^companies(?:\/)?$ index.php?companies
+
+RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=information
+RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)(?:\/)?$ index.php?company=$1&mode=$2&details=minimum
+RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3
+RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3&values=$4

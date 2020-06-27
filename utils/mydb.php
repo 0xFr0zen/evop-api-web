@@ -4,12 +4,20 @@ $myconfig = json_decode(file_get_contents(__DIR__."/../../essentials/config.json
 class MyAdminDBConnector extends DBConnector {
     
     public function __construct(){
-        parent::__construct($myconfig['admin']['username'],$myconfig['admin']['password'],$myconfig['admin']['database']);
+        parent::__construct(
+            $myconfig['admin']['username'],
+            $myconfig['admin']['password'],
+            $myconfig['admin']['database']
+        );
     }
 }
 class MyCompanyDBConnector extends DBConnector {
     
     public function __construct(){
-        parent::__construct($myconfig['company']['username'],$myconfig['company']['password'],$myconfig['company']['database']);
+        parent::__construct(
+            $myconfig['company']['username'],
+            $myconfig['company']['password'],
+            $myconfig['company']['database']
+        );
     }
 }

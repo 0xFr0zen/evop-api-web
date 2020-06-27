@@ -1,11 +1,12 @@
 <?php
 include_once __DIR__.'/../../essentials/DBConnector.php';
-$json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
-$myconfig = $json['db'];
+
 class MyAdminDBConnector extends DBConnector {
-    
+    private $json = null;
+    private $myconfig = null;
     function __construct(){
-        var_dump($myconfig);
+        $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
+        $myconfig = $json['db']['connectors'];
         parent::__construct(
             $myconfig['admin']['username'],
             $myconfig['admin']['password'],
@@ -16,7 +17,8 @@ class MyAdminDBConnector extends DBConnector {
 class MyCompanyDBConnector extends DBConnector {
     
     function __construct(){
-        var_dump($myconfig['admin']);
+        $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
+        $myconfig = $json['db']['connectors'];
         parent::__construct(
             $myconfig['company']['username'],
             $myconfig['company']['password'],

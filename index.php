@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__.'./utils/company.php';
-include_once __DIR__.'./utils/mydb.php';
+include_once __DIR__.'/utils/company.php';
+include_once __DIR__.'/utils/mydb.php';
 header("Content-Type: application/javascript");
 
 $result = array();

@@ -1,5 +1,5 @@
 <?php
-include_once '../../essentials/DBConnector.php';
+include_once '../essentials/DBConnector.php';
 $myconfig = json_decode(file_get_contents("./config.json"), true)['db']['connectors'];
 class MyAdminDBConnector extends DBConnector {
     

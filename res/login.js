@@ -3,7 +3,7 @@ $(document).ready((_) => {
     logininterval = setInterval(checklogin, 2000);
 });
 function checklogin() {
-    $.getJSON('/evop/api/mod-login-status', (data) => {
+    $.getJSON('api.ev-op.de/mod-login-status', (data) => {
         if (data.result.loggedin) {
             document.location.href = '/evop/';
         }

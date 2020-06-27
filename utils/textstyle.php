@@ -1,6 +1,6 @@
 <?php
 include_once 'resource.php';
-include_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'DB.php';
+include_once 'mydb.php';
 
 class TextStyle extends Resourcer
 {
@@ -14,7 +14,7 @@ class TextStyle extends Resourcer
         ) {
             throw new Exception("You need to pass all values: fontsize, fontfamily, fontweight", 1);
         }
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
         $sql = "INSERT INTO textstyle(`name`, fontsize, fontfamily, fontweight) VALUES
             (
                 ?,
@@ -42,7 +42,7 @@ class TextStyle extends Resourcer
     }
     public function del(): bool
     {
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM textstyle WHERE `name` = ?";
         return $dbconn->deleteRow($sql, $this->resourcename);
     }
@@ -53,7 +53,7 @@ class TextStyle extends Resourcer
             $oldname = $this->companyname . "_" . $oldname;
         }
 
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE textstyle SET `name` = ?, fontsize = ?, fontfamily = ?, fontweight = ? WHERE `name` = ?";
         return $dbconn->update($sql, $this->resourcename, $value['fontsize'], $value['fontfamily'], $value['fontweight'], $oldname);
     }

@@ -1,6 +1,6 @@
 <?php
 include_once 'resource.php';
-include_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'DB.php';
+include_once 'mydb.php';
 
 class Stringer extends Resourcer
 {
@@ -17,7 +17,7 @@ class Stringer extends Resourcer
             ?,
             ?
         )";
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
 
         if ($dbconn->check("SELECT * FROM `string` WHERE `name` = ?", $this->resourcename)) {
             $result = false;
@@ -39,7 +39,7 @@ class Stringer extends Resourcer
 
     public function del(): bool
     {
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM `string` WHERE `name` = ?";
         return $dbconn->deleteRow($sql, $this->resourcename);
     }
@@ -50,7 +50,7 @@ class Stringer extends Resourcer
         if (gettype($stpos) === "boolean" && $stpos == false) {
             $oldname = $this->companyname . "_" . $oldname;
         }
-        $dbconn = new DBConnector();
+        $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE `string` SET `name` = ?, `value` = ? WHERE `name` = ?";
         return $dbconn->update($sql, $this->resourcename, $value['text'], $oldname);
     }

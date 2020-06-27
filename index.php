@@ -4,12 +4,12 @@ header("Content-Type: application/javascript");
 
 $result = array();
 if (isset($_REQUEST['resetlog'])) {
-    $dbconn = new DBConnector();
+    $dbconn = new MyAdminDBConnector();
     $dbconn->resetLog();
     die(json_encode(array("result" => "log resetted")));
 }
 if (isset($_REQUEST['modrequests'])) {
-    $dbconn = new DBConnector();
+    $dbconn = new MyAdminDBConnector();
     
     if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         $did = $_REQUEST['did'];
@@ -22,7 +22,7 @@ if (isset($_REQUEST['modrequests'])) {
 }
 
 if (isset($_REQUEST['loginstatus'])) {
-    $dbconn = new DBConnector();
+    $dbconn = new MyAdminDBConnector();
     $mrqs = $dbconn->checklogin();
     if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         $did = $_REQUEST['did'];

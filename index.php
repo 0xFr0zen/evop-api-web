@@ -1,5 +1,6 @@
 <?php
 include_once './utils/company.php';
+include_once './utils/mydb.php';
 header("Content-Type: application/javascript");
 
 $result = array();

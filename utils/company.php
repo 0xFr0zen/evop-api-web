@@ -1,8 +1,8 @@
 <?php
-include_once './mydb.php';
-include_once './color.php';
-include_once './stringer.php';
-include_once './textstyle.php';
+include_once __DIR__.'./mydb.php';
+include_once __DIR__.'./color.php';
+include_once __DIR__.'./stringer.php';
+include_once __DIR__.'./textstyle.php';
 
 class Company
 {

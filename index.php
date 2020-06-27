@@ -1,6 +1,6 @@
 <?php
-include_once './utils/company.php';
-include_once './utils/mydb.php';
+include_once __DIR__.'./utils/company.php';
+include_once __DIR__.'./utils/mydb.php';
 header("Content-Type: application/javascript");
 
 $result = array();
@@ -240,7 +240,7 @@ if (!isset($_REQUEST['companies'])) {
 
 } else {
 
-    $dbconn = new DBConnector();
+    $dbconn = new MyCompanyDBConnector();
     $sql = "SELECT `name`, `tables` FROM company";
     $resultCompanies = $dbconn->query($sql);
     $resulter = array();

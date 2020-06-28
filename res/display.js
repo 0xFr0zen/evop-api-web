@@ -30,7 +30,7 @@ $(document).ready((_) => {
                 window.loadinglocked = true;
 
                 $.ajax({
-                    url: '../api/company/' + encodeURI(companyname) + '/',
+                    url: 'https://api.ev-op.de/company/' + encodeURI(companyname) + '/',
                     type: 'DELETE',
                     success: function (deleteddata) {
                         if (!deleteddata.result) {
@@ -69,7 +69,7 @@ async function loadProducts() {
         $('#producticon').text('hourglass_top');
         await wait(200);
         $.getJSON(
-            '../api/company/' + encodeURI(companyname) + '/',
+            'https://api.ev-op.de/company/' + encodeURI(companyname) + '/',
             async (data, status) => {
                 $('#content #products #list').empty();
                 $('#producticon').text(

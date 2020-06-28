@@ -15,9 +15,8 @@ class ReqCompany {
         $reqs = array_keys($_REQUEST);
         $found = false;
         foreach ($reqs as $key => $value) {
-            print("looking for: ". $key);
             if(!$found) {
-                switch ($key) {
+                switch ($reqs[$key]) {
                     case 'companies':
                         $dbconn = new MyCompanyDBConnector();
                         $sql = "SELECT `name`, `tables` FROM company";

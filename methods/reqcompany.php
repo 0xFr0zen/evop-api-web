@@ -19,15 +19,21 @@ class ReqCompany {
             $this->result = array("result" => $resulter);
             die(json_encode($this->result, JSON_NUMERIC_CHECK));
         }else {
-            $comp = $_REQUEST['company'];
-            $this->company = new Company($comp);
-            $this->mode = $_REQUEST['mode'];
-            $this->details = $_REQUEST['details'];
-            $this->exists = $this->company->exists();
-            if(!$this->exists){
-                $this->result = array("error" => Company::$COMPANY_NONEXISTING);
+            if(isset($_REQUEST['company'])){
+                $comp = $_REQUEST['company'];
+                $this->company = new Company($comp);
+                $this->mode = $_REQUEST['mode'];
+                $this->details = $_REQUEST['details'];
+                $this->exists = $this->company->exists();
+                if(!$this->exists){
+                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
+                    die(json_encode($this->result, JSON_NUMERIC_CHECK));
+                }
+            }else {
+                $this->result = array("error" => Company::$SPECIFY_A_VALUE_ERROR);
                 die(json_encode($this->result, JSON_NUMERIC_CHECK));
             }
+            
         }
     }
 }

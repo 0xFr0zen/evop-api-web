@@ -36,7 +36,7 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         }
         
     }
-}else if($_REQUEST['showmodrequests']){
+}else if(isset($_REQUEST['showmodrequests'])){
     $admin = new Admin("","");
     $r = $admin->getModRequests();
     if($r != null){

@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__."/../../essentials/moderator.php";
+include_once __DIR__."/../essentials/moderator.php";
 $result = array();
 if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
     $moderator = new Moderator(

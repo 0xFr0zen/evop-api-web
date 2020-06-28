@@ -49,7 +49,7 @@ GET https://api.ev-op.de/company/njoy/amount/products
 
 ###
 
-POST https://api.ev-op.de/company/testshop/create
+POST https://api.ev-op.de/company/testshop3/create
 
 ###
 

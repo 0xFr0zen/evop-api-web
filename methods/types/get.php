@@ -80,7 +80,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 $this->result = array("error" => "you need to specify a query");
                 break;
         }
-    
+        
     }
 }
 

@@ -6,7 +6,7 @@ class ReqCompany {
     protected $mode;
     protected $details;
     public $exists;
-    protected $result;
+    public $result;
     public function __construct(){
         if(isset($_REQUEST['companies'])){
             $dbconn = new MyCompanyDBConnector();

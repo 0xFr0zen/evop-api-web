@@ -7,7 +7,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 $this->result = array("result" => true);
                 break;
             case 'information':
-                if (!$this->exists) {
+                if ($this->exists) {
                     switch ($this->details) {
                         case 'minimum':
                             $information = $this->company->information();
@@ -27,7 +27,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             case 'configuration':
-                if (!$this->exists) {
+                if ($this->exists) {
                     switch ($this->details) {
                         case 'colors':
                             $configurationColor = $this->company->getConfiguration('colors');
@@ -51,7 +51,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             case 'amount':
-                if (!$this->exists) {
+                if ($this->exists) {
                     switch ($this->details) {
                         case 'users':
                             $users = $this->company->getUsersCount();
@@ -70,7 +70,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             case 'list':
-                if (!$this->exists) {
+                if ($this->exists) {
                     switch ($this->details) {
                         case 'product-groups':
                             $productsGroups = $this->company->getProductGroups();

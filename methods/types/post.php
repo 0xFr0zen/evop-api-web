@@ -5,7 +5,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
         switch ($this->mode) {
             case 'create':
-                if (!$this->exists) {
+                if ($this->exists) {
                     $created = $this->company->create();
                     $this->result = array("result" => array("created" => $created));
                 } else {
@@ -14,7 +14,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 break;
             case 'configuration':
                 
-                if (!$this->exists) {
+                if ($this->exists) {
                     if (!isset($_REQUEST['values'])) {
                         $this->result = array("error" => "you need to put values");
                     } else {
@@ -38,7 +38,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             case 'tables':
-                if (!$this->exists) {
+                if ($this->exists) {
                     if ($this->details < 1) {
                         $this->result = array("error" => "you need to put a number >= 1");
                     } else {

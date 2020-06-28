@@ -5,7 +5,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
         switch ($this->mode) {
             case 'configuration':
-                if (!$this->exists) {
+                if ($this->exists) {
                     if (!isset($_REQUEST['values'])) {
                         $this->result = array("error" => "you need to put values");
                     } else {

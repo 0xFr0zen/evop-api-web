@@ -56,7 +56,3 @@ POST https://api.ev-op.de/company/testshop/create
 DELETE https://api.ev-op.de/company/testshop3/
 
 ###
-
-GET https://api.ev-op.de/resetlog
-
-###

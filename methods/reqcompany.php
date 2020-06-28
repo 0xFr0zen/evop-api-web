@@ -26,10 +26,6 @@ class ReqCompany {
                 $comp = $_REQUEST['company'];
                 $this->company = new Company($comp);
                 $this->exists = $this->company->exists();
-                if(!$this->exists){
-                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
-                    die(json_encode($this->result, JSON_NUMERIC_CHECK));
-                }
             }else {
                 $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                 die(json_encode($this->result, JSON_NUMERIC_CHECK));

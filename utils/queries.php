@@ -5,7 +5,7 @@ class Queries {
         "company" => array(
             "create" => "INSERT INTO company(`name`, `tables`) values(?, ?)",
 
-            "update-table" => "UPDATE company SET `tables` = ? WHERE company.name = ?",
+            "update-tables" => "UPDATE company SET `tables` = ? WHERE company.name = ?",
 
             "remove" => "DELETE FROM company WHERE company.name = ?",
 

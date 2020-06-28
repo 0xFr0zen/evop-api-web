@@ -5,7 +5,7 @@ class ReqCompany {
     protected $company;
     protected $mode;
     protected $details;
-    protected $exists;
+    public $exists;
     protected $result;
     public function __construct(){
         if(isset($_REQUEST['companies'])){

@@ -3,7 +3,6 @@ include_once __DIR__.'/../requirements.php';
 
 class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
-        print("POSTED: ".$this->mode);
         switch ($this->mode) {
             case 'create':
                 if (!$this->exists) {

@@ -3,7 +3,7 @@ include_once __DIR__.'/../requirements.php';
 
 class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
-        switch ($mode) {
+        switch ($this->mode) {
             case 'configuration':
                 if (!isset($_REQUEST['values'])) {
                     $this->result = array("error" => "you need to put values");
@@ -20,16 +20,16 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     unset($val['name']);
                     unset($val['oldname']);
                     $valObj = array("name" => $valName, "oldname" => $valOldName, "values" => $val);
-                    $updated = $company->updateConfiguration($this->details, $valObj['oldname'], $valObj['name'], $valObj['values']);
+                    $updated = $this->company->updateConfiguration($this->details, $valObj['oldname'], $valObj['name'], $valObj['values']);
                     $this->result = array("result" => array("updated" => $updated));
                 }
                 break;
             case 'tables':
-                if ($details < 1) {
+                if ($this->details < 1) {
                     $this->result = array("error" => "you need to put a number >= 1");
                 } else {
 
-                    $updated = $company->updateTables($this->details);
+                    $updated = $this->company->updateTables($this->details);
                     $this->result = array("result" => array("updated" => $updated));
                 }
                 break;

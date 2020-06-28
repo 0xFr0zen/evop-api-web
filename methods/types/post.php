@@ -4,6 +4,14 @@ include_once __DIR__.'/../requirements.php';
 class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
         switch ($this->mode) {
+            case 'create':
+                if (!$company->exists()) {
+                    $created = $this->company->create();
+                    $this->result = array("result" => array("created" => $created));
+                } else {
+                    $this->result = array("error" => Company::$COMPANY_ALREADY_EXISTS);
+                }
+                break;
             case 'configuration':
                 if (!isset($_REQUEST['values'])) {
                     $this->result = array("error" => "you need to put values");

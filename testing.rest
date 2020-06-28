@@ -1,3 +1,62 @@
-GET https://api.ev-op.de/company/njoy/products/ HTTP/1.1
+GET https://api.ev-op.de/company/njoy
+
+###
+
+GET https://api.ev-op.de/companies
+
+###
+
+GET https://api.ev-op.de/company/njoy/configuration/
+
+###
+
+POST https://api.ev-op.de/company/njoy/configuration/color/name:primarycolor,r:125,g:0,b:255,a:255
+###
+
+POST https://api.ev-op.de/company/njoy/configuration/string/name:title,text:N`Joy
+###
+
+PUT https://api.ev-op.de/company/njoy/configuration/color/oldname:primarycolor,name:primarycolor,r:125,g:117,b:255,a:255
+
+###
+
+PUT https://api.ev-op.de/company/njoy/configuration/string/oldname:title,name:title,text:Nope
+
+###
+
+DELETE https://api.ev-op.de/company/njoy/configuration/color/name:primarycolor
+
+
+
+###
+DELETE https://api.ev-op.de/company/njoy/configuration/string/name:title
+
+###
+
+PUT https://api.ev-op.de/company/njoy/tables/
+
+###
+
+PUT https://api.ev-op.de/company/as%20if%20that%20works/tables/2/
+
+###
+
+GET https://api.ev-op.de/company/njoy/amount/users
+
+###
+
+GET https://api.ev-op.de/company/njoy/amount/products
+
+###
+
+POST https://api.ev-op.de/company/testshop/create
+
+###
+
+DELETE https://api.ev-op.de/company/testshop3/
+
+###
+
+GET https://api.ev-op.de/resetlog
 
 ###

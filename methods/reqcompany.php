@@ -25,7 +25,8 @@ class ReqCompany {
             if(isset($_REQUEST['company'])){
                 $comp = $_REQUEST['company'];
                 $this->company = new Company($comp);
-                $this->exists = $this->company->exists();
+                $c = $this->company;
+                $this->exists = $c->exists();
             }else {
                 $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                 die(json_encode($this->result, JSON_NUMERIC_CHECK));

@@ -3,6 +3,7 @@ class Queries {
     private static $s;
     private static $querymap = array(
         "company" => array(
+            
             "create" => "INSERT INTO company(`name`, `tables`) values(?, ?)",
 
             "update-tables" => "UPDATE company SET `tables` = ? WHERE company.name = ?",

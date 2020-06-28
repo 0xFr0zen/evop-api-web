@@ -1,5 +1,6 @@
 <?php
-include_once '../requirements.php';
+include_once __DIR__.'/../requirements.php';
+
 class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
         switch ($mode) {

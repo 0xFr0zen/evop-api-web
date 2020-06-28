@@ -8,6 +8,7 @@ class ReqCompany {
     public $exists;
     public $result;
     public function __construct(){
+        print_r($_REQUEST);
         $this->mode = $_REQUEST['mode'];
         $this->details = $_REQUEST['details'];
 

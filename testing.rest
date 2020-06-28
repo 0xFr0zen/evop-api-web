@@ -33,7 +33,7 @@ DELETE https://api.ev-op.de/company/njoy/configuration/string/name:title
 
 ###
 
-PUT https://api.ev-op.de/company/njoy/tables/5
+PUT https://api.ev-op.de/company/njoy/tables/1
 
 ###
 

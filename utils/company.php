@@ -3,6 +3,7 @@ include_once __DIR__.'/mydb.php';
 include_once __DIR__.'/color.php';
 include_once __DIR__.'/stringer.php';
 include_once __DIR__.'/textstyle.php';
+include_once __DIR__.'/queries.php';
 
 class Company
 {
@@ -34,7 +35,7 @@ class Company
         $res = array();
         $dbconn = new MyCompanyDBConnector();
         $created = $dbconn->insert(
-            "INSERT INTO company(`name`, `tables`) values(?, ?)",
+            Queries::get('company', 'create'),
             $this->name,
             $tables
         );
@@ -50,7 +51,7 @@ class Company
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->update(
-            "UPDATE company SET `tables` = ? WHERE company.name = ?",
+            Queries::get('company', 'update-tables'),
             $tables,
             $this->name
         );
@@ -62,7 +63,7 @@ class Company
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $removed = $dbconn->deleteRow(
-            "DELETE FROM company WHERE company.name = ?",
+            Queries::get('company','remove'),
             $this->name
         );
 
@@ -78,12 +79,12 @@ class Company
         $dbconn = new MyCompanyDBConnector();
         if(!$detailed){
             $res = $dbconn->query(
-            "SELECT `name`,`tables` FROM company WHERE company.name = ?",
+                Queries::get('company','information-little'),
             $this->name
             )->fetch_assoc();
         }else {
             $res = $dbconn->query(
-                "SELECT `name`,`tables`, `owner` FROM company WHERE company.name = ?",
+                Queries::get('company','information-all'),
                 $this->name
             )->fetch_assoc();
         }
@@ -94,10 +95,7 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->query(
-            "SELECT count(user.id) as 'amount'
-            FROM user, company, company_has_user
-            WHERE user.id = company_has_user.user_id
-            AND company.id = company_has_user.company_id"
+            Queries::get('company','user-count')
         )->fetch_assoc();
         return $result;
     }
@@ -106,9 +104,8 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->query(
-            "SELECT count(product.id) as 'amount'
-            FROM product, company
-            WHERE company.id = product.company_id"
+            Queries::get('company','product-count')
+            
         )->fetch_assoc();
         return $result;
     }
@@ -116,11 +113,7 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqlcolor = "SELECT color.name as 'name', color.r as 'r', color.g as 'g', color.b as 'b', color.a as 'a'
-                FROM color, company_has_color, company
-                WHERE company_has_color.company_id = company.id
-                AND company_has_color.color_id = color.id
-                AND company.name = ?";
+        $sqlcolor = Queries::get('company','read-colors');
         $resultColors = $dbconn->query(
             $sqlcolor, $this->name
         );
@@ -135,11 +128,7 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqlstrings = "SELECT `string`.`name` as 'name', `string`.`value` as 'value'
-                FROM `string`, company_has_string, company
-                WHERE company_has_string.company_id = company.id
-                AND company_has_string.string_id = `string`.id
-                AND company.name = ?";
+        $sqlstrings = Queries::get('company','read-strings');
         $resultStrings = $dbconn->query(
             $sqlstrings, $this->name
         );
@@ -153,11 +142,7 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqltextstyle = "SELECT textstyle.name as 'name', textstyle.fontsize as 'fontsize', textstyle.fontfamily as 'fontfamily', textstyle.fontweight as 'fontweight'
-                FROM textstyle, company_has_textstyle, company
-                WHERE company_has_textstyle.company_id = company.id
-                AND company_has_textstyle.textstyle_id = textstyle.id
-                AND company.name = ?";
+        $sqltextstyle = Queries::get('company','read-strings');
 
         $resultTextStyles = $dbconn->query(
             $sqltextstyle, $this->name
@@ -260,15 +245,7 @@ class Company
     public function getProducts(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productSQL = "SELECT product.name as 'name', product.description as 'description', product.price as 'price', product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
-                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
-                        WHERE company.name = ?
-                        AND company.id = product.company_id
-                        AND product.active = 1
-                        AND product_has_product_group.product_id = product.id
-                        AND product_has_product_group.product_group_id = product_group.id
-                        AND product_has_product_subgroup.product_id = product.id
-                        AND product_has_product_subgroup.product_subgroup_id = product_subgroup.id";
+        $productSQL = Queries::get('company','products');
         $res = $dbconn->query($productSQL, $this->name);
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);
@@ -278,13 +255,7 @@ class Company
     public function getProductGroups(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productGroupSQL = "SELECT product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
-                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
-                        WHERE company.name = ?
-                        AND company.id = product.company_id
-                        AND product.active = 1
-                        AND product_has_product_group.product_id = product.id
-                        AND product_has_product_group.product_group_id = product_group.id";
+        $productGroupSQL = Queries::get('company','product-groups');
         $res = $dbconn->query($productGroupSQL, $this->name);
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);
@@ -294,13 +265,7 @@ class Company
     public function getProductSubgroups(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productSubgroupSQL = "SELECT product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
-                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
-                        WHERE company.name = ?
-                        AND company.id = product.company_id
-                        AND product.active = 1
-                        AND product_has_product_subgroup.product_id = product.id
-                        AND product_has_product_subgroup.product_subgroup_id = product_subgroup.id";
+        $productSubgroupSQL = Queries::get('company','product-subgroups');
         $res = $dbconn->query($productSubgroupSQL, $this->name);
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);

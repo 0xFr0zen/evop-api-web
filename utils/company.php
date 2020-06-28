@@ -153,7 +153,7 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $resultTextStyles = $dbconn->query(
-            Queries::get('company','read-strings'),
+            Queries::get('company','read-textstyles'),
             $this->name
         );
         while (($r = $resultTextStyles->fetch_assoc()) != null) {

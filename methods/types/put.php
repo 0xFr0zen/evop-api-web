@@ -20,7 +20,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     unset($val['name']);
                     unset($val['oldname']);
                     $valObj = array("name" => $valName, "oldname" => $valOldName, "values" => $val);
-                    $updated = $company->updateConfiguration($details, $valObj['oldname'], $valObj['name'], $valObj['values']);
+                    $updated = $company->updateConfiguration($this->details, $valObj['oldname'], $valObj['name'], $valObj['values']);
                     $this->result = array("result" => array("updated" => $updated));
                 }
                 break;
@@ -29,7 +29,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => "you need to put a number >= 1");
                 } else {
 
-                    $updated = $company->updateTables($details);
+                    $updated = $company->updateTables($this->details);
                     $this->result = array("result" => array("updated" => $updated));
                 }
                 break;

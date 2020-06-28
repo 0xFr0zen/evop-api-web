@@ -8,6 +8,9 @@ class ReqCompany {
     public $exists;
     public $result;
     public function __construct(){
+        
+        $this->mode = $_REQUEST['mode'];
+        $this->details = $_REQUEST['details'];
         if(isset($_REQUEST['companies'])){
             $dbconn = new MyCompanyDBConnector();
             $sql = "SELECT `name`, `tables` FROM company";
@@ -22,8 +25,6 @@ class ReqCompany {
             if(isset($_REQUEST['company'])){
                 $comp = $_REQUEST['company'];
                 $this->company = new Company($comp);
-                $this->mode = $_REQUEST['mode'];
-                $this->details = $_REQUEST['details'];
                 $this->exists = $this->company->exists();
                 if(!$this->exists){
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);

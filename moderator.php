@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__."/../essentials/moderator.php";
+include_once __DIR__."/../essentials/admin.php";
 header("Content-Type: application/javascript");
 $result = array();
 if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
@@ -23,15 +24,6 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
                     }
                     $found = true;
                     break;
-                case 'showmodrequests':
-                    $r = $moderator->getModRequests();
-                    if($r != null){
-                        $result = array("result" => $r);
-                    }else {
-                        $result = array("result" => array("error" => "No mod requests."));
-                    }
-                    $found = true;
-                    break;
                 case 'loginstatus':
                     $result = array("result" => array("status" => $moderator->checklogin()));
                     $found = true;
@@ -44,7 +36,15 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         }
         
     }
-}else {
+}else if($_REQUEST['showmodrequests']){
+    $admin = new Admin("","");
+    $r = $admin->getModRequests();
+    if($r != null){
+        $result = array("result" => $r);
+    }else {
+        $result = array("result" => array("error" => "No mod requests."));
+    }
+}else{
     $result = array("error" => array("message" => "You need to specify, SIDs and DIDs"));
 }
 

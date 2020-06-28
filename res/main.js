@@ -46,7 +46,7 @@ $(document).ready((_) => {
             $('#dialogs #newcompany .my-companyname-textfield').focus();
         } else {
             $.post(
-                'api/company/' +
+                'https://api.ev-op.de/company/' +
                     encodeURI(companyname2).replace(/\-/g, '_') +
                     '/create',
                 function (data, status) {
@@ -54,7 +54,7 @@ $(document).ready((_) => {
                         if (data.result.created.status) {
                             $.ajax({
                                 url:
-                                    'api/company/' +
+                                    'https://api.ev-op.de/company/' +
                                     encodeURI(companyname2).replace(
                                         /\-/g,
                                         '_'
@@ -113,10 +113,10 @@ $(document).ready((_) => {
     });
 });
 function checklogin() {
-    $.getJSON('/test-apps/api/login-status', (data) => {
+    $.getJSON('https://api.ev-op.de/mod/login-status/', (data) => {
         if (!data.result.loggedin) {
             document.location.href =
-                'http://fr0zenofficial.bplaced.net/test-apps/';
+                'https://admin.ev-op.de/login';
         }
     });
 }
@@ -124,7 +124,7 @@ async function loadCompanies() {
     if (!window.loadinglocked) {
         $('#storeicon').text('hourglass_top');
         await wait(200);
-        $.getJSON('./api/companies/', async (data, status) => {
+        $.getJSON('https://api.ev-op.de/companies/', async (data, status) => {
             $('#content #companies #list').empty();
             data['result'].forEach(async (element) => {
                 let c = new Company(element['name'], element['tables']);

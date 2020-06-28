@@ -15,7 +15,13 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         if(!$found){
             switch ($reqs[$key]) {
                 case 'modrequests':
-                    $result = array("result" => array("requested" => $moderator->request()));
+                    $r = $moderator->request();
+                    if($r != null){
+
+                        $result = array("result" => array("requested" => $r));
+                    }else {
+                        $result = array("result" => array("error" => array("error" => array("message" => "This SID and DID was already requested!"))));
+                    }
                     $found = true;
                     break;
                 case 'loginstatus':

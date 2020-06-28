@@ -17,6 +17,9 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
                     break;
                 case 'loginstatus':
                     $result = $moderator->checklogin();
+                    break;
+                case 'login':
+                    $result = $moderator->login();
                 break;
             }
         }

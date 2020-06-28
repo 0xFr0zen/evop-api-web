@@ -93,7 +93,7 @@ class Company
             );
         }
         if($res2 != null){
-            $res = $res->fetch_assoc();
+            $res = $res2->fetch_assoc();
         }else {
             $res = array("error" => Company::$UNEXPECTED_ERROR);
         }

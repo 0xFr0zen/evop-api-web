@@ -6,6 +6,8 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         $_REQUEST['did'],
         $_REQUEST['sid']
     );
+    unset($_REQUEST['sid']);
+    unset($_REQUEST['did']);
     $reqs = array_keys($_REQUEST);
     foreach($reqs as $key => $value){
         if(!$found){

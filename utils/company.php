@@ -79,12 +79,12 @@ class Company
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         if(!$detailed){
+            print(Queries::get('company','information-little'));
             $res = $dbconn->query(
                 Queries::get('company','information-little'),
             $this->name
             )->fetch_assoc();
         }else {
-            print(Queries::get('company','information-little'));
             $res = $dbconn->query(
                 Queries::get('company','information-all'),
                 $this->name

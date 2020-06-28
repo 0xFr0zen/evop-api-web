@@ -5,7 +5,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
     public function execute(){
         switch ($this->mode) {
             case 'create':
-                if ($this->exists) {
+                if (!$this->exists) {
                     $created = $this->company->create();
                     $this->result = array("result" => array("created" => $created));
                 } else {

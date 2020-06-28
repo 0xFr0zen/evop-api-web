@@ -12,17 +12,21 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         if(!$found){
             switch ($variable) {
                 case 'modrequests':
-                    $result = $moderator->request();
+                    $result = array("result" => array("requested" => $moderator->request()));
                     $found = true;
                     break;
                 case 'loginstatus':
-                    $result = $moderator->checklogin();
+                    $result = array("result" => array("status" => $moderator->checklogin()));
+                    $found = true;
                     break;
                 case 'login':
-                    $result = $moderator->login();
+                    $result = array("result" => array("loggedin" => $moderator->login()));
+                    $found = true;
                 break;
             }
         }
         
     }
 }
+
+print(json_encode($result, JSON_NUMERIC_CHECK));

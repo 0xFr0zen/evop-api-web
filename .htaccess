@@ -10,4 +10,8 @@ RewriteRule ^companies(?:\/)?$ index2.php?companies
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index2.php?company=$1&mode=information
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)(?:\/)?$ index2.php?company=$1&mode=$2&details=minimum
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index2.php?company=$1&mode=$2&details=$3
+
+#test
+RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/configuration\/([a-zA-Z0-9-_\s]+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index2.php?company=$1&mode=configuration&details=$2&values=$3
+
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index2.php?company=$1&mode=$2&details=$3&values=$4

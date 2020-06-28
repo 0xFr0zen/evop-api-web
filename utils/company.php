@@ -15,6 +15,7 @@ class Company
     public static $REMOVE_ERROR = "Couldn't remove company!";
     public static $CONFIGURATION_ALREADY_EXISTS = "Ressource already exists!";
     public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
+    public static $SPECIFY_A_TYPE_ERROR = "Please specify a type first!";
     public static $SPECIFY_A_COMPANYNAME = "Please specify a companyname first!";
     public function __construct(string $name)
     {
@@ -104,8 +105,8 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->query(
-            Queries::get('company','product-count')
-            
+            Queries::get('company','product-count'),
+            $this->name
         )->fetch_assoc();
         return $result;
     }
@@ -113,12 +114,12 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqlcolor = Queries::get('company','read-colors');
         $resultColors = $dbconn->query(
-            $sqlcolor, $this->name
+            Queries::get('company','read-colors'),
+            $this->name
         );
 
-        while ($r = $resultColors->fetch_assoc()) {
+        while (($r = $resultColors->fetch_assoc()) != null) {
             array_push($result, $r);
         }
 
@@ -128,11 +129,11 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqlstrings = Queries::get('company','read-strings');
         $resultStrings = $dbconn->query(
-            $sqlstrings, $this->name
+            Queries::get('company','read-strings'),
+            $this->name
         );
-        while ($r = $resultStrings->fetch_assoc()) {
+        while (($r = $resultStrings->fetch_assoc()) != null) {
             array_push($result, $r);
         }
 
@@ -142,12 +143,11 @@ class Company
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $sqltextstyle = Queries::get('company','read-strings');
-
         $resultTextStyles = $dbconn->query(
-            $sqltextstyle, $this->name
+            Queries::get('company','read-strings'),
+            $this->name
         );
-        while ($r = $resultTextStyles->fetch_assoc()) {
+        while (($r = $resultTextStyles->fetch_assoc()) != null) {
             array_push($result, $r);
         }
 
@@ -196,6 +196,9 @@ class Company
                 $tst = new TextStyle($this->name, $name);
                 $result = $tst->add($value);
                 break;
+            default:
+                $result = array("error" => array("message" => Company::$SPECIFY_A_TYPE_ERROR));
+                break;
         }
         return $result;
     }
@@ -217,7 +220,7 @@ class Company
                 break;
 
             default:
-
+                $result = array("error" => array("message" => Company::$SPECIFY_A_TYPE_ERROR));
                 break;
         }
         return $result;
@@ -239,14 +242,18 @@ class Company
                 $tst = new TextStyle($this->name, $name);
                 $result = $tst->del();
                 break;
+            default:
+                $result = array("error" => array("message" => Company::$SPECIFY_A_TYPE_ERROR));
+                break;
         }
         return $result;
     }
     public function getProducts(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productSQL = Queries::get('company','products');
-        $res = $dbconn->query($productSQL, $this->name);
+        $res = $dbconn->query(Queries::get('company','products'),
+            $this->name
+        );
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);
         }
@@ -255,8 +262,10 @@ class Company
     public function getProductGroups(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productGroupSQL = Queries::get('company','product-groups');
-        $res = $dbconn->query($productGroupSQL, $this->name);
+        $res = $dbconn->query(
+            Queries::get('company','product-groups'),
+            $this->name
+        );
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);
         }
@@ -265,8 +274,9 @@ class Company
     public function getProductSubgroups(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $productSubgroupSQL = Queries::get('company','product-subgroups');
-        $res = $dbconn->query($productSubgroupSQL, $this->name);
+        $res = $dbconn->query(Queries::get('company','product-subgroups'),
+            $this->name
+        );
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);
         }

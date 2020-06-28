@@ -19,7 +19,8 @@ class Queries {
                                 AND company.id = company_has_user.company_id",
             "product-count" => "SELECT count(product.id) as 'amount'
                                 FROM product, company
-                                WHERE company.id = product.company_id",
+                                WHERE company.id = product.company_id
+                                AND company.name = ?",
             "read-colors" => "SELECT color.name as 'name', color.r as 'r', color.g as 'g', color.b as 'b', color.a as 'a'
                                 FROM color, company_has_color, company
                                 WHERE company_has_color.company_id = company.id

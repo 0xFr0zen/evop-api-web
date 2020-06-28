@@ -249,4 +249,54 @@ class Company
         }
         return $result;
     }
+    public function getProducts(){
+        $result = array();
+        $dbconn = new MyCompanyDBConnector();
+        $productSQL = "SELECT product.name as 'name', product.description as 'description', product.price as 'price', product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
+                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
+                        WHERE company.name = ?
+                        AND company.id = product.company_id
+                        AND product.active = 1
+                        AND product_has_product_group.product_id = product.id
+                        AND product_has_product_group.product_group_id = product_group.id
+                        AND product_has_product_subgroup.product_id = product.id
+                        AND product_has_product_subgroup.product_subgroup_id = product_subgroup.id";
+        $res = $dbconn->query($productSQL, $this->name);
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($row);
+        }
+        return $result;
+    }
+    public function getProductGroups(){
+        $result = array();
+        $dbconn = new MyCompanyDBConnector();
+        $productGroupSQL = "SELECT product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
+                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
+                        WHERE company.name = ?
+                        AND company.id = product.company_id
+                        AND product.active = 1
+                        AND product_has_product_group.product_id = product.id
+                        AND product_has_product_group.product_group_id = product_group.id";
+        $res = $dbconn->query($productGroupSQL, $this->name);
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($row);
+        }
+        return $result;
+    }
+    public function getProductSubgroups(){
+        $result = array();
+        $dbconn = new MyCompanyDBConnector();
+        $productSubgroupSQL = "SELECT product_group.name as 'groupname', product_subgroup.name as 'subgroupname'
+                        FROM company, product, product_has_product_group, product_has_product_subgroup, product_group, product_subgroup
+                        WHERE company.name = ?
+                        AND company.id = product.company_id
+                        AND product.active = 1
+                        AND product_has_product_subgroup.product_id = product.id
+                        AND product_has_product_subgroup.product_subgroup_id = product_subgroup.id";
+        $res = $dbconn->query($productSubgroupSQL, $this->name);
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($row);
+        }
+        return $result;
+    }
 }

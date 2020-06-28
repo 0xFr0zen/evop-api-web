@@ -109,6 +109,26 @@ if (!isset($_REQUEST['companies'])) {
                                 break;
                         }
                         break;
+                    case 'list':
+                        switch ($details) {
+                            case 'product-groups':
+                                $productsGroups = $company->getProductGroups();
+                                $result = array("result" => array("product-groups" => $productsGroups));
+                                break;
+                            case 'product-subgroups':
+                                $productsSubgroups = $company->getProductSubgroups();
+                                $result = array("result" => array("product-subgroups" => $productsSubgroups));
+                                break;
+                            case 'products':
+                                $products = $company->getProducts();
+                                $result = array("result" => array("products" => $products));
+                                break;
+                            default:
+                                $products = $company->getProducts();
+                                $result = array("result" => array("products" => $products));
+                                break;
+                        }
+                        break;
                     default:
                         $result = array("error" => "you need to specify a query");
                         break;

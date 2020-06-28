@@ -1,12 +1,6 @@
 let companyIntervall;
 window.loadinglocked = false;
 $(document).ready((_) => {
-    mdc.topAppBar.MDCTopAppBar.attachTo(
-        document.querySelector('.mdc-top-app-bar')
-    );
-    mdc.iconButton.MDCIconButtonToggle.attachTo(
-        document.querySelector('#search')
-    );
     loadProducts();
     companyIntervall = setInterval(loadProducts, 10000);
     $('#search').on('click', (_) => {
@@ -69,7 +63,7 @@ async function loadProducts() {
         $('#producticon').text('hourglass_top');
         await wait(200);
         $.getJSON(
-            'https://api.ev-op.de/company/' + encodeURI(companyname) + '/',
+            'https://api.ev-op.de/company/' + encodeURI(companyname) + '/products',
             async (data, status) => {
                 $('#content #products #list').empty();
                 $('#producticon').text(

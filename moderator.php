@@ -8,9 +8,8 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
     );
     $reqs = array_keys($_REQUEST);
     foreach($reqs as $key => $value){
-        $r = $_REQUEST[$key];
         if(!$found){
-            switch ($variable) {
+            switch ($_REQUEST[$key]) {
                 case 'modrequests':
                     $result = array("result" => array("requested" => $moderator->request()));
                     $found = true;

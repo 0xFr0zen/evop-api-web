@@ -25,12 +25,15 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                         }
                         $val = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
                         $valName = $val['name'];
-                        $valOldName = $val['oldname'];
                         unset($val['name']);
-                        unset($val['oldname']);
-                        $valObj = array("name" => $valName, "oldname" => $valOldName, "values" => $val);
-                        $updated = $this->company->updateConfiguration($this->details, $valObj['oldname'], $valObj['name'], $valObj['values']);
-                        $this->result = array("result" => array("updated" => $updated));
+                        $valObj = array("name" => $valName, "values" => $val);
+                        $added = $this->company->addConfiguration($this->details, $valObj['name'], $valObj['values']);
+                        if ($updated) {
+                            $this->result = array("result" => array("updated" => $added));
+                        } else {
+                            $this->result = array("result" => array("updated" => $added, "message" => Company::$CONFIGURATION_ALREADY_EXISTS));
+
+                        }
                     }
                 } else {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);

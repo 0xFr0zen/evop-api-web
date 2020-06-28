@@ -15,6 +15,7 @@ class ReqCompany {
         $reqs = array_keys($_REQUEST);
         $found = false;
         foreach ($reqs as $key => $value) {
+            print("looking for: ". $key);
             if(!$found) {
                 switch ($key) {
                     case 'companies':

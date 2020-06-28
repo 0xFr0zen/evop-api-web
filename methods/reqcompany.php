@@ -9,7 +9,6 @@ class ReqCompany {
     public $exists;
     public $result;
     public function __construct(){
-        
         if(!isset($_REQUEST['company'])){
             $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
             die(json_encode($this->result, JSON_NUMERIC_CHECK));

@@ -10,5 +10,5 @@ if(file_exists(__DIR__.'/methods/types/'.strtolower($rmode).'.php')) {
         print(json_encode($reqm->result, JSON_NUMERIC_CHECK));
     }
 }else {
-    // header(""); 404 error
+    die("file doesnt exists!");
 }

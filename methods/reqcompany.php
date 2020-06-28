@@ -30,7 +30,7 @@ class ReqCompany {
                     die(json_encode($this->result, JSON_NUMERIC_CHECK));
                 }
             }else {
-                $this->result = array("error" => Company::$SPECIFY_A_VALUE_ERROR);
+                $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                 die(json_encode($this->result, JSON_NUMERIC_CHECK));
             }
             

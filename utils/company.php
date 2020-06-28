@@ -14,6 +14,7 @@ class Company
     public static $REMOVE_ERROR = "Couldn't remove company!";
     public static $CONFIGURATION_ALREADY_EXISTS = "Ressource already exists!";
     public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
+    public static $SPECIFY_A_COMPANYNAME = "Please specify a companyname first!";
     public function __construct(string $name)
     {
         $this->name = $name;

@@ -64,6 +64,6 @@ class Queries {
     );
 
     public static function get(string $area, string $key){
-        return Queries::$querymap[$area]->{$key};
+        return Queries::$querymap[$area][$key];
     }
 }

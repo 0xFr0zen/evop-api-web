@@ -20,7 +20,7 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
 
                         $result = array("result" => array("requested" => $r));
                     }else {
-                        $result = array("result" => array("error" => array("error" => array("message" => "This SID and DID was already requested!"))));
+                        $result = array("result" => array("error" => array("message" => "This SID and DID was already requested!")));
                     }
                     $found = true;
                     break;

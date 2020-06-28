@@ -17,10 +17,18 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
                 case 'modrequests':
                     $r = $moderator->request();
                     if($r != null){
-
                         $result = array("result" => array("requested" => $r));
                     }else {
                         $result = array("result" => array("error" => array("message" => "This SID and DID was already requested!")));
+                    }
+                    $found = true;
+                    break;
+                case 'showmodrequests':
+                    $r = $moderator->getModRequests();
+                    if($r != null){
+                        $result = array("result" => $r);
+                    }else {
+                        $result = array("result" => array("error" => "No mod requests."));
                     }
                     $found = true;
                     break;

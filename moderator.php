@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__."/../essentials/moderator.php";
+header("Content-Type: application/javascript");
 $result = array();
 if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
     $moderator = new Moderator(
@@ -29,6 +30,8 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
         }
         
     }
+}else {
+    $result = array("error" => array("message" => "You need to specify, SIDs and DIDs"));
 }
 
 print(json_encode($result, JSON_NUMERIC_CHECK));

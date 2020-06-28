@@ -3,7 +3,7 @@ RewriteEngine On
 RewriteRule ^qr-code\/(.*)(?:\/)?$ http://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&bgcolor=fff&color=4b6584&data=$1
 RewriteRule ^mod\/requests(?:\/)?$ moderator.php?modrequests
 RewriteRule ^mod\/card\/(.*)\/(.*)\/(.*)\/(.*)\/(.*)(?:\/)?$ mod-card.php?did=$1&ip=$2&sid=$3&t=$4&c=$5
-RewriteRule ^mod\/login-status(?:\/)?$ moderator.php?loginstatus
+RewriteRule ^mod\/login-status\/(.*)(?:\/)?$ moderator.php?loginstatus&sid
 RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?loginstatus&sid=$1&did=$2
 RewriteRule ^companies(?:\/)?$ index2.php?companies
 

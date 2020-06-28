@@ -13,7 +13,7 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
     $found = false;
     foreach($reqs as $key => $value){
         if(!$found){
-            switch ($_REQUEST[$key]) {
+            switch ($reqs[$key]) {
                 case 'modrequests':
                     $result = array("result" => array("requested" => $moderator->request()));
                     $found = true;

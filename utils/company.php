@@ -13,6 +13,7 @@ class Company
     public static $COMPANY_ALREADY_EXISTS = "Company already exists!";
     public static $REMOVE_ERROR = "Couldn't remove company!";
     public static $CONFIGURATION_ALREADY_EXISTS = "Ressource already exists!";
+    public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -70,14 +71,21 @@ class Company
         }
         return $res;
     }
-    public function information()
+    public function information($detailed = false)
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(
+        if(!$detailed){
+            $res = $dbconn->query(
             "SELECT `name`,`tables` FROM company WHERE company.name = ?",
             $this->name
-        )->fetch_assoc();
+            )->fetch_assoc();
+        }else {
+            $res = $dbconn->query(
+                "SELECT `name`,`tables`, `owner` FROM company WHERE company.name = ?",
+                $this->name
+            )->fetch_assoc();
+        }
         return $res;
     }
     public function getUsersCount()
@@ -207,7 +215,6 @@ class Company
     }
     public function updateConfiguration($type, $oldname, $name, $value)
     {
-
         $result = array();
         switch ($type) {
             case 'color':

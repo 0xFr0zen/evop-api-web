@@ -30,6 +30,7 @@ class ReqCompany {
                     $this->company = new Company($this->comp);
                     $this->exists = $this->company->exists();
                     break;
+                break;
                 default:
                     $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                     die(json_encode($this->result, JSON_NUMERIC_CHECK));

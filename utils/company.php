@@ -17,6 +17,7 @@ class Company
     public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
     public static $SPECIFY_A_TYPE_ERROR = "Please specify a type first!";
     public static $SPECIFY_A_COMPANYNAME = "Please specify a companyname first!";
+    public static $UNEXPECTED_ERROR = "Sorry, something happend and we dont know quite yet why...";
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -78,17 +79,25 @@ class Company
     {
         $res = array();
         $dbconn = new MyCompanyDBConnector();
+        $res2 = null;
         if(!$detailed){
-            $res = $dbconn->query(
+            $res2 = $dbconn->query(
                 Queries::get('company','information-little'),
                 $this->name
-            )->fetch_assoc();
+            );
+            
         }else {
-            $res = $dbconn->query(
+            $res2 = $dbconn->query(
                 Queries::get('company','information-all'),
                 $this->name
-            )->fetch_assoc();
+            );
         }
+        if($res2 != null){
+            $res = $res->fetch_assoc();
+        }else {
+            $res = array("error" => Company::$UNEXPECTED_ERROR);
+        }
+        
         return $res;
     }
     public function getUsersCount()

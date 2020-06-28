@@ -9,15 +9,12 @@ class ReqCompany {
     public $exists;
     public $result;
     public function __construct(){
-        if(!isset($_REQUEST['company'])){
-            $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
-            die(json_encode($this->result, JSON_NUMERIC_CHECK));
-        }else {
-            $this->mode = $_REQUEST['mode'];
-            $this->details = $_REQUEST['details'];
-            $this->comp = $_REQUEST['company'];
+        $this->mode = $_REQUEST['mode'];
+        $this->details = $_REQUEST['details'];
+        $this->comp = $_REQUEST['company'];
 
-            if(isset($_REQUEST['companies'])){
+        switch ($_REQUEST) {
+            case 'companies':
                 $dbconn = new MyCompanyDBConnector();
                 $sql = "SELECT `name`, `tables` FROM company";
                 $resultCompanies = $dbconn->query($sql);
@@ -27,11 +24,17 @@ class ReqCompany {
                 }
                 $this->result = array("result" => $resulter);
                 die(json_encode($this->result, JSON_NUMERIC_CHECK));
-            }else {
+                break;
+            case 'company':
                 $this->company = new Company($this->comp);
                 $this->exists = $this->company->exists();
-            }
+                break;
+            default:
+                $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
+                die(json_encode($this->result, JSON_NUMERIC_CHECK));
+                break;
         }
+        
         
     }
 }

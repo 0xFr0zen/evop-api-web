@@ -9,6 +9,7 @@ if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
     unset($_REQUEST['sid']);
     unset($_REQUEST['did']);
     $reqs = array_keys($_REQUEST);
+    $found = false;
     foreach($reqs as $key => $value){
         if(!$found){
             switch ($_REQUEST[$key]) {

@@ -8,15 +8,15 @@ class ReqCompany {
     public $exists;
     public $result;
     public function __construct(){
-        
         $this->mode = $_REQUEST['mode'];
         $this->details = $_REQUEST['details'];
+
         if(isset($_REQUEST['companies'])){
             $dbconn = new MyCompanyDBConnector();
             $sql = "SELECT `name`, `tables` FROM company";
             $resultCompanies = $dbconn->query($sql);
             $resulter = array();
-            while ($r = $resultCompanies->fetch_assoc()) {
+            while (($r = $resultCompanies->fetch_assoc()) != null) {
                 array_push($resulter, $r);
             }
             $this->result = array("result" => $resulter);

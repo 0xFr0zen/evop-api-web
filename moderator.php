@@ -3,11 +3,13 @@ include_once __DIR__."/../essentials/moderator.php";
 include_once __DIR__."/../essentials/admin.php";
 header("Content-Type: application/javascript");
 $result = array();
-if (isset($_REQUEST['did']) && isset($_REQUEST['sid'])) {
+if (isset($_REQUEST['sid'])) {
     $moderator = new Moderator(
-        $_REQUEST['did'],
         $_REQUEST['sid']
     );
+    if(isset($_REQUEST['did'])) {
+        $moderator->setDeviceID($_REQUEST['did']);
+    }
     unset($_REQUEST['sid']);
     unset($_REQUEST['did']);
     $reqs = array_keys($_REQUEST);

@@ -14,6 +14,10 @@ $(document).ready((_) => {
         $('#dialogs #settingscompany').show();
         $('#dialogs').fadeIn(100, function () {
             window.loadinglocked = true;
+            $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
+                $(".my-companyname-tables-textfield").val(data.result.tables);
+            });
+            
         });
     });
     $('#delete').on('click', (_) => {

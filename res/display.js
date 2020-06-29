@@ -12,44 +12,46 @@ $(document).ready((_) => {
     $('#settings').on('click', (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #settingscompany').show();
-        $('#dialogs').fadeIn(100, function () {
-            window.loadinglocked = true;
-            $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
-                $(".my-companyname-tables-textfield").val(data.result.tables);
-            });
-            $(".my-companyname-tables-textfield").on('change', function() {
-                let tablenumber = $(this).val();
-                $.ajax({
-                    url:
-                        'https://api.ev-op.de/company/' +
-                        companyname +
-                        '/tables/' +
-                        tablenumber +
-                        '/',
-                    type: 'PUT',
-                    success: function (tabledata) {
-                        if (!tabledata.result) {
-                            $(
-                                '.my-card-label-server-issues'
-                            ).removeClass('hidden');
-                        } else {
-                            if (!tabledata.result.updated) {
+        $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
+            $(".my-companyname-tables-textfield").val(data.result.tables);
+            $('#dialogs').fadeIn(100, function () {
+                window.loadinglocked = true;
+                
+                $(".my-companyname-tables-textfield").on('change', function() {
+                    let tablenumber = $(this).val();
+                    $.ajax({
+                        url:
+                            'https://api.ev-op.de/company/' +
+                            companyname +
+                            '/tables/' +
+                            tablenumber +
+                            '/',
+                        type: 'PUT',
+                        success: function (tabledata) {
+                            if (!tabledata.result) {
                                 $(
                                     '.my-card-label-server-issues'
                                 ).removeClass('hidden');
+                            } else {
+                                if (!tabledata.result.updated) {
+                                    $(
+                                        '.my-card-label-server-issues'
+                                    ).removeClass('hidden');
+                                }
                             }
-                        }
-                    },
-                    dataType: 'json',
+                        },
+                        dataType: 'json',
+                    });
                 });
-            });
-            $('.my-close-settings-button').on('click', (_) => {
-                $('#dialogs').fadeOut(100, function () {
-                    $(document.body).click();
-                    window.loadinglocked = false;
+                $('.my-close-settings-button').on('click', (_) => {
+                    $('#dialogs').fadeOut(100, function () {
+                        $(document.body).click();
+                        window.loadinglocked = false;
+                    });
                 });
             });
         });
+        
     });
     $('#delete').on('click', (_) => {
         $('#dialogs').css('display', 'flex');

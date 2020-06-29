@@ -4,7 +4,7 @@ $(document).ready((_) => {
     logininterval = setInterval(checklogin, 2000);
 });
 function checklogin() {
-    $.getJSON('https://api.ev-op.de/mod/login-status/', (data) => {
+    $.getJSON('https://api.ev-op.de/mod/login-status/' + sessionID, (data) => {
         if (data.result.loggedin) {
             document.location.href = '/';
         }

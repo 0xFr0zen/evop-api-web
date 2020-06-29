@@ -32,7 +32,7 @@ if (isset($_REQUEST['sid'])) {
                     break;
                 case 'login':
                     if($_SERVER['REQUEST_METHOD'] == "POST"){
-                        $result = array("result" => array("status" => $moderator->login()));
+                        $result = array("result" => array("status" => $moderator->login(), "type" => "login-post"));
                         $found = true;
                     }else {
                         $result = array("result" => array("error" => array("message" => "You can't login via '".$_SERVER['REQUEST_METHOD']."'.")));

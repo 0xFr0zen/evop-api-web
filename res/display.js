@@ -9,10 +9,11 @@ $(document).ready((_) => {
             window.loadinglocked = true;
         });
     });
-    $('#settings').on('click', (_) => {
+    $('#settings').on('click', async (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #settingscompany').show();
         $('#dialogs #settingscompany').css('display', 'flex');
+        await wait(1000);
         $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
             $(".my-companyname-tables-textfield").val(data.result.tables);
             $('#dialogs').fadeIn(100, function () {

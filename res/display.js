@@ -20,7 +20,7 @@ $(document).ready((_) => {
                 
                 $(".my-companyname-tables-textfield").on('change', function() {
                     let tablenumber = $(this).val();
-                    $(".my-saving-text").show();
+                    $("#loadingsave").show();
                     $.ajax({
                         url:
                             'https://api.ev-op.de/company/' +
@@ -41,7 +41,7 @@ $(document).ready((_) => {
                                     ).removeClass('hidden');
                                 }
                             }
-                            $(".my-saving-text").hide();
+                            $("#loadingsave").hide();
                         },
                         dataType: 'json',
                     });

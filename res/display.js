@@ -9,11 +9,11 @@ $(document).ready((_) => {
             window.loadinglocked = true;
         });
     });
-    $('#settings').on('click', async (_) => {
+    $('#settings').on('click', (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #settingscompany').show();
         $('#dialogs #settingscompany').css('display', 'flex');
-        await wait(1000);
+        
         $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
             $(".my-companyname-tables-textfield").val(data.result.tables);
             $('#dialogs').fadeIn(100, function () {
@@ -30,7 +30,7 @@ $(document).ready((_) => {
                             tablenumber +
                             '/',
                         type: 'PUT',
-                        success: function (tabledata) {
+                        success: async function (tabledata) {
                             if (!tabledata.result) {
                                 $(
                                     '.my-card-label-server-issues'
@@ -42,6 +42,7 @@ $(document).ready((_) => {
                                     ).removeClass('hidden');
                                 }
                             }
+                            await wait(2000);
                             $("#loadingsave").hide();
                         },
                         dataType: 'json',

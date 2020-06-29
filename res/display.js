@@ -12,6 +12,9 @@ $(document).ready((_) => {
     $('#settings').on('click', (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #settingscompany').show();
+        $('#dialogs').fadeIn(100, function () {
+            window.loadinglocked = true;
+        });
     });
     $('#delete').on('click', (_) => {
         $('#dialogs').css('display', 'flex');

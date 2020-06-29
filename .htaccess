@@ -5,7 +5,7 @@ RewriteRule ^qr-code\/(.*)(?:\/)?$ utils/qr-code.php?data=$1
 RewriteRule ^mod\/requests\/(.*)\/(.*)(?:\/)?$ moderator.php?modrequests&did=$1&sid=$2
 RewriteRule ^mod\/requests(?:\/)?$ moderator.php?showmodrequests
 RewriteRule ^mod\/card\/(.*)\/(.*)\/(.*)\/(.*)\/(.*)(?:\/)?$ mod-card.php?did=$1&ip=$2&sid=$3&t=$4&c=$5
-RewriteRule ^mod\/login-status\/(.*)\/(.*)(?:\/)?$ moderator.php?loginstatus&did=$1&sid=$2
+RewriteRule ^mod\/login-status\/(.*)(?:\/)?$ moderator.php?loginstatus&sid=$1
 RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?login&did=$1&sid=$2
 RewriteRule ^companies(?:\/)?$ index2.php?companies
 

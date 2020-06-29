@@ -114,9 +114,9 @@ $(document).ready((_) => {
 });
 function checklogin() {
     $.getJSON('https://api.ev-op.de/mod/login-status/', (data) => {
+        console.log(data);
         if (!data.result.status) {
-            document.location.href =
-                'https://admin.ev-op.de/login';
+            // document.location.href = 'https://admin.ev-op.de/login';
         }
     });
 }

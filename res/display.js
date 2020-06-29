@@ -17,6 +17,41 @@ $(document).ready((_) => {
             $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
                 $(".my-companyname-tables-textfield").val(data.result.tables);
             });
+            $(".my-companyname-tables-textfield").on('change', function() {
+                let tablenumber = $(this).val();
+                $.ajax({
+                    url:
+                        'https://api.ev-op.de/company/' +
+                        companyname +
+                        '/tables/' +
+                        tablenumber +
+                        '/',
+                    type: 'PUT',
+                    success: function (tabledata) {
+                        if (!tabledata.result) {
+                            $(
+                                '.my-card-label-server-issues'
+                            ).removeClass('hidden');
+                        } else {
+                            if (!tabledata.result.updated) {
+                                $(
+                                    '.my-card-label-server-issues'
+                                ).removeClass('hidden');
+                            } else {
+                                $('#dialogs').fadeOut(
+                                    100,
+                                    function () {
+                                        $(document.body).click();
+                                        window.loadinglocked = false;
+                                        loadCompanies();
+                                    }
+                                );
+                            }
+                        }
+                    },
+                    dataType: 'json',
+                });
+            });
             $('.my-close-settings-button').on('click', (_) => {
                 $('#dialogs').fadeOut(100, function () {
                     $(document.body).click();

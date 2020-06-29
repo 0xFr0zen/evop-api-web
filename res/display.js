@@ -37,15 +37,6 @@ $(document).ready((_) => {
                                 $(
                                     '.my-card-label-server-issues'
                                 ).removeClass('hidden');
-                            } else {
-                                $('#dialogs').fadeOut(
-                                    100,
-                                    function () {
-                                        $(document.body).click();
-                                        window.loadinglocked = false;
-                                        loadCompanies();
-                                    }
-                                );
                             }
                         }
                     },

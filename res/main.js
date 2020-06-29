@@ -169,7 +169,7 @@ function Company(name, tables) {
         $(action1).on('click', () => {
             let openlink = './company/' + this.name;
             lastopenedWindow = window.open(openlink);
-            lastopenedWindow.on('close', loadCompanies);
+            $(lastopenedWindow).on('close', loadCompanies);
         });
         let cardActionHolder = document.createElement('div');
 

@@ -397,6 +397,7 @@ body {
   align-self: flex-end;
 }
 #dialogs #deletecompany {
+  display: none;
   align-self: center;
   position: relative;
   margin: 0 auto;

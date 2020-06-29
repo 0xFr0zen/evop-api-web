@@ -72,17 +72,14 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -150px;
-  margin-top: -60px;
-  width: 300px;
-  height: 120px;
-}
-#login h1 {
-  text-align: center;
+  margin-left: -200px;
+  margin-top: -200px;
+  width: 400px;
+  height: 400px;
 }
 #login .loginqr {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 }
 .my-card,
 .my-moderator-card {

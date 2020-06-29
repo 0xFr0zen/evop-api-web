@@ -2,6 +2,7 @@
 let companyIntervall;
 let stillloggedinintervall;
 window.loadinglocked = false;
+let lastopenedWindow;
 $(document).ready((_) => {
     mdc.topAppBar.MDCTopAppBar.attachTo(
         document.querySelector('.mdc-top-app-bar')
@@ -167,7 +168,8 @@ function Company(name, tables) {
         let action1 = ActionMaker('Show', 'arrow_forward');
         $(action1).on('click', () => {
             let openlink = './company/' + this.name;
-            window.open(openlink);
+            lastopenedWindow = window.open(openlink);
+            lastopenedWindow.on('close', loadCompanies);
         });
         let cardActionHolder = document.createElement('div');
 

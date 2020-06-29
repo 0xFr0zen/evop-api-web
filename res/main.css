@@ -305,7 +305,7 @@ body {
   align-self: flex-end;
 }
 #dialogs #settingscompany .my-settings-company-action-bar #loadingsave {
-  display: hidden;
+  display: none;
 }
 #dialogs #settingscompany .my-settings-company-action-bar #loadingsave .my-saving-text {
   margin-right: 10px;

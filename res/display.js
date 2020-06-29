@@ -9,6 +9,10 @@ $(document).ready((_) => {
             window.loadinglocked = true;
         });
     });
+    $('#settings').on('click', (_) => {
+        $('#dialogs').css('display', 'flex');
+        $('#dialogs #settingscompany').show();
+    });
     $('#delete').on('click', (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #newcompany').show();

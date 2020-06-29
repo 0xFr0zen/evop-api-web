@@ -31,8 +31,13 @@ if (isset($_REQUEST['sid'])) {
                     $found = true;
                     break;
                 case 'login':
-                    $result = array("result" => array("loggedin" => $moderator->login()));
-                    $found = true;
+                    if($_SERVER['REQUEST_METHOD'] == "POST"){
+                        $result = array("result" => array("status" => $moderator->login()));
+                        $found = true;
+                    }else {
+                        $result = array("result" => array("error" => array("message" => "You can't login via '".$_SERVER['REQUEST_METHOD']."'.")));
+                        $found = true;
+                    }
                 break;
             }
         }

@@ -1,7 +1,7 @@
 Header set Access-Control-Allow-Origin "*"
 RewriteEngine On
 
-RewriteRule ^qr-code\/(.*)(?:\/)?$ http://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&bgcolor=fff&color=4b6584&data=$1
+RewriteRule ^qr-code\/(.*)(?:\/)?$ utils/qr-code.php?data=$1
 RewriteRule ^mod\/requests\/(.*)\/(.*)(?:\/)?$ moderator.php?modrequests&did=$1&sid=$2
 RewriteRule ^mod\/requests(?:\/)?$ moderator.php?showmodrequests
 RewriteRule ^mod\/card\/(.*)\/(.*)\/(.*)\/(.*)\/(.*)(?:\/)?$ mod-card.php?did=$1&ip=$2&sid=$3&t=$4&c=$5

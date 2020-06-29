@@ -80,6 +80,10 @@ body {
 #login h1 {
   text-align: center;
 }
+#login .loginqr {
+  width: 300px;
+  height: 300px;
+}
 .my-card,
 .my-moderator-card {
   background: var(--mdc-theme-surface);

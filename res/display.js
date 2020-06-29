@@ -17,7 +17,12 @@ $(document).ready((_) => {
             $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
                 $(".my-companyname-tables-textfield").val(data.result.tables);
             });
-            
+            $('.my-close-settings-button').on('click', (_) => {
+                $('#dialogs').fadeOut(100, function () {
+                    $(document.body).click();
+                    window.loadinglocked = false;
+                });
+            });
         });
     });
     $('#delete').on('click', (_) => {

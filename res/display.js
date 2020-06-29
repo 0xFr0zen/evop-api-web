@@ -42,7 +42,7 @@ $(document).ready((_) => {
                                     ).removeClass('hidden');
                                 }
                             }
-                            await wait(2000);
+                            await wait(500);
                             $("#loadingsave").hide();
                         },
                         dataType: 'json',

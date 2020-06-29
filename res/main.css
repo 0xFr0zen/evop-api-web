@@ -304,6 +304,10 @@ body {
 #dialogs #settingscompany .my-settings-company-action-bar {
   align-self: flex-end;
 }
+#dialogs #settingscompany .my-settings-company-action-bar .my-saving-text {
+  display: hidden;
+  margin-right: 10px;
+}
 #dialogs #newcompany {
   display: none;
   align-self: center;

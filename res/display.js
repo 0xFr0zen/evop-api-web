@@ -12,6 +12,7 @@ $(document).ready((_) => {
     $('#settings').on('click', (_) => {
         $('#dialogs').css('display', 'flex');
         $('#dialogs #settingscompany').show();
+        $('#dialogs #settingscompany').css('display', 'flex');
         $.getJSON("https://api.ev-op.de/company/" + companyname + "/information", (data)=> {
             $(".my-companyname-tables-textfield").val(data.result.tables);
             $('#dialogs').fadeIn(100, function () {

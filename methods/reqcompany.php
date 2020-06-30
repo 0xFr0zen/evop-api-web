@@ -19,7 +19,7 @@ class ReqCompany {
                 switch ($reqs[$key]) {
                     case 'companies':
                         $dbconn = new MyCompanyDBConnector();
-                        $sql = "SELECT `name` FROM company";
+                        $sql = "SELECT company.name, COUNT(company_table.id) FROM company, company_table WHERE company.id = company_table.company_id";
                         $resultCompanies = $dbconn->query($sql);
                         $resulter = array();
                         while (($r = $resultCompanies->fetch_assoc()) != null) {

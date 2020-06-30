@@ -41,8 +41,7 @@ class Company
         $dbconn = new MyCompanyDBConnector();
         $created = $dbconn->insert(
             Queries::get('company', 'create'),
-            $this->name,
-            $tables
+            $this->name
         );
 
         $res = array("status" => $created);

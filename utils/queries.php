@@ -4,7 +4,7 @@ class Queries {
     private static $querymap = array(
         "company" => array(
             
-            "create" => "INSERT INTO company(`name`, `tables`) values(?, ?)",
+            "create" => "INSERT INTO company(`name`) values(?)",
 
             "remove" => "DELETE FROM company WHERE company.name = ?",
 

@@ -89,7 +89,7 @@ $(document).ready((_) => {
 				if (!deactivatedata.result) {
 					$(".my-card-label-server-issues").removeClass("hidden");
 				} else {
-					if (!deactivatedata.result.deactivated.status) {
+					if (!deactivatedata.result.activated.status) {
 						$(".my-card-label-server-issues").removeClass("hidden");
 					} else {
 						$("#dialogs").fadeOut(100, function () {

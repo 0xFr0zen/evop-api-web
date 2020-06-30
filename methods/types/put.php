@@ -36,6 +36,14 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
+            case 'activate':
+                if ($this->exists) {
+                    $activated = $this->company->activate();
+                    $this->result = array("result" => array("activated" => $activated));
+                }else {
+                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
+                }
+                break;
             case 'tables':
                 if ($this->exists) {
                     if ($this->details < 1) {

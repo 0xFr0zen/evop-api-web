@@ -72,7 +72,6 @@ $(document).ready((_) => {
 					} else {
 						$("#dialogs").fadeOut(100, function () {
 							$(document.body).click();
-							window.close();
 						});
 					}
 				}
@@ -94,7 +93,6 @@ $(document).ready((_) => {
 					} else {
 						$("#dialogs").fadeOut(100, function () {
 							$(document.body).click();
-							window.close();
 						});
 					}
 				}

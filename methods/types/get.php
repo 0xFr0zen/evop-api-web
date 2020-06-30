@@ -92,6 +92,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
+            
             default:
                 $this->result = array("error" => "you need to specify a query");
                 break;

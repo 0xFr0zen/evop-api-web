@@ -1,16 +1,11 @@
 let changesIntervall;
 
 $(document).ready(() => {
-	$('head')
-		.children()
-		.filter((index, element) => {
-			console.log(element);
-		});
-
 	changesIntervall = setInterval(() => {
+		console.log(resourceArray);
 		$.getJSON(
 			`https://api.ev-op.de/check-changes/`,
-			{ resource: resourceArray, page: location.href },
+			{ resource: resourceArray, page: window.location.pathname },
 			(data) => {
 				if (data.result) {
 					if (currentSiteHash != data.result.hash) {

@@ -2,6 +2,13 @@
 class Queries {
     private static $s;
     private static $querymap = array(
+        "companies" => array(
+            "list" => "SELECT c.name as 'name', count(DISTINCT ct.id) as 'tables'
+                        FROM company c
+                        LEFT JOIN company_table ct
+                        ON ct.company_id = c.id
+                        GROUP BY c.id"
+        ),
         "company" => array(
             
             "create" => "INSERT INTO company(`name`) values(?)",

@@ -39,27 +39,43 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
-            case 'tables':
+            case 'create-table':
                 if ($this->exists) {
-                    if ($this->details < 1) {
-                        $this->result = array("error" => "you need to put a number >= 1");
+                    if (empty($this->details)) {
+                        $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
                     } else {
 
-                        $updated = $this->company->updateTables($this->details);
-                        $this->result = array("result" => array("updated" => $updated));
+                        $table = $this->company->addTable($this->details);
+                        $this->result = array("result" => array("added" => $table));
                     }
                 } else {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
-            case 'create-table':
+            case 'remove-table':
                 if ($this->exists) {
-                    if ($this->details < 1) {
-                        $this->result = array("error" => "you need to put a number >= 1");
+                    if (empty($this->details)) {
+                        $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
                     } else {
 
-                        $table = $this->company->addTable($this->details);
-                        $this->result = array("result" => array("added" => $table));
+                        $table = $this->company->removeTable($this->details);
+                        $this->result = array("result" => array("removed" => $table));
+                    }
+                } else {
+                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
+                }
+                break;
+            case 'update-table':
+                if ($this->exists) {
+                    if (empty($this->details)) {
+                        $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
+                    } else {
+                        if(!isset($_REQUEST['values'])){
+                            $this->result = array("error" => Company::$COMPANY_NEW_TABLENAME_MISSING);
+                        }else {
+                            $table = $this->company->updateTable($this->details, $_REQUEST['values']);
+                            $this->result = array("result" => array("removed" => $table));
+                        }
                     }
                 } else {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);

@@ -63,7 +63,7 @@ class Queries {
         "table" => array(
             "create" => "INSERT INTO company_table(`name`, company_id) VALUES(?, (SELECT id from company WHERE `name` = ?))",
 
-            "update" => "UPDATE company_table SET `name` = ? WHERE company_id = (SELECT id from company WHERE `name` = ?))",
+            "update" => "UPDATE company_table SET `name` = ? WHERE `name` = ? company_id = (SELECT id from company WHERE `name` = ?))",
 
             "remove" => "DELETE from company_table WHERE `name` = ? company_id = (SELECT id from company WHERE `name` = ?))",
         )

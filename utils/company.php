@@ -17,7 +17,10 @@ class Company
     public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
     public static $SPECIFY_A_TYPE_ERROR = "Please specify a type first!";
     public static $SPECIFY_A_COMPANYNAME = "Please specify a companyname first!";
+    public static $COMPANY_TABLENAME_MISSING = "You need to put a table name!";
+    public static $COMPANY_NEW_TABLENAME_MISSING = "You need to put a NEW table name!";
     public static $UNEXPECTED_ERROR = "Sorry, something happend and we dont know quite yet why...";
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -59,13 +62,14 @@ class Company
         );
         return $res;
     }
-    public function updateTable(string $name)
+    public function updateTable(string $oldname, string $newname)
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->update(
             Queries::get('table', 'update'),
-            $name,
+            $newname,
+            $oldname,
             $this->name
         );
 

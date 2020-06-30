@@ -14,7 +14,13 @@ class Queries {
             
             "create" => "INSERT INTO company(`name`) values(?)",
 
-            "deactivate" => "UPDATE company SET active = ? WHERE company.name = ?",
+            "is-active" => "SELECT * FROM company WHERE company.name = ? AND active = 1 LIMIT 1",
+
+            "exists" => "SELECT * FROM company WHERE company.name = ?",
+
+            "deactivate" => "UPDATE company SET active = 0 WHERE company.name = ?",
+
+            "activate" => "UPDATE company SET active = 1 WHERE company.name = ?",
 
             "information-little" => "SELECT company.name, COUNT(company_table.id) as `tables` FROM company, company_table WHERE company.name = ? AND company.id = company_table.company_id AND company.active = 1",
 

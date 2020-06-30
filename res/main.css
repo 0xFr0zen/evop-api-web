@@ -50,7 +50,7 @@ body {
   height: auto;
   padding: 20px;
   padding-top: 80px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 #content #companies {
   display: flex;
@@ -262,7 +262,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: var(--mdc-theme-on-surface);
   margin-bottom: 10px;
 }
@@ -274,7 +274,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: orangered;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -287,7 +287,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: red;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -302,6 +302,9 @@ body {
   margin-bottom: 40px;
 }
 #dialogs #settingscompany .my-settings-company-action-bar {
+  display: flex;
+  width: 100%;
+  height: 100%;
   align-self: flex-end;
 }
 #dialogs #settingscompany .my-settings-company-action-bar .spacer {
@@ -340,7 +343,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: var(--mdc-theme-on-surface);
   margin-bottom: 10px;
 }
@@ -352,7 +355,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: orangered;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -365,7 +368,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: red;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -382,7 +385,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 12px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: orangered;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -415,7 +418,7 @@ body {
   width: 100%;
   height: auto;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: var(--mdc-theme-on-surface);
   margin-bottom: 10px;
 }

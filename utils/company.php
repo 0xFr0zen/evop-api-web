@@ -30,7 +30,7 @@ class Company
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->check(
-            "SELECT * FROM company WHERE company.name = ?",
+            Queries::get("company","exists"),
             $this->name
         );
         return $res;
@@ -85,13 +85,37 @@ class Company
         );
         return $res;
     }
+    public function isActivate()
+    {
+        $res = false;
+        $dbconn = new MyCompanyDBConnector();
+        $res = $dbconn->check(
+            Queries::get('company','is-active'),
+            $this->name
+        );
+        return $res;
+    }
     public function deactivate()
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $removed = $dbconn->update(
             Queries::get('company','deactivate'),
-            0,
+            $this->name
+        );
+
+        $res = array("status" => $removed);
+        if (!$removed) {
+            $res['message'] = Company::$REMOVE_ERROR;
+        }
+        return $res;
+    }
+    public function activate()
+    {
+        $res = false;
+        $dbconn = new MyCompanyDBConnector();
+        $removed = $dbconn->update(
+            Queries::get('company','activate'),
             $this->name
         );
 

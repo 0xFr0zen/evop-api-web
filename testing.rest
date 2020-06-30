@@ -53,6 +53,6 @@ POST https://api.ev-op.de/company/testshop3/create/
 
 ###
 
-DELETE https://api.ev-op.de/company/testshop3/
+DELETE https://api.ev-op.de/company/hello/
 
 ###

@@ -53,41 +53,14 @@ $(document).ready((_) => {
                 function (data, status) {
                     if (data.result) {
                         if (data.result.created.status) {
-                            $.ajax({
-                                url:
-                                    'https://api.ev-op.de/company/' +
-                                    encodeURI(companyname2).replace(
-                                        /\-/g,
-                                        '_'
-                                    ) +
-                                    '/create-table/' +
-                                    tablename +
-                                    '/',
-                                type: 'PUT',
-                                success: function (tabledata) {
-                                    if (!tabledata.result) {
-                                        $(
-                                            '.my-card-label-server-issues'
-                                        ).removeClass('hidden');
-                                    } else {
-                                        if (!tabledata.result.updated) {
-                                            $(
-                                                '.my-card-label-server-issues'
-                                            ).removeClass('hidden');
-                                        } else {
-                                            $('#dialogs').fadeOut(
-                                                100,
-                                                function () {
-                                                    $(document.body).click();
-                                                    window.loadinglocked = false;
-                                                    loadCompanies();
-                                                }
-                                            );
-                                        }
-                                    }
-                                },
-                                dataType: 'json',
-                            });
+                            $('#dialogs').fadeOut(
+                                100,
+                                function () {
+                                    $(document.body).click();
+                                    window.loadinglocked = false;
+                                    loadCompanies();
+                                }
+                            );
                         } else {
                             $('.my-card-label-server-issues').removeClass(
                                 'hidden'

@@ -13,7 +13,7 @@ class Queries {
             
             "create" => "INSERT INTO company(`name`) values(?)",
 
-            "remove" => "DELETE FROM company WHERE company.name = ?",
+            "deactivate" => "UPDATE company SET active = ? WHERE company.name = ?",
 
             "information-little" => "SELECT company.name, COUNT(company_table.id) as `tables` FROM company, company_table WHERE company.name = ? AND company.id = company_table.company_id",
 

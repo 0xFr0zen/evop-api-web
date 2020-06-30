@@ -28,8 +28,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             default:
-                $removed = $this->company->remove();
-                $this->result = array("result" => array("removed" => $removed));
+                
                 break;
         }
     }

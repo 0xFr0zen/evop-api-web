@@ -58,44 +58,29 @@ $(document).ready((_) => {
         });
         
     });
-    $('#delete').on('click', (_) => {
-        $('#dialogs').css('display', 'flex');
-        $('#dialogs #newcompany').show();
-        $('#dialogs').fadeIn(100, function () {
-            window.loadinglocked = true;
-            $('.my-cancel-new-company-button').on('click', (_) => {
-                $('#dialogs').fadeOut(100, function () {
-                    $(document.body).click();
-                    window.loadinglocked = false;
-                });
-            });
-            $('.my-ok-new-company-button').on('click', (_) => {
-                window.loadinglocked = true;
-
-                $.ajax({
-                    url: 'https://api.ev-op.de/company/' + encodeURI(companyname) + '/',
-                    type: 'DELETE',
-                    success: function (deleteddata) {
-                        if (!deleteddata.result) {
-                            $('.my-card-label-server-issues').removeClass(
-                                'hidden'
-                            );
-                        } else {
-                            if (!deleteddata.result.removed.status) {
-                                $('.my-card-label-server-issues').removeClass(
-                                    'hidden'
-                                );
-                            } else {
-                                $('#dialogs').fadeOut(100, function () {
-                                    $(document.body).click();
-                                    window.close();
-                                });
-                            }
-                        }
-                    },
-                    dataType: 'json',
-                });
-            });
+    $('#deactivate').on('click', (_) => {
+        $.ajax({
+            url: 'https://api.ev-op.de/company/' + encodeURI(companyname) + '/deactivate/',
+            type: 'PUT',
+            success: function (deleteddata) {
+                if (!deleteddata.result) {
+                    $('.my-card-label-server-issues').removeClass(
+                        'hidden'
+                    );
+                } else {
+                    if (!deleteddata.result.removed.status) {
+                        $('.my-card-label-server-issues').removeClass(
+                            'hidden'
+                        );
+                    } else {
+                        $('#dialogs').fadeOut(100, function () {
+                            $(document.body).click();
+                            window.close();
+                        });
+                    }
+                }
+            },
+            dataType: 'json',
         });
     });
     $(window).on('keydown', function (e) {

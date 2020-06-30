@@ -85,12 +85,13 @@ class Company
         );
         return $res;
     }
-    public function remove()
+    public function deactivate()
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
-        $removed = $dbconn->deleteRow(
-            Queries::get('company','remove'),
+        $removed = $dbconn->update(
+            Queries::get('company','deactivate'),
+            0,
             $this->name
         );
 

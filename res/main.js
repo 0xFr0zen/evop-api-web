@@ -41,7 +41,7 @@ $(document).ready((_) => {
     $('.my-ok-new-company-button').on('click', (_) => {
         window.loadinglocked = true;
         let companyname2 = $('.my-companyname-textfield').val();
-        let tables = $('.my-companyname-tables-textfield').val();
+        let tablename = "table-1";
         if (companyname2.length < 1) {
             $('.my-card-label-no-text-written-error').removeClass('hidden');
             $('#dialogs #newcompany .my-companyname-textfield').focus();
@@ -60,8 +60,8 @@ $(document).ready((_) => {
                                         /\-/g,
                                         '_'
                                     ) +
-                                    '/tables/' +
-                                    tables +
+                                    '/create-table/' +
+                                    tablename +
                                     '/',
                                 type: 'PUT',
                                 success: function (tabledata) {

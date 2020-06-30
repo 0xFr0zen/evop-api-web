@@ -19,7 +19,7 @@ class ReqCompany {
                 switch ($reqs[$key]) {
                     case 'companies':
                         $dbconn = new MyCompanyDBConnector();
-                        $sql = "SELECT `name`, `tables` FROM company";
+                        $sql = "SELECT `name` FROM company";
                         $resultCompanies = $dbconn->query($sql);
                         $resulter = array();
                         while (($r = $resultCompanies->fetch_assoc()) != null) {

@@ -62,13 +62,13 @@ $(document).ready((_) => {
         $.ajax({
             url: 'https://api.ev-op.de/company/' + encodeURI(companyname) + '/deactivate/',
             type: 'PUT',
-            success: function (deleteddata) {
-                if (!deleteddata.result) {
+            success: function (deactivatedata) {
+                if (!deactivatedata.result) {
                     $('.my-card-label-server-issues').removeClass(
                         'hidden'
                     );
                 } else {
-                    if (!deleteddata.result.removed.status) {
+                    if (!deactivatedata.result.deactivated.status) {
                         $('.my-card-label-server-issues').removeClass(
                             'hidden'
                         );

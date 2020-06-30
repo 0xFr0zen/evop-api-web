@@ -30,8 +30,8 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 break;
             case 'deactivate':
                 if ($this->exists) {
-                    $removed = $this->company->deactivate();
-                    $this->result = array("result" => array("removed" => $removed));
+                    $deactivated = $this->company->deactivate();
+                    $this->result = array("result" => array("deactivated" => $deactivated));
                 }else {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }

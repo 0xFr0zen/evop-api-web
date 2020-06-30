@@ -4,7 +4,7 @@ $(document).ready(() => {
 	let resourceArray = [];
 	$('head')
 		.children()
-		.filter((element) => {
+		.filter((index, element) => {
 			console.log(element);
 		});
 

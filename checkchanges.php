@@ -1,6 +1,6 @@
 <?php
 $result = array();
-if(isset($_REQUEST['resource'])){
+if(isset($_REQUEST['resource']) && isset($_REQUEST['page']) ){
     $page = $_REQUEST['resource'];
     $content = file_get_contents(__DIR__."/".$page);
     $hash = hash('sha256', $content);

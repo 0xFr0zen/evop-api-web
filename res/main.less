@@ -225,6 +225,45 @@ body {
 		width: 100%;
 		height: 100%;
 	}
+
+	.my-card-label-2 {
+		display: block;
+		width: 100%;
+		height: auto;
+		font-size: 16px;
+		font-family: "Roboto";
+		color: var(--mdc-theme-on-surface);
+		margin-bottom: 10px;
+		&:not(:first-of-type) {
+			margin-top: 20px;
+		}
+	}
+	.my-card-label-error {
+		display: block;
+		width: 100%;
+		height: auto;
+		font-size: 12px;
+		font-family: "Roboto";
+		color: orangered;
+		margin-bottom: 5px;
+		margin-top: 5px;
+		&.hidden {
+			display: none;
+		}
+	}
+	.my-card-label-server-issues {
+		display: block;
+		width: 100%;
+		height: auto;
+		font-size: 12px;
+		font-family: "Roboto";
+		color: red;
+		margin-bottom: 5px;
+		margin-top: 5px;
+		&.hidden {
+			display: none;
+		}
+	}
 	#settingscompany {
 		display: none;
 		align-self: center;
@@ -236,44 +275,6 @@ body {
 		height: 280px;
 		padding: 20px;
 
-		.my-card-label-2 {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 16px;
-			font-family: "Roboto";
-			color: var(--mdc-theme-on-surface);
-			margin-bottom: 10px;
-			&:not(:first-of-type) {
-				margin-top: 20px;
-			}
-		}
-		.my-card-label-error {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 12px;
-			font-family: "Roboto";
-			color: orangered;
-			margin-bottom: 5px;
-			margin-top: 5px;
-			&.hidden {
-				display: none;
-			}
-		}
-		.my-card-label-server-issues {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 12px;
-			font-family: "Roboto";
-			color: red;
-			margin-bottom: 5px;
-			margin-top: 5px;
-			&.hidden {
-				display: none;
-			}
-		}
 		.my-companyname-tables-textfield {
 			border-bottom: 2px solid var(--mdc-theme-background);
 			padding: 15px 10px;
@@ -314,44 +315,6 @@ body {
 		height: 280px;
 		padding: 20px;
 
-		.my-card-label-2 {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 16px;
-			font-family: "Roboto";
-			color: var(--mdc-theme-on-surface);
-			margin-bottom: 10px;
-			&:not(:first-of-type) {
-				margin-top: 20px;
-			}
-		}
-		.my-card-label-error {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 12px;
-			font-family: "Roboto";
-			color: orangered;
-			margin-bottom: 5px;
-			margin-top: 5px;
-			&.hidden {
-				display: none;
-			}
-		}
-		.my-card-label-server-issues {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 12px;
-			font-family: "Roboto";
-			color: red;
-			margin-bottom: 5px;
-			margin-top: 5px;
-			&.hidden {
-				display: none;
-			}
-		}
 		.my-companyname-textfield {
 			border-bottom: 2px solid var(--mdc-theme-background);
 			padding: 15px 10px;
@@ -374,33 +337,6 @@ body {
 			padding: 15px 10px;
 			width: 100px;
 			margin-bottom: 40px;
-		}
-		.my-new-company-action-bar {
-			align-self: flex-end;
-		}
-	}
-	#deletecompany {
-		display: none;
-		align-self: center;
-		position: relative;
-		margin: 0 auto;
-		min-width: 250px;
-		width: auto;
-		max-width: 400px;
-		height: 100px;
-		padding: 20px;
-
-		.my-card-label-2 {
-			display: block;
-			width: 100%;
-			height: auto;
-			font-size: 16px;
-			font-family: "Roboto";
-			color: var(--mdc-theme-on-surface);
-			margin-bottom: 10px;
-			&:not(:first-of-type) {
-				margin-top: 20px;
-			}
 		}
 		.my-new-company-action-bar {
 			align-self: flex-end;

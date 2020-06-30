@@ -10,7 +10,7 @@ class Queries {
 
             "information-little" => "SELECT `name`, COUNT(company_tables.id) FROM company,company_table WHERE company.name = ? AND company.id = company_table.company_id",
 
-            "information-all" => "SELECT `name`,`tables`, `owner` FROM company WHERE company.name = ?",
+            "information-all" => "SELECT `name`,COUNT(company_tables.id) FROM company,company_table WHERE company.name = ? AND company.id = company_table.company_id",
 
             "user-count" => "SELECT count(user.id) as 'amount'
                                 FROM user, company, company_has_user

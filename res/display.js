@@ -72,6 +72,7 @@ $(document).ready((_) => {
 					} else {
 						$("#dialogs").fadeOut(100, function () {
 							$(document.body).click();
+							location.reload();
 						});
 					}
 				}
@@ -93,6 +94,7 @@ $(document).ready((_) => {
 					} else {
 						$("#dialogs").fadeOut(100, function () {
 							$(document.body).click();
+							location.reload();
 						});
 					}
 				}

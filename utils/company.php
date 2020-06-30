@@ -85,7 +85,7 @@ class Company
         );
         return $res;
     }
-    public function isActivate()
+    public function isActive()
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();

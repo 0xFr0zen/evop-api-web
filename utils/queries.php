@@ -8,9 +8,9 @@ class Queries {
 
             "remove" => "DELETE FROM company WHERE company.name = ?",
 
-            "information-little" => "SELECT company.name, COUNT(company_tables.id) as `tables` FROM company,company_table WHERE company.name = ? AND company.id = company_table.company_id",
+            "information-little" => "SELECT company.name, COUNT(company_table.id) as `tables` FROM company, company_table WHERE company.name = ? AND company.id = company_table.company_id",
 
-            "information-all" => "SELECT company.name, COUNT(company_tables.id) as `tables` FROM company,company_table WHERE company.name = ? AND company.id = company_table.company_id",
+            "information-all" => "SELECT company.name, COUNT(company_table.id) as `tables` FROM company, company_table WHERE company.name = ? AND company.id = company_table.company_id",
 
             "user-count" => "SELECT count(user.id) as 'amount'
                                 FROM user, company, company_has_user

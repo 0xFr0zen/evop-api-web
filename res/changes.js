@@ -1,7 +1,7 @@
 let changesIntervall;
 
 $(document).ready(() => {
-	let ressourceArray = [];
+	let resourceArray = [];
 	$('head')
 		.children()
 		.filter((element) => {
@@ -11,7 +11,7 @@ $(document).ready(() => {
 	changesIntervall = setInterval(() => {
 		$.getJSON(
 			`https://api.ev-op.de/check-changes/`,
-			{ ressource: ressrouceArray },
+			{ resource: resourceArray },
 			(data) => {
 				if (currentSiteHash != data.result.hash) {
 					location.reload();

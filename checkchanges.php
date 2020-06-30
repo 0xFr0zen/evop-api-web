@@ -1,7 +1,7 @@
 <?php
 $result = array();
-if(isset($_REQUEST['ressource'])){
-    $page = $_REQUEST['ressource'];
+if(isset($_REQUEST['resource'])){
+    $page = $_REQUEST['resource'];
     $content = file_get_contents(__DIR__."/".$page);
     $hash = hash('sha256', $content);
 

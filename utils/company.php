@@ -48,16 +48,38 @@ class Company
         }
         return $res;
     }
-    public function updateTables(int $tables = 1)
+    public function addTable(string $name)
+    {
+        $res = false;
+        $dbconn = new MyCompanyDBConnector();
+        $res = $dbconn->insert(
+            Queries::get('table', 'create'),
+            $name,
+            $this->name
+        );
+        return $res;
+    }
+    public function updateTable(string $name)
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->update(
-            Queries::get('company', 'update-tables'),
-            $tables,
+            Queries::get('table', 'update'),
+            $name,
             $this->name
         );
 
+        return $res;
+    }
+    public function removeTable(string $name)
+    {
+        $res = false;
+        $dbconn = new MyCompanyDBConnector();
+        $res = $dbconn->deleteRow(
+            Queries::get('table', 'remove'),
+            $name,
+            $this->name
+        );
         return $res;
     }
     public function remove()

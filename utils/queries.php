@@ -6,11 +6,9 @@ class Queries {
             
             "create" => "INSERT INTO company(`name`, `tables`) values(?, ?)",
 
-            "update-tables" => "UPDATE company SET `tables` = ? WHERE company.name = ?",
-
             "remove" => "DELETE FROM company WHERE company.name = ?",
 
-            "information-little" => "SELECT `name`,`tables` FROM company WHERE company.name = ?",
+            "information-little" => "SELECT `name`, COUNT(company_tables.id) FROM company,company_table WHERE company.name = ? AND company.id = company_table.company_id",
 
             "information-all" => "SELECT `name`,`tables`, `owner` FROM company WHERE company.name = ?",
 
@@ -62,6 +60,13 @@ class Queries {
                                 AND product_has_product_subgroup.product_subgroup_id = product_subgroup.id"
             
         ),
+        "table" => array(
+            "create" => "INSERT INTO company_table(`name`, company_id) VALUES(?, (SELECT id from company WHERE `name` = ?))",
+
+            "update" => "UPDATE company_table SET `name` = ? WHERE company_id = (SELECT id from company WHERE `name` = ?))",
+
+            "remove" => "DELETE from company_table WHERE `name` = ? company_id = (SELECT id from company WHERE `name` = ?))",
+        )
     );
 
     public static function get(string $area, string $key){

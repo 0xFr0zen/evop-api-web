@@ -52,6 +52,19 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
+            case 'create-table':
+                if ($this->exists) {
+                    if ($this->details < 1) {
+                        $this->result = array("error" => "you need to put a number >= 1");
+                    } else {
+
+                        $table = $this->company->addTable($this->details);
+                        $this->result = array("result" => array("added" => $table));
+                    }
+                } else {
+                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
+                }
+                break;
             default:
                 $this->result = array("error" => "you need to specify a mode");
                 break;

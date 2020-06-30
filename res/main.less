@@ -272,7 +272,7 @@ body {
 		min-width: 250px;
 		width: auto;
 		max-width: 400px;
-		height: 280px;
+		height: 100px;
 		padding: 20px;
 
 		.my-companyname-tables-textfield {
@@ -286,22 +286,6 @@ body {
 			width: 100%;
 			height: 100%;
 			align-self: flex-end;
-
-			#loadingsave {
-				display: none;
-				.my-saving-text {
-					margin-right: 5px;
-				}
-				.loader {
-					border: 2px solid transparent;
-					border-top: 2px solid var(--mdc-theme-on-surface);
-					border-radius: 50%;
-					width: 20px;
-					height: 20px;
-					animation: spin 2s linear infinite;
-					margin-right: 10px;
-				}
-			}
 		}
 	}
 	#newcompany {
@@ -341,13 +325,5 @@ body {
 		.my-new-company-action-bar {
 			align-self: flex-end;
 		}
-	}
-}
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
 	}
 }

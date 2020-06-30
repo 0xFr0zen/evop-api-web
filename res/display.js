@@ -58,7 +58,7 @@ $(document).ready((_) => {
         });
         
     });
-    $('#deactivate').on('click', (_) => {
+    $('.my-delete-company-button').on('click', (_) => {
         $.ajax({
             url: 'https://api.ev-op.de/company/' + encodeURI(companyname) + '/deactivate/',
             type: 'PUT',

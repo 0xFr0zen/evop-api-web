@@ -9,7 +9,7 @@ RewriteRule ^mod\/card\/(.*)\/(.*)\/(.*)\/(.*)\/(.*)(?:\/)?$ mod-card.php?did=$1
 RewriteRule ^mod\/login-status\/(.*)(?:\/)?$ moderator.php?loginstatus&sid=$1
 RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?login&sid=$1&did=$2
 RewriteRule ^companies(?:\/)?$ index.php?companies
-RewriteRule ^check-changes(?:\/)?$ cc.php
+#RewriteRule ^check-changes(?:\/)?$ cc.php
 
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=information
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)(?:\/)?$ index.php?company=$1&mode=$2&details=minimum

@@ -10,7 +10,10 @@ RewriteRule ^mod\/login-status\/(.*)(?:\/)?$ moderator.php?loginstatus&sid=$1
 RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?login&sid=$1&did=$2
 RewriteRule ^companies(?:\/)?$ index.php?companies
 RewriteRule ^image\/logo(?:\/)?$ res/images/logo.png
-RewriteRule ^image\/devices(?:\/)?$ res/images/devices.png
+RewriteRule ^image\/devices(?:\/all)?(?:\/)?$ res/images/all-devices.png
+RewriteRule ^image\/devices\/ios(?:\/)?$ res/images/ios-device.png
+RewriteRule ^image\/devices\/android(?:\/)?$ res/images/ios-device.png
+RewriteRule ^image\/devices\/tablet(?:\/)?$ res/images/tablet-device.png
 
 
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=information

@@ -136,6 +136,7 @@ body {
   max-width: 80%;
   width: auto;
   height: auto;
+  padding: 140px;
 }
 #content #landingpage #inner #devices {
   display: flex;
@@ -143,11 +144,12 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 100px;
 }
 #content #landingpage #inner #devices img {
   display: flex;
   align-self: center;
-  width: 100%;
+  width: auto;
   height: 400px;
 }
 #content #landingpage #inner #ideas {

@@ -56,6 +56,7 @@ body {
   height: 80px;
   flex-direction: row;
   background: var(--mdc-theme-background);
+  padding: 20px;
 }
 #landingpageheader #left,
 #landingpageheader #right {

@@ -68,7 +68,7 @@ body {
 }
 #landingpageheader #left #logo {
   display: flex;
-  height: 50%;
+  height: 100%;
 }
 #landingpageheader #left #logo img {
   display: flex;

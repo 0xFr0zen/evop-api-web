@@ -178,6 +178,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 #content #landingpage #inner #ideas .row .box .counter {
   width: 40px;

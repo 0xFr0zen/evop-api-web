@@ -112,6 +112,10 @@ body {
   padding-top: 80px;
   font-family: 'Roboto';
 }
+#content.full {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 #content #landingpage {
   display: flex;
   flex-direction: column;

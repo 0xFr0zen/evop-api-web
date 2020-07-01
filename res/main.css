@@ -22,6 +22,13 @@
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
   font-weight: 900;
   font-display: swap;
   src: local('Roboto Black'), local('Roboto-Black'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmYUtvAw.ttf) format('truetype');
@@ -154,6 +161,23 @@ body {
   display: flex;
   width: 300px;
   height: 300px;
+  flex-direction: column;
+}
+#content #landingpage #inner #ideas .row .title {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  font-size: 20pt;
+  font-weight: bold;
+  flex-direction: row;
+}
+#content #landingpage #inner #ideas .row .subtitle {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-size: 20pt;
+  font-weight: bold;
+  flex-direction: row;
 }
 #content #companies {
   display: flex;

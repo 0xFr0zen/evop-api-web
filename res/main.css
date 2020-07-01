@@ -159,23 +159,23 @@ body {
   width: 100%;
   height: 100%;
 }
-#content #landingpage #inner #ideas .column {
+#content #landingpage #inner #ideas .row {
   display: flex;
   width: 100%;
   height: 100%;
-  flex-direction: column;
+  flex-flow: row wrap;
 }
-#content #landingpage #inner #ideas .column .box {
+#content #landingpage #inner #ideas .row .box {
   display: flex;
   width: 300px;
   height: 300px;
   flex-direction: row;
 }
-#content #landingpage #inner #ideas .column .box .counter {
+#content #landingpage #inner #ideas .row .box .counter {
   width: 40px;
   height: 40px;
 }
-#content #landingpage #inner #ideas .column .box .box-title {
+#content #landingpage #inner #ideas .row .box .box-title {
   display: flex;
   height: 40px;
   width: 100%;
@@ -183,7 +183,7 @@ body {
   font-weight: bold;
   flex-direction: row;
 }
-#content #landingpage #inner #ideas .column .box .box-subtitle {
+#content #landingpage #inner #ideas .row .box .box-subtitle {
   display: flex;
   height: 100%;
   width: 100%;
@@ -191,7 +191,7 @@ body {
   font-weight: bold;
   flex-direction: row;
 }
-#content #landingpage #inner #ideas .column .box .box-morelink {
+#content #landingpage #inner #ideas .row .box .box-morelink {
   display: flex;
   height: 100%;
   width: 100%;

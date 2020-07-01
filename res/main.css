@@ -179,6 +179,8 @@ body {
   justify-content: space-around;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
+  background: var(--mdc-theme-primary);
+  color: white;
 }
 #content #landingpage #inner #ideas .row .box .counter {
   width: 40px;
@@ -188,16 +190,16 @@ body {
   display: flex;
   height: auto;
   width: 100%;
-  font-size: 20pt;
+  font-size: 23pt;
   font-weight: bold;
   flex-direction: row;
+  padding-bottom: 10px;
 }
 #content #landingpage #inner #ideas .row .box .box-subtitle {
   display: flex;
   height: 100%;
   width: 100%;
-  font-size: 10pt;
-  font-weight: bold;
+  font-size: 15pt;
   flex-direction: row;
 }
 #content #landingpage #inner #ideas .row .box .box-morelink {

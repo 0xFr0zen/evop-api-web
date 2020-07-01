@@ -147,11 +147,13 @@ body {
 						background: var(--mdc-theme-primary);
 						color: var(--mdc-theme-on-primary);
 						.counter {
-							width: 60px;
-							height: 60px;
-							padding: 10px;
+							width: 50px;
+							height: 100px;
 							background-color: var(--mdc-theme-on-primary);
 							border-radius: 100%;
+							&::before {
+								content: attr(d-c);
+							}
 						}
 						.box-title {
 							display: flex;

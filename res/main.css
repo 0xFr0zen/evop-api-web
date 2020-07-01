@@ -50,6 +50,8 @@ body {
 }
 #landingpageheader {
   position: fixed;
+  top: 0px;
+  left: 0px;
   z-index: 999;
   display: flex;
   width: 100%;
@@ -126,7 +128,6 @@ body {
   text-align: justify;
   max-width: 80%;
   width: auto;
-  min-width: 300px;
   height: auto;
 }
 #content #landingpage #inner #devices {

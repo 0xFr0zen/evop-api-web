@@ -167,11 +167,6 @@ body {
   width: 100%;
   height: 100%;
   justify-content: space-around;
-  grid-template-columns: auto auto auto;
-}
-#content #landingpage #inner #ideas .row:first-child {
-  grid-row-start: 1;
-  grid-row-end: 3;
 }
 #content #landingpage #inner #ideas .row .box {
   display: flex;

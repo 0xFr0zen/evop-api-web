@@ -189,6 +189,7 @@ body {
   height: 60px;
   padding: 10px;
   background-color: var(--mdc-theme-on-primary);
+  border-radius: 100%;
 }
 #content #landingpage #inner #ideas .row .box .box-title {
   display: flex;

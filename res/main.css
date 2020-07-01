@@ -157,10 +157,10 @@ body {
   display: grid;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: auto;
+  max-width: 90%;
   height: 100%;
-  grid-auto-columns: minmax(300px, auto);
-  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+  grid-template-columns: auto auto auto;
 }
 #content #landingpage #inner #ideas .row {
   display: grid;
@@ -170,6 +170,10 @@ body {
   justify-content: space-around;
   grid-auto-columns: minmax(300px, auto);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+#content #landingpage #inner #ideas .row:first-child {
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
 #content #landingpage #inner #ideas .row .box {
   display: flex;

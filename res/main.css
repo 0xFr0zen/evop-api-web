@@ -119,11 +119,12 @@ body {
 @media only screen and (max-width: 768px) {
   #landingpageheader {
     height: 160px;
+    flex-direction: column;
   }
   #landingpageheader #left,
   #landingpageheader #right {
     width: 100%;
-    flex-direction: column;
+    height: 80px;
   }
 }
 #landingpageheader #left,

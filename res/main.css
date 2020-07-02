@@ -148,6 +148,7 @@ body {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-left: 10px;
 }
 #landingpageheader #right button:hover {
   background-color: var(--mdc-theme-primary);

@@ -392,6 +392,8 @@ body {
   align-items: center;
   position: absolute;
   top: 50%;
+  margin-top: -150px;
+  border-radius: 5px;
 }
 #login #loginform {
   display: flex;

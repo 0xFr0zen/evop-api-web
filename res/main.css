@@ -390,6 +390,8 @@ body {
   height: auto;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
 }
 #login #loginform {
   display: flex;

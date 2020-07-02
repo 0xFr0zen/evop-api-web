@@ -354,7 +354,9 @@ body {
 }
 #content #landingpage #inner #ideas #ideasinner .column .row .box .box-morelink a {
   padding: 15px 20px;
-  color: ;
+  color: #95a5a6;
+  background-color: #2e3131;
+  border-radius: 3px;
 }
 #content #companies {
   display: flex;

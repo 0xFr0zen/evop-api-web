@@ -246,13 +246,21 @@ body {
     grid-template-columns: none;
   }
 }
-#content #landingpage #inner #ideas #ideasinner .row {
+#content #landingpage #inner #ideas #ideasinner .column {
   display: grid;
   width: 100%;
   height: 100%;
   justify-content: space-around;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box {
+#content #landingpage #inner #ideas #ideasinner .column .row {
+  grid-template-columns: auto auto auto;
+}
+@media only screen and (max-width: 768px) {
+  #content #landingpage #inner #ideas #ideasinner .column .row {
+    grid-template-columns: none;
+  }
+}
+#content #landingpage #inner #ideas #ideasinner .column .row .box {
   display: flex;
   width: 300px;
   height: 300px;
@@ -265,14 +273,14 @@ body {
   color: var(--mdc-theme-on-primary);
   margin: 5px;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box.explain {
+#content #landingpage #inner #ideas #ideasinner .column .row .box.explain {
   border: none;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box .counter {
+#content #landingpage #inner #ideas #ideasinner .column .row .box .counter {
   width: 100%;
   margin-bottom: 10px;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box .counter::before {
+#content #landingpage #inner #ideas #ideasinner .column .row .box .counter::before {
   width: 50px;
   height: 50px;
   background-color: var(--mdc-theme-on-primary);
@@ -284,7 +292,7 @@ body {
   border-radius: 100%;
   font-size: 15pt;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box .box-title {
+#content #landingpage #inner #ideas #ideasinner .column .row .box .box-title {
   display: flex;
   height: auto;
   width: 100%;
@@ -293,14 +301,14 @@ body {
   flex-direction: row;
   padding-bottom: 10px;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box .box-subtitle {
+#content #landingpage #inner #ideas #ideasinner .column .row .box .box-subtitle {
   display: flex;
   height: 100%;
   width: 100%;
   font-size: 15pt;
   flex-direction: row;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box .box-morelink {
+#content #landingpage #inner #ideas #ideasinner .column .row .box .box-morelink {
   display: flex;
   height: 100%;
   width: 100%;

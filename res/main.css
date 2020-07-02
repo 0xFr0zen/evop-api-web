@@ -387,13 +387,13 @@ body {
   width: 400px;
   margin: 0 auto;
   height: auto;
-  padding: 20px;
 }
 #login #loginform {
   display: flex;
   width: 100%;
   height: auto;
   background: var(--mdc-theme-surface);
+  padding: 20px;
 }
 #login #loginform .my-username-textfield {
   margin-bottom: 10px;

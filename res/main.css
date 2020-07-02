@@ -241,6 +241,11 @@ body {
   height: 100%;
   grid-template-columns: auto auto auto;
 }
+@media only screen and (max-width: 768px) {
+  #content #landingpage #inner #ideas #ideasinner {
+    grid-template-columns: none;
+  }
+}
 #content #landingpage #inner #ideas #ideasinner .row {
   display: grid;
   width: 100%;

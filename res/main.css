@@ -116,6 +116,16 @@ body {
   background: var(--mdc-theme-background);
   padding: 20px;
 }
+@media only screen and (max-width: 768px) {
+  #landingpageheader {
+    height: 160px;
+  }
+  #landingpageheader #left,
+  #landingpageheader #right {
+    width: 100%;
+    flex-direction: column;
+  }
+}
 #landingpageheader #left,
 #landingpageheader #right {
   display: flex;

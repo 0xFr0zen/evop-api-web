@@ -206,6 +206,7 @@ body {
   width: auto;
   height: auto;
   padding: 140px 20px;
+  transform: font-size 0.3s ease-in-out;
 }
 @media only screen and (max-width: 768px) {
   #content #landingpage #inner #title {

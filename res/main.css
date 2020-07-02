@@ -207,17 +207,10 @@ body {
   height: auto;
   padding: 140px 20px;
 }
-#content #landingpage #inner #subtitle {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 20pt;
-  font-weight: 600;
-  text-align: justify;
-  width: auto;
-  height: auto;
-  color: var(--mdc-theme-on-background);
-  opacity: 0.75;
+@media only screen and (max-width: 768px) {
+  #content #landingpage #inner #title {
+    font-size: 30pt;
+  }
 }
 #content #landingpage #inner #devices {
   display: flex;

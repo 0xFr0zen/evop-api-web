@@ -350,6 +350,11 @@ body {
   font-size: 10pt;
   font-weight: bold;
   flex-direction: row;
+  padding: 10px 0px;
+}
+#content #landingpage #inner #ideas #ideasinner .column .row .box .box-morelink a {
+  padding: 15px 20px;
+  color: ;
 }
 #content #companies {
   display: flex;

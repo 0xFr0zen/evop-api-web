@@ -218,7 +218,8 @@ body {
 #content #landingpage #inner #devices img {
   display: flex;
   align-self: center;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
 }
 #content #landingpage #inner #ideas {

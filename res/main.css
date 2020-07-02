@@ -274,6 +274,9 @@ body {
   flex-direction: row;
   padding-bottom: 10px;
 }
+#content #landingpage #inner #ideas #ideasinner .column .explain .box-title.s-middle {
+  font-size: 20pt;
+}
 #content #landingpage #inner #ideas #ideasinner .column .explain .box-subtitle {
   display: flex;
   height: 100%;

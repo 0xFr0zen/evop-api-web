@@ -133,6 +133,7 @@ body {
   #landingpageheader #right {
     width: 100%;
     height: 80px;
+    justify-content: center;
   }
 }
 #landingpageheader #left #logo {

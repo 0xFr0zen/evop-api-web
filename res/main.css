@@ -384,16 +384,18 @@ body {
   display: flex;
 }
 #login {
-  width: 400px;
+  display: flex;
+  width: 100%;
   margin: 0 auto;
   height: auto;
 }
 #login #loginform {
   display: flex;
-  width: 100%;
+  width: 400px;
   height: auto;
   background: var(--mdc-theme-surface);
   padding: 20px;
+  flex-direction: column;
 }
 #login #loginform .my-username-textfield {
   margin-bottom: 10px;

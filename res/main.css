@@ -271,11 +271,12 @@ body {
   height: 50px;
   background-color: var(--mdc-theme-on-primary);
   content: attr(d-c);
-  color: var(--mdc-theme-on-surface);
+  color: rgba(0, 0, 0, 0.6);
   text-align: center;
   display: table-cell;
   vertical-align: middle;
   border-radius: 100%;
+  font-size: 15pt;
 }
 #content #landingpage #inner #ideas #ideasinner .row .box .box-title {
   display: flex;

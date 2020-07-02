@@ -258,7 +258,7 @@ body {
   color: var(--mdc-theme-on-primary);
   margin: 5px;
 }
-#content #landingpage #inner #ideas #ideasinner .row .box:first-child {
+#content #landingpage #inner #ideas #ideasinner .row .box.explain {
   border: none;
 }
 #content #landingpage #inner #ideas #ideasinner .row .box .counter {

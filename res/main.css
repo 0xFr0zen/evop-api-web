@@ -384,17 +384,22 @@ body {
   display: flex;
 }
 #login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -200px;
-  margin-top: -200px;
   width: 400px;
-  height: 400px;
+  margin: 0 auto;
+  height: auto;
+  padding: 20px;
 }
-#login .loginqr {
-  width: 400px;
-  height: 400px;
+#login #loginform {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background: var(--mdc-theme-surface);
+}
+#login #loginform .my-username-textfield {
+  margin-bottom: 10px;
+}
+#login #loginform .my-password-textfield {
+  margin-bottom: 10px;
 }
 .my-card,
 .my-moderator-card {

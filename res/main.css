@@ -258,6 +258,9 @@ body {
   color: var(--mdc-theme-on-primary);
   margin: 5px;
 }
+#content #landingpage #inner #ideas #ideasinner .row .box :first-of-type {
+  border: none;
+}
 #content #landingpage #inner #ideas #ideasinner .row .box .counter {
   width: 100%;
   margin-bottom: 10px;

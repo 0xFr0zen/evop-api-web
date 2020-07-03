@@ -345,7 +345,7 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->query(Queries::get('company', 'resolver'),
-            $name
+            "%".$name."%"
         );
         while(($row = $res->fetch_assoc()) != null){
             array_push($row);

@@ -64,14 +64,15 @@ $(document).ready((_) => {
 			$('.my-card-label-error').addClass('hidden');
 			$('#dialogs #newproduct .my-product-textfield').val('');
 			$('#dialogs #newproduct .my-product-textfield').focus();
-			$.getJSON(
+			$.get(
 				'https://api.ev-op.de/company/' + companyname + '/list/product-groups',
 				(data) => {
 					data.result['product-groups'].forEach((pg) => {
 						let pge = new ProductGroup(pg);
 						$('.my-productgroup-list').prepend(pge.html());
 					});
-				}
+				},
+				'json'
 			);
 			window.loadinglocked = true;
 		});

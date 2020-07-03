@@ -314,7 +314,7 @@ class Company
             $this->name
         );
         while(($row = $res->fetch_assoc()) != null){
-            array_push($row);
+            array_push($result, $row);
         }
         return $result;
     }
@@ -326,7 +326,7 @@ class Company
             $this->name
         );
         while(($row = $res->fetch_assoc()) != null){
-            array_push($row);
+            array_push($result, $row);
         }
         return $result;
     }
@@ -337,7 +337,7 @@ class Company
             $this->name
         );
         while(($row = $res->fetch_assoc()) != null){
-            array_push($row);
+            array_push($result, $row);
         }
         return $result;
     }
@@ -349,7 +349,7 @@ class Company
             $preparedname
         );
         while(($row = $res->fetch_assoc()) != null){
-            array_push($row);
+            array_push($result, $row);
         }
         return $result;
 

@@ -678,7 +678,19 @@ body {
   width: 100%;
   height: auto;
 }
-#dialogs #newproduct .my-settings-company-action-bar {
+#dialogs #newproduct .my-card-label-error {
+  width: 100%;
+}
+#dialogs #newproduct .my-card-label-error.hidden {
+  display: none;
+}
+#dialogs #newproduct .my-card-label-no-text-written-error {
+  width: 100%;
+}
+#dialogs #newproduct .my-card-label-no-text-written-error.hidden {
+  display: none;
+}
+#dialogs #newproduct .my-newproduct-action-bar {
   display: flex;
   width: 100%;
   height: 100%;

@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__.'/../../essentials/DBConnector.php';
+include_once __DIR__.'/analytics/queries.php';
 
 class Analytics {
     private static $INTERESTS = array("company", "companies", "user", "users");

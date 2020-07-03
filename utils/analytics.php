@@ -18,7 +18,7 @@ class Analytics {
         }
     }
     public function setInterest(string $interest){
-        if(!empty($interest) || strlen($interest) == 0 || !in_array(strtolower($interest), Analytics::$INTERESTS)){
+        if(!in_array(strtolower($interest), Analytics::$INTERESTS)){
             throw new Exception(Analytics::$INTEREST_DOESNT_EXIST, 1);
         }
         $this->interest = $interest;

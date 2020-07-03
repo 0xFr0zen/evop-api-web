@@ -51,9 +51,9 @@ class MyAnalyticsDBConnector extends DBConnector {
         $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
         $myconfig = $json['db']['connectors'];
         parent::__construct(
-            $myconfig['admin']['username'],
-            $myconfig['admin']['password'],
-            $myconfig['admin']['database']
+            $myconfig['company']['username'],
+            $myconfig['company']['password'],
+            $myconfig['company']['database']
         );
     }
 }

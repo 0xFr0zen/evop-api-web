@@ -405,6 +405,10 @@ body {
 }
 #login #loginform .my-custom-form-textinput {
   margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 #login #loginform .my-login-submit-button {
   flex-direction: flex-end;

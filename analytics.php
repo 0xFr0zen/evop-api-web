@@ -21,6 +21,7 @@ if(getallheaders()['User-Agent'] !== "Evop-User-Agent"){
         $enc = json_encode(array(), JSON_NUMERIC_CHECK);
     }
     
+    header("User-Agent: Evop-Analytics-User-Agent");
     header("My-Hash-New: ".$mdenc);
     print($enc);
 }

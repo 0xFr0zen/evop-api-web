@@ -31,7 +31,7 @@ class Analytics {
     }
     public function execute(){
         $result = array();
-
+        
         return $result;
     }
 }

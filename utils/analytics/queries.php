@@ -4,7 +4,12 @@ class AnalyticQueries {
 
         "companies" => array(
 
-            "all" => "SELECT * FROM company"
+            "all" => "SELECT * FROM company",
+
+            "active" => "SELECT * FROM company WHERE company.active = 1",
+
+            "inactive" => "SELECT * FROM company WHERE company.active = 0"
+
         ),
 
         "company" => array(
@@ -21,9 +26,25 @@ class AnalyticQueries {
 
         "users" => array(
 
-            "inactive" => "",
+            "inactive" => "SELECT count(user.id) as 'amount', company.name as 'company'
+                            FROM user, company, company_has_user
+                            WHERE user.id = company_has_user.user_id
+                            AND company.id = company_has_user.company_id
+                            AND company.active = 1
+                            AND user.active = 0",
 
-            "active" => "",
+            "active" => "SELECT count(user.id) as 'amount', company.name as 'company'
+                            FROM user, company, company_has_user
+                            WHERE user.id = company_has_user.user_id
+                            AND company.id = company_has_user.company_id
+                            AND company.active = 1
+                            AND user.active = 1",
+
+            "all" => "SELECT count(user.id) as 'amount', company.name as 'company'
+                            FROM user, company, company_has_user
+                            WHERE user.id = company_has_user.user_id
+                            AND company.id = company_has_user.company_id
+                            AND company.active = 1",
 
         ),
 

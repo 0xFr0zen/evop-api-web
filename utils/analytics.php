@@ -25,15 +25,22 @@ class Analytics {
         }
         $this->interest = $interest;
     }
+
     public function setQuery(string $query){
         if(!in_array(strtolower($query), Analytics::$QUERIES)){
             throw new Exception(Analytics::$QUERY_DOESNT_EXIST, 1);
         }
         $this->query = $query;
     }
+
     public function execute(){
         $result = array();
         $dbconn = new MyAnalyticsDBConnector();
+
+        $res = $dbconn->query(AnalyticQueries::get($this->interest, $this->query));
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($result, $row);
+        }
         return $result;
     }
 }

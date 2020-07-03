@@ -4,19 +4,14 @@ class AnalyticQueries {
 
         "companies" => array(
 
-            "default" => "",
-
+            "all" => "SELECT * FROM company"
         ),
 
         "company" => array(
 
-            "default" => "",
-
         ),
 
         "user" => array(
-
-            "default" => "",
 
             "inactive" => "",
 
@@ -26,8 +21,6 @@ class AnalyticQueries {
 
         "users" => array(
 
-            "default" => "",
-
             "inactive" => "",
 
             "active" => "",
@@ -35,13 +28,8 @@ class AnalyticQueries {
         ),
 
     );
-    public static function get(string $area, string $type = ""){
-        $query = null;
-        if($type === ""){
-            $query = AnalyticQueries::$queries[$area]['default'];
-        }else {
-            $query = AnalyticQueries::$queries[$area][$type];
-        }
+    public static function get(string $area, string $type){
+        $query = AnalyticQueries::$queries[$area][$type];
         return $query;
     }
 }

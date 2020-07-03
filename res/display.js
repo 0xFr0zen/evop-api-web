@@ -77,6 +77,7 @@ $(document).ready((_) => {
 			);
 			$('.my-productgroup-item').on('click', function () {
 				let gid = $(this).attr('d-id');
+				console.log(gid);
 			});
 			$.get(
 				'https://api.ev-op.de/company/' +
@@ -92,6 +93,7 @@ $(document).ready((_) => {
 			);
 			$('.my-productsubgroup-item').on('click', function () {
 				let subgid = $(this).attr('d-id');
+				console.log(subgid);
 			});
 			window.loadinglocked = true;
 		});

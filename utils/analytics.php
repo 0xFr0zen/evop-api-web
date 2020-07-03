@@ -4,7 +4,7 @@ include_once __DIR__.'/analytics/queries.php';
 
 class Analytics {
     private static $INTERESTS = array("company", "companies", "user", "users");
-    private static $QUERIES = array("all", "user", "user:active", "user:inactive");
+    private static $QUERIES = array("all", "user", "user:active", "user:inactive", "company:active", "company:inactive");
     public static $INTEREST_DOESNT_EXIST = "This interest doesn't exist, try another one.";
     public static $QUERY_DOESNT_EXIST = "This query doesn't exist, try another one.";
     public static $QUERY_SYNTAX_ERROR = "The query syntax is wrong, please check.";
@@ -37,7 +37,9 @@ class Analytics {
         $result = array();
         $dbconn = new MyAnalyticsDBConnector();
 
-        $res = $dbconn->query(AnalyticQueries::get($this->interest, $this->query));
+        $res = $dbconn->query(
+            AnalyticQueries::get($this->interest, $this->query)
+        );
         while(($row = $res->fetch_assoc()) != null){
             array_push($result, $row);
         }

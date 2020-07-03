@@ -661,7 +661,7 @@ body {
   min-width: 250px;
   width: auto;
   max-width: 400px;
-  height: 100px;
+  height: auto;
   padding: 20px;
 }
 #dialogs #newproduct .my-companyname-tables-textfield {

@@ -41,8 +41,9 @@ function Company(name, tables, active) {
 		return card;
 	};
 }
-function ProductGroup(name) {
+function ProductGroup(id, name) {
 	this.name = name;
+	this.id = id;
 	this.html = () => {
 		let pg = document.createElement('li');
 		pg.className = 'mdc-list-item';
@@ -51,20 +52,23 @@ function ProductGroup(name) {
 		$(pgs).text(this.name);
 		$(pg).addClass('my-productgroup-item');
 		$(pg).append(pgs);
+		$(pg).attr('d-id', this.id);
 		return pg;
 	};
 }
-function ProductSubgroup(name) {
+function ProductSubgroup(id, name) {
+	this.id = id;
 	this.name = name;
 	this.html = () => {
-		let pg = document.createElement('li');
-		pg.className = 'mdc-list-item';
-		let pgs = document.createElement('span');
-		pgs.className = 'mdc-list-item__text';
-		$(pgs).text(this.name);
-		$(pg).addClass('my-productsubgroup-item');
-		$(pg).append(pgs);
-		return pg;
+		let psg = document.createElement('li');
+		psg.className = 'mdc-list-item';
+		let psgs = document.createElement('span');
+		psgs.className = 'mdc-list-item__text';
+		$(psgs).text(this.name);
+		$(psg).addClass('my-productsubgroup-item');
+		$(psg).append(pgs);
+		$(psg).attr('d-id', this.id);
+		return psg;
 	};
 }
 function Product(id, name = '', price = 0.0, group = '', subgroup = '') {

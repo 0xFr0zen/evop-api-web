@@ -667,7 +667,7 @@ body {
 #dialogs #newproduct .my-product-textfield {
   border-bottom: 2px solid var(--mdc-theme-background);
   padding: 15px 10px;
-  width: 100px;
+  width: 100%;
   margin-bottom: 40px;
 }
 #dialogs #newproduct .my-productgroup-list {

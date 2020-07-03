@@ -7,7 +7,7 @@ RewriteRule ^qr-code\/(.*)(?:\/)?$ utils/qr-code.php?data=$1
 
 # analytics
 RewriteRule ^analytics\/([a-zA-Z0-9-_\s]+)(?:\/)?$ analytics.php?interest=$1&query=all
-RewriteRule ^analytics\/([a-zA-Z0-9-_\s]+(?:\:([a-zA-Z0-9-_\s]+))?)(?:\/)?$ analytics.php?interest=$1&query=$2
+RewriteRule ^analytics\/([a-zA-Z0-9-_\s]+)\:([a-zA-Z0-9-_\s]+)(?:\/)?$ analytics.php?interest=$1&query=$2
 
 # mod/admin
 RewriteRule ^mod\/requests\/(.*)\/(.*)(?:\/)?$ moderator.php?modrequests&did=$1&sid=$2

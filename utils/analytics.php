@@ -53,13 +53,13 @@ class Analytics {
 class MyAnalyticsDBConnector extends DBConnector {
     private $json = null;
     private $myconfig = null;
-    function __construct(){
+    function __construct(string $db = "evop-company"){
         $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
         $myconfig = $json['db']['connectors'];
         parent::__construct(
-            $myconfig['company']['username'],
-            $myconfig['company']['password'],
-            $myconfig['company']['database']
+            $myconfig['analytics']['username'],
+            $myconfig['analytics']['password'],
+            $db
         );
     }
 }

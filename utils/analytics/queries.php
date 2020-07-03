@@ -30,14 +30,17 @@ class AnalyticQueries {
 
             "all" => array(
                 "sql" =>"",
-                "one-object" => false
+                "one-object" => true
             ), //DEFAULT-QUERY
 
         ),
 
         "user" => array(
 
-            "all" => "", //DEFAULT-QUERY
+            "all" => array(
+                "sql" => "",
+                "one-object" => true
+            ), //DEFAULT-QUERY
 
         ),
 

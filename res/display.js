@@ -56,6 +56,12 @@ $(document).ready((_) => {
 			}
 		);
 	});
+	$('.my-add-newproduct-button').on('click', () => {
+		
+		$('#dialogs').fadeOut(100, () => {
+			$('#dialogs #newproduct').hide();
+		});
+	});
 	$('.my-close-newproduct-button').on('click', () => {
 		$('#dialogs').fadeOut(100, () => {
 			$('#dialogs #newproduct').hide();

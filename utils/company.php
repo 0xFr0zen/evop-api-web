@@ -3,7 +3,7 @@ include_once __DIR__.'/mydb.php';
 include_once __DIR__.'/color.php';
 include_once __DIR__.'/stringer.php';
 include_once __DIR__.'/textstyle.php';
-include_once __DIR__.'/queries.php';
+include_once __DIR__.'/../essentials/queries.php';
 
 class Company
 {

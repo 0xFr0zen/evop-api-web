@@ -20,3 +20,4 @@ RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=infor
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)(?:\/)?$ index.php?company=$1&mode=$2&details=minimum
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3
 RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)\/(.*)(?:\/)?$ index.php?company=$1&mode=$2&details=$3&values=$4
+RewriteRule ^company-resolver\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?resolver&name=$1

@@ -6,11 +6,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
             case 'lookup':
                 $this->result = array("result" => true);
                 break;
-            case 'resolver':
-                if($this->details != "minimum"){
-                    $this->result = array("result" => Company::find($this->details));
-                }
-                break;
+            
             case 'information':
                 if ($this->exists) {
                     switch ($this->details) {

@@ -34,7 +34,14 @@ class ReqCompany {
                         $this->exists = $this->company->exists();
                         $found = true;
                         break;
-                    
+                    case 'resolver':
+                        if(isset($_REQUEST['name'])){
+                            $this->result = array("result" => Company::find($_REQUEST['name']));
+                        }else {
+                            $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
+                        }
+                        $found = true;
+                        break;
                     default:
                         $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                         $found = true;

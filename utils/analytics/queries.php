@@ -26,25 +26,16 @@ class AnalyticQueries {
 
         "users" => array(
 
-            "inactive" => "SELECT count(user.id) as 'amount', company.name as 'company'
-                            FROM user, company, company_has_user
-                            WHERE user.id = company_has_user.user_id
-                            AND company.id = company_has_user.company_id
-                            AND company.active = 1
+            "inactive" => "SELECT count(user.id) as 'amount'
+                            FROM user
                             AND user.active = 0",
 
-            "active" => "SELECT count(user.id) as 'amount', company.name as 'company'
-                            FROM user, company, company_has_user
-                            WHERE user.id = company_has_user.user_id
-                            AND company.id = company_has_user.company_id
-                            AND company.active = 1
+            "active" => "SELECT count(user.id) as 'amount'
+                            FROM user
                             AND user.active = 1",
 
-            "all" => "SELECT count(user.id) as 'amount', company.name as 'company'
-                            FROM user, company, company_has_user
-                            WHERE user.id = company_has_user.user_id
-                            AND company.id = company_has_user.company_id
-                            AND company.active = 1", //DEFAULT-QUERY
+            "all" => "SELECT count(user.id) as 'amount'
+                            FROM user", //DEFAULT-QUERY
 
         ),
 

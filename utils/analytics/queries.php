@@ -62,7 +62,7 @@ class AnalyticQueries {
 
 
             "all" => array(
-                "sql" => "SELECT count(user.id) as 'amount'
+                "sql" => "SELECT SUM(user.active) as 'amount-active', (count(user.active)-SUM(user.active)) as 'amount-inactive'
                             FROM user",
                 "one-object" => true
             ), //DEFAULT-QUERY

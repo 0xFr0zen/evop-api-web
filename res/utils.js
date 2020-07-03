@@ -1,6 +1,7 @@
-function Company(name, tables) {
+function Company(name, tables, active) {
 	this.name = name;
 	this.tables = tables;
+	this.active = active;
 	this.html = () => {
 		let card = document.createElement('div');
 		card.className = 'mdc-card my-card';
@@ -15,8 +16,13 @@ function Company(name, tables) {
 		cardInformation.className = 'my-card-information';
 		$(cardInformation).text('tables: ' + this.tables);
 
+		let cardInformation2 = document.createElement('span');
+		cardInformation2.className = 'my-card-information';
+		$(cardInformation2).text('active: ' + this.active ? 'true' : 'false');
+
 		$(cardContentHolder).append(cardLabel);
 		$(cardContentHolder).append(cardInformation);
+		$(cardContentHolder).append(cardInformation2);
 
 		let action1 = ActionMaker('Show', 'arrow_forward');
 		$(action1).on('click', () => {

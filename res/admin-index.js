@@ -69,7 +69,11 @@ async function loadCompanies() {
 		$.getJSON('https://api.ev-op.de/companies/', async (data, status) => {
 			$('#content #companies #list').empty();
 			data['result'].forEach(async (element) => {
-				let c = new Company(element['name'], element['tables']);
+				let c = new Company(
+					element['name'],
+					element['tables'],
+					element['active']
+				);
 				$('#storeicon').text(
 					$('storeicon').text() === 'hourglass_bottom'
 						? 'hourglass_top'

@@ -11,8 +11,8 @@ if(getallheaders()['User-Agent'] !== "Evop-User-Agent"){
         $analytics->setQuery($_GET['query']);
         $result = $analytics->execute();
     
-    } catch (\Throwable $th) {
-        $result = array("error" => $th->message);
+    } catch (Exception $e) {
+        $result = array("error" => $e->getMessage());
     }
     
     $enc = json_encode($result, JSON_NUMERIC_CHECK);

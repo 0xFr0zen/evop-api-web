@@ -5,7 +5,7 @@ class AnalyticQueries {
         "companies" => array(
 
             "all" => array(
-                "sql" => "SELECT * 
+                "sql" => "SELECT company.name as 'name', company.active as 'active' 
                             FROM company",
                 "one-object" => false
             ), //DEFAULT-QUERY

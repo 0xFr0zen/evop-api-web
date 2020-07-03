@@ -49,6 +49,20 @@ function ProductGroup(name) {
 		let pgs = document.createElement('span');
 		pgs.className = 'mdc-list-item__text';
 		$(pgs).text(this.name);
+		$(pg).addClass('my-productgroup-item');
+		$(pg).append(pgs);
+		return pg;
+	};
+}
+function ProductSubgroup(name) {
+	this.name = name;
+	this.html = () => {
+		let pg = document.createElement('li');
+		pg.className = 'mdc-list-item';
+		let pgs = document.createElement('span');
+		pgs.className = 'mdc-list-item__text';
+		$(pgs).text(this.name);
+		$(pg).addClass('my-productsubgroup-item');
 		$(pg).append(pgs);
 		return pg;
 	};

@@ -664,11 +664,19 @@ body {
   height: auto;
   padding: 20px;
 }
-#dialogs #newproduct .my-companyname-tables-textfield {
+#dialogs #newproduct .my-product-textfield {
   border-bottom: 2px solid var(--mdc-theme-background);
   padding: 15px 10px;
   width: 100px;
   margin-bottom: 40px;
+}
+#dialogs #newproduct .my-productgroup-list {
+  width: 100%;
+  height: auto;
+}
+#dialogs #newproduct .my-productsubgroup-list {
+  width: 100%;
+  height: auto;
 }
 #dialogs #newproduct .my-settings-company-action-bar {
   display: flex;

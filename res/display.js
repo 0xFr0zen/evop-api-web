@@ -64,6 +64,7 @@ $(document).ready((_) => {
 			$('.my-card-label-error').addClass('hidden');
 			$('#dialogs #newproduct .my-product-textfield').val('');
 			$('#dialogs #newproduct .my-product-textfield').focus();
+
 			$.get(
 				'https://api.ev-op.de/company/' + companyname + '/list/product-groups',
 				(data) => {
@@ -74,6 +75,24 @@ $(document).ready((_) => {
 				},
 				'json'
 			);
+			$('.my-productgroup-item').on('click', function () {
+				let gid = $(this).attr('d-id');
+			});
+			$.get(
+				'https://api.ev-op.de/company/' +
+					companyname +
+					'/list/product-subgroups',
+				(data) => {
+					data.result['product-subgroups'].forEach((psg) => {
+						let psge = new ProductSubgroup(psg);
+						$('.my-productsubgroup-list').prepend(psge.html());
+					});
+				},
+				'json'
+			);
+			$('.my-productsubgroup-item').on('click', function () {
+				let subgid = $(this).attr('d-id');
+			});
 			window.loadinglocked = true;
 		});
 	});
@@ -145,7 +164,6 @@ async function loadProducts() {
 						? 'hourglass_top'
 						: 'hourglass_bottom'
 				);
-				console.log(data);
 				await wait(400);
 				$('#producticon').text('store_mall_directory');
 			}

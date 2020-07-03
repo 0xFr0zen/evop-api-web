@@ -1,7 +1,6 @@
 $(document).ready(() => {
 	loadCompanies();
 	companyIntervall = setInterval(loadCompanies, 2000);
-	stillloggedinintervall = setInterval(checklogin, 10000);
 	$('#search').on('click', (_) => {
 		$('.my-search-textfield').fadeIn(function () {
 			$('.my-search-textfield').focus();

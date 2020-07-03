@@ -56,6 +56,7 @@ class MyAnalyticsDBConnector extends DBConnector {
     function __construct(string $db = "evop-company"){
         $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
         $myconfig = $json['db']['connectors'];
+        print($myconfig['analytics']);
         parent::__construct(
             $myconfig['analytics']['username'],
             $myconfig['analytics']['password'],

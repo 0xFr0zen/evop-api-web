@@ -344,7 +344,7 @@ class Company
     public static function find(string $name){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(Queries::get('company','resolver'),
+        $res = $dbconn->query(Queries::get('company', 'resolver'),
             $name
         );
         while(($row = $res->fetch_assoc()) != null){

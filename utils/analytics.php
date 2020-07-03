@@ -24,7 +24,7 @@ class Analytics {
         $this->interest = $interest;
     }
     public function setQuery(string $query){
-        if(!empty($query) || strlen($query) == 0 || !in_array(strtolower($query), Analytics::$QUERIES)){
+        if(!in_array(strtolower($query), Analytics::$QUERIES)){
             throw new Exception(Analytics::$QUERY_DOESNT_EXIST, 1);
         }
         $this->query = $query;

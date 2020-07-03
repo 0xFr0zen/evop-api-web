@@ -403,14 +403,12 @@ body {
   padding: 20px;
   flex-direction: column;
 }
-#login #loginform .my-username-textfield {
-  margin-bottom: 10px;
-}
-#login #loginform .my-password-textfield {
+#login #loginform .my-custom-form-textinput {
   margin-bottom: 10px;
 }
 #login #loginform .my-login-submit-button {
   flex-direction: flex-end;
+  width: 100px;
 }
 .my-card,
 .my-moderator-card {

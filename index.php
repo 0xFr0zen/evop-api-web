@@ -7,7 +7,12 @@ if(file_exists(__DIR__.'/methods/types/'.strtolower($rmode).'.php')) {
     $reqm = new ReqMethod();
     $reqm->execute();
     $enc = json_encode($reqm->result, JSON_NUMERIC_CHECK);
-    header("My-Hash-New: ".md5($enc));
+    $mdenc = md5($enc);
+    if(isset(getallheaders()['My-Hash-Last']) && getallheaders()['My-Hash-Last'] === $mdenc){
+        $enc = json_encode(array(), JSON_NUMERIC_CHECK);
+    }
+
+    header("My-Hash-New: ".$mdenc);
     print($enc);
 }else {
     die("file doesnt exists!");

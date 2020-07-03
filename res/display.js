@@ -56,6 +56,23 @@ $(document).ready((_) => {
 			}
 		);
 	});
+	$('.my-add-product-button').on('click', function () {
+		$('#dialogs').css('display', 'flex');
+		$('#dialogs #newproduct').show();
+		$('#dialogs').fadeIn(100, function () {
+			$('.my-card-label-no-text-written-error').addClass('hidden');
+			$('.my-card-label-error').addClass('hidden');
+			$('#dialogs #newproduct .my-product-textfield').val('');
+			$('#dialogs #newproduct .my-product-textfield').focus();
+			$.getJSON(
+				'https://api.ev-op.de/company/' + companyname + '/list/product-groups',
+				(data) => {
+					console.log(data);
+				}
+			);
+			window.loadinglocked = true;
+		});
+	});
 	$('.my-deactivate-company-button').on('click', (_) => {
 		$.ajax({
 			url:

@@ -41,7 +41,18 @@ function Company(name, tables, active) {
 		return card;
 	};
 }
-
+function ProductGroup(name) {
+	this.name = name;
+	this.html = () => {
+		let pg = document.createElement('li');
+		pg.className = 'mdc-list-item';
+		let pgs = document.createElement('span');
+		pgs.className = 'mdc-list-item__text';
+		$(pgs).text(this.name);
+		$(pg).append(pgs);
+		return pg;
+	};
+}
 function Product(id, name = '', price = 0.0, group = '', subgroup = '') {
 	this.id = id;
 	this.name = name;

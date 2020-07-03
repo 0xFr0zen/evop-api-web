@@ -67,7 +67,10 @@ $(document).ready((_) => {
 			$.getJSON(
 				'https://api.ev-op.de/company/' + companyname + '/list/product-groups',
 				(data) => {
-					console.log(data);
+					data.result['product-groups'].forEach((pg) => {
+						let pge = new ProductGroup(pg);
+						$('.my-productgroup-list').prepend(pge.html());
+					});
 				}
 			);
 			window.loadinglocked = true;

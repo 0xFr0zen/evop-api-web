@@ -6,7 +6,9 @@ if(file_exists(__DIR__.'/methods/types/'.strtolower($rmode).'.php')) {
     include_once __DIR__.'/methods/types/'.strtolower($rmode).'.php';
     $reqm = new ReqMethod();
     $reqm->execute();
-    print(json_encode($reqm->result, JSON_NUMERIC_CHECK));
+    $enc = json_encode($reqm->result, JSON_NUMERIC_CHECK);
+    header("My-Hash-New: ".md5($enc));
+    print($enc);
 }else {
     die("file doesnt exists!");
 }

@@ -18,7 +18,7 @@ function Company(name, tables, active) {
 
 		let cardInformation2 = document.createElement('span');
 		cardInformation2.className = 'my-card-information';
-		$(cardInformation2).text('active: ' + this.active ? 'true' : 'false');
+		$(cardInformation2).text('active: ' + (this.active ? 'true' : 'false'));
 
 		$(cardContentHolder).append(cardLabel);
 		$(cardContentHolder).append(cardInformation);

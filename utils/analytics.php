@@ -36,11 +36,11 @@ class Analytics {
     public function execute($expectedOneRowAsObject = false){
         $result = array();
         $dbconn = new MyAnalyticsDBConnector();
-        $sql = AnalyticQueries::get($this->interest, $this->query);
+        $sqlHolder = AnalyticQueries::get($this->interest, $this->query);
         $res = $dbconn->query(
-            $sql
+            $sqlHolder['sql']
         );
-        if(strpos($sql, "*") === false) {
+        if($sqlHolder['one-object']) {
             $result = $res->fetch_assoc();
         }else {
             while(($row = $res->fetch_assoc()) != null){

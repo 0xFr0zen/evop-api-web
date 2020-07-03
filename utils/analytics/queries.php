@@ -4,17 +4,34 @@ class AnalyticQueries {
 
         "companies" => array(
 
-            "all" => "SELECT * FROM company", //DEFAULT-QUERY
+            "all" => array(
+                "sql" => "SELECT * 
+                            FROM company",
+                "one-object" => false
+            ), //DEFAULT-QUERY
 
-            "active" => "SELECT * FROM company WHERE company.active = 1",
+            "active" => array(
+                "sql" =>"SELECT * 
+                            FROM company
+                            WHERE company.active = 1",
+                "one-object" => false
+            ),
 
-            "inactive" => "SELECT * FROM company WHERE company.active = 0"
+            "inactive" => array(
+                "sql" =>"SELECT * 
+                            FROM company
+                            WHERE company.active = 0",
+                "one-object" => false
+            ),
 
         ),
 
         "company" => array(
 
-            "all" => "", //DEFAULT-QUERY
+            "all" => array(
+                "sql" =>"",
+                "one-object" => false
+            ), //DEFAULT-QUERY
 
         ),
 
@@ -26,16 +43,26 @@ class AnalyticQueries {
 
         "users" => array(
 
-            "inactive" => "SELECT count(user.id) as 'amount'
-                            FROM user
-                            WHERE user.active = 0",
-
-            "active" => "SELECT count(user.id) as 'amount'
+            "active" => array(
+                "sql" => "SELECT count(user.id) as 'amount'
                             FROM user
                             WHERE user.active = 1",
+                "one-object" => true
+            ),
 
-            "all" => "SELECT count(user.id) as 'amount'
-                            FROM user", //DEFAULT-QUERY
+            "inactive" => array(
+                "sql" => "SELECT count(user.id) as 'amount'
+                            FROM user
+                            WHERE user.active = 0",
+                "one-object" => true
+            ),
+
+
+            "all" => array(
+                "sql" => "SELECT count(user.id) as 'amount'
+                            FROM user",
+                "one-object" => true
+            ), //DEFAULT-QUERY
 
         ),
 

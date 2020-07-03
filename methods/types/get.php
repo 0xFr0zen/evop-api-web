@@ -18,7 +18,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                             $information = $this->company->information(true);
                             $this->result = array("result" => $information);
                             break;
-                        case 'all':
+                        case 'users':
                             $information = $this->company->getUsersCount(true);
                             $this->result = array("result" => $information);
                             break;

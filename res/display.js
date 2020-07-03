@@ -56,10 +56,15 @@ $(document).ready((_) => {
 			}
 		);
 	});
+	$('.my-close-newproduct-button').on('click', () => {
+		$('#dialogs').fadeOut(100, () => {
+			$('#dialogs #newproduct').hide();
+		});
+	});
 	$('.my-add-product-button').on('click', function () {
 		$('#dialogs').css('display', 'flex');
 		$('#dialogs #newproduct').show();
-		$('#dialogs').fadeIn(100, function () {
+		$('#dialogs').fadeIn(100, () => {
 			$('.my-card-label-no-text-written-error').addClass('hidden');
 			$('.my-card-label-error').addClass('hidden');
 			$('#dialogs #newproduct .my-product-textfield').val('');

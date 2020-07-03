@@ -36,15 +36,16 @@ class Analytics {
     public function execute($expectedOneRowAsObject = false){
         $result = array();
         $dbconn = new MyAnalyticsDBConnector();
-
+        $sql = AnalyticQueries::get($this->interest, $this->query);
         $res = $dbconn->query(
-            AnalyticQueries::get($this->interest, $this->query)
+            $sql
         );
-        while(($row = $res->fetch_assoc()) != null){
-            array_push($result, $row);
-        }
-        if($expectedOneRowAsObject){
-            $result = $result[0];
+        if(strpos($sql, "*") === false) {
+            $result = $res->fetch_assoc();
+        }else {
+            while(($row = $res->fetch_assoc()) != null){
+                array_push($result, $row);
+            }
         }
         return $result;
     }

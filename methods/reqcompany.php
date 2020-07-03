@@ -40,6 +40,7 @@ class ReqCompany {
                         }else {
                             $this->result = array("error" => Company::$SPECIFY_A_COMPANYNAME);
                         }
+                        die(json_encode($this->result, JSON_NUMERIC_CHECK));
                         $found = true;
                         break;
                     default:

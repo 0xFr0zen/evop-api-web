@@ -4,7 +4,7 @@ class AnalyticQueries {
 
         "companies" => array(
 
-            "all" => "SELECT * FROM company",
+            "all" => "SELECT * FROM company", //DEFAULT-QUERY
 
             "active" => "SELECT * FROM company WHERE company.active = 1",
 
@@ -14,13 +14,13 @@ class AnalyticQueries {
 
         "company" => array(
 
+            "all" => "", //DEFAULT-QUERY
+
         ),
 
         "user" => array(
 
-            "inactive" => "",
-
-            "active" => "",
+            "all" => "", //DEFAULT-QUERY
 
         ),
 
@@ -44,7 +44,7 @@ class AnalyticQueries {
                             FROM user, company, company_has_user
                             WHERE user.id = company_has_user.user_id
                             AND company.id = company_has_user.company_id
-                            AND company.active = 1",
+                            AND company.active = 1", //DEFAULT-QUERY
 
         ),
 

@@ -28,11 +28,11 @@ class AnalyticQueries {
 
             "inactive" => "SELECT count(user.id) as 'amount'
                             FROM user
-                            AND user.active = 0",
+                            WHERE user.active = 0",
 
             "active" => "SELECT count(user.id) as 'amount'
                             FROM user
-                            AND user.active = 1",
+                            WHERE user.active = 1",
 
             "all" => "SELECT count(user.id) as 'amount'
                             FROM user", //DEFAULT-QUERY

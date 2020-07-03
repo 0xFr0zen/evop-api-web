@@ -33,7 +33,7 @@ class Analytics {
         $this->query = $query;
     }
 
-    public function execute(){
+    public function execute($expectedOneRowAsObject = false){
         $result = array();
         $dbconn = new MyAnalyticsDBConnector();
 
@@ -42,6 +42,9 @@ class Analytics {
         );
         while(($row = $res->fetch_assoc()) != null){
             array_push($result, $row);
+        }
+        if($expectedOneRowAsObject){
+            $result = $result[0];
         }
         return $result;
     }

@@ -358,11 +358,14 @@ class Company
     public function addProductGroup(string $name, string $icon = null){
         $result = false;
         
-        $dbconn = new MyCompanyDBConnector();
-        $result = $dbconn->insert(
-            Queries::get('company','add-product-group'),
-            $name
-        );
+        $pg = new ProductGroup($this->name, $name);
+        if(!$pg->exists()){
+            if($icon != null){
+                $pg->setIcon($icon);
+            }
+            $pg->create();
+
+        }
         return $result;
     }
     public function addProductSubgroup(string $name){
@@ -370,7 +373,7 @@ class Company
         
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->insert(
-            Queries::get('company','add-product-subgroup'),
+            Queries::get('products','add-subgroup'),
             $name
         );
         return $result;
@@ -378,7 +381,7 @@ class Company
     public function getProducts(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(Queries::get('company','products'),
+        $res = $dbconn->query(Queries::get('products','all-from-company'),
             $this->name
         );
         while(($row = $res->fetch_assoc()) != null){
@@ -386,28 +389,34 @@ class Company
         }
         return $result;
     }
-    public function getProductGroups(){
+    
+    public function getProductGroups($name = ""){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(
-            Queries::get('company','product-groups'),
-            $this->name
-        );
-        while(($row = $res->fetch_assoc()) != null){
-            array_push($result, $row);
+        if($name === ""){
+            $res = $dbconn->query(
+                Queries::get('products','get-groups'),
+                $this->name
+            );
+            while(($row = $res->fetch_assoc()) != null){
+                array_push($result, $row);
+            }
+        }else {
+            $preparedname = "%".$name."%";
+            $res = $dbconn->query(
+                Queries::get('products','get-groups-like'),
+                $preparedname,
+                $this->name
+            );
+            while(($row = $res->fetch_assoc()) != null){
+                array_push($result, $row);
+            }
         }
         return $result;
     }
-    public function getProductSubgroups(){
-        $result = array();
-        $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(Queries::get('company','product-subgroups'),
-            $this->name
-        );
-        while(($row = $res->fetch_assoc()) != null){
-            array_push($result, $row);
-        }
-        return $result;
+    public function getProductSubgroups(string $groupname){
+        $productgroup = new ProductGroup($groupname);
+        return $productgroup->getSubgroups();
     }
     public static function find(string $name){
         $result = array();
@@ -429,4 +438,93 @@ class Product {
     public static $PRODUCTSUBGROUP_EXISTS_ALREADY = "This product-subgroup exists already.";
     public static $COULDNT_CONNECT_GROUP_TO_PRODUCT = "Couldn't connect the product-group to the product.";
     public static $COULDNT_CONNECT_SUBGROUP_TO_PRODUCT = "Couldn't connect the product-subgroup to the product.";
+}
+
+class ProductGroup {
+    private $name;
+    private $products = array();
+    private $subgroups = array();
+    private $companyname;
+    private $icon;    
+
+    function __construct(string $companyname, string $name){
+        $this->name = $name;
+        $this->companyname = $companyname;
+        if($this->exists()){
+            $this->products = $this->loadProducts();
+            $this->icon = $this->loadIcon();
+            $this->subgroups = $this->loadSubgroups();
+        }
+    }
+    public function setIcon(string $name){
+        $this->icon = $name;
+    }
+    
+    public function getIcon(){
+        return $this->icon;
+    }
+
+    public function getProducts(){
+        return $this->products;
+    }
+    public function exists(){
+        $result = false;
+        $dbconn = new MyCompanyDBConnector();
+        $result = $dbconn->check(Queries::get('company', 'has-productgroup'));
+        return $result;
+    }
+    public function create(){
+        $result = false;
+        $dbconn = new MyCompanyDBConnector();
+        $result = $dbconn->insert(Queries::get('company', 'add-product-group'));
+        return $result;
+    }
+    private function loadProducts(){
+        $dbconn = new MyCompanyDBConnector();
+        $result = array();
+        $res = $dbconn->query(
+            Queries::get('company', 'get-products-from-product-group'),
+            $this->name,
+            $this->companyname
+        );
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($result, $row);
+        }
+        return $result;
+    }
+    private function loadIcon(){
+        $dbconn = new MyCompanyDBConnector();
+        $res = $dbconn->query(
+            Queries::get('product', 'product-group-icon'),
+            $this->name,
+            $this->companyname
+        );
+        $result = $res;
+        return $result;
+    }
+    private function loadSubgroups(){
+        $dbconn = new MyCompanyDBConnector();
+        $result = array();
+        $res = $dbconn->query(
+            Queries::get('company', 'get-product-subgroups-from-product-group'),
+            $this->name,
+            $this->companyname
+        );
+        while(($row = $res->fetch_assoc()) != null){
+            array_push($result, $row);
+        }
+        return $result;
+    }
+    public function addSubgroup(){
+        $result = false;
+        $dbconn = new MyCompanyDBConnector();
+        if(!$dbconn->check(Queries::get('company', 'product-has-subgroup'))){
+            $dbconn->insert(Queries::get('company', 'add-product-subgroup'));
+        }
+    }
+    public function getSubgroups(){
+        return $this->subgroups;
+    }
+    
+
 }

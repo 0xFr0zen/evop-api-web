@@ -74,13 +74,11 @@ $(document).ready((_) => {
 			if ((e.key = 'Enter')) {
 				e.preventDefault();
 				$.ajax({
-					type: "POST",
-					url: "https://api.ev-op.de/company/product/",
-					data: "data",
-					dataType: "dataType",
-					success: function (response) {
-						
-					}
+					type: 'POST',
+					url: 'https://api.ev-op.de/company/product/',
+					data: 'data',
+					dataType: 'dataType',
+					success: function (response) {},
 				});
 			}
 		});
@@ -139,23 +137,31 @@ $(document).ready((_) => {
 			window.loadinglocked = true;
 		});
 	});
-	$('.my-deactivate-company-button').on('click', (_) => {
+	$('.my-company-status-action-button').on('click', function () {
 		$.ajax({
 			url:
 				'https://api.ev-op.de/company/' +
 				encodeURI(companyname) +
-				'/deactivate/',
+				'/' +
+				($(this).hasClass('my-deactivate-company-button') ? 'de' : '') +
+				'activate/',
 			type: 'PUT',
-			success: function (deactivatedata) {
-				if (!deactivatedata.result) {
+			success: function (ac_data) {
+				if (!ac_data.result) {
 					$('.my-card-label-server-issues').removeClass('hidden');
 				} else {
-					if (!deactivatedata.result.deactivated.status) {
+					if (!ac_data.result.deactivated.status) {
 						$('.my-card-label-server-issues').removeClass('hidden');
 					} else {
-						$('#dialogs').fadeOut(100, function () {
+						$('#dialogs').fadeOut(100, () => {
 							$(document.body).click();
-							location.reload();
+							if ($(this).hasClass('my-deactivate-company-button')) {
+								$(this).removeClass('my-deactivate-company-button');
+								$(this).addClass('my-activate-company-button');
+							} else {
+								$(this).removeClass('my-activate-company-button');
+								$(this).addClass('my-deactivate-company-button');
+							}
 						});
 					}
 				}
@@ -163,28 +169,7 @@ $(document).ready((_) => {
 			dataType: 'json',
 		});
 	});
-	$('.my-activate-company-button').on('click', (_) => {
-		$.ajax({
-			url:
-				'https://api.ev-op.de/company/' + encodeURI(companyname) + '/activate/',
-			type: 'PUT',
-			success: function (deactivatedata) {
-				if (!deactivatedata.result) {
-					$('.my-card-label-server-issues').removeClass('hidden');
-				} else {
-					if (!deactivatedata.result.activated.status) {
-						$('.my-card-label-server-issues').removeClass('hidden');
-					} else {
-						$('#dialogs').fadeOut(100, function () {
-							$(document.body).click();
-							location.reload();
-						});
-					}
-				}
-			},
-			dataType: 'json',
-		});
-	});
+
 	$(window).on('keydown', function (e) {
 		if (e.key == 'Escape') {
 			$('.my-search-textfield').fadeOut(100);

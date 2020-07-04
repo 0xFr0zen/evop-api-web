@@ -307,6 +307,74 @@ class Company
         }
         return $result;
     }
+    public function addProduct(string $name, string $description = null, $price, string $group, string $subgroup = null){
+        $result = false;
+        $dbconn = new MyCompanyDBConnector();
+        $result = $dbconn->insert(
+            Queries::get('company','add-product'),
+            $name,
+            $description,
+            doubleval($price),
+            $this->name
+        );
+
+        if($result){
+            $result &= $this->addProductGroup($group);
+            if($result){
+                $result &= $dbconn->insert(
+                    Queries::get('company','product-connect-group'),
+                    $name,
+                    $group,
+                    $this->name
+                );
+                if($result && $subgroup != null){
+                    $result &= $this->addProductSubroup($subgroup);
+                    if($result){
+                        $result &= $dbconn->insert(
+                            Queries::get('company','product-connect-subgroup'),
+                            $name,
+                            $subgroup,
+                            $this->name
+                        );
+                        if(!$result){
+                            throw new Exception(Product::$COULDNT_CONNECT_SUBGROUP_TO_PRODUCT, 1);
+                        }
+                    }else {
+                        throw new Exception(Product::$PRODUCTSUBGROUP_EXISTS_ALREADY, 1);
+                    }
+                }else {
+                    if(!$result){
+                        throw new Exception(Product::$COULDNT_CONNECT_GROUP_TO_PRODUCT, 1);
+                    }
+                }
+            }else {
+                throw new Exception(Product::$PRODUCTGROUP_EXISTS_ALREADY, 1);
+            }
+        }else {
+            throw new Exception(Product::$PRODUCT_EXISTS_ALREADY, 1);
+        }
+        return $result;
+    }
+    public function addProductGroup(string $name, string $icon = null){
+        $result = false;
+        
+        $dbconn = new MyCompanyDBConnector();
+        $result = $dbconn->insert(
+            Queries::get('company','add-product-group'),
+            $name
+        );
+        return $result;
+    }
+    public function addProductSubgroup(string $name){
+        $result = false;
+        
+        $dbconn = new MyCompanyDBConnector();
+        $result = $dbconn->insert(
+            Queries::get('company','add-product-subgroup'),
+            $name
+        );
+        return $result;
+    }
     public function getProducts(){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -354,4 +422,11 @@ class Company
         return $result;
 
     }
+}
+class Product {
+    public static $PRODUCT_EXISTS_ALREADY = "This product exists already.";
+    public static $PRODUCTGROUP_EXISTS_ALREADY = "This product-group exists already.";
+    public static $PRODUCTSUBGROUP_EXISTS_ALREADY = "This product-subgroup exists already.";
+    public static $COULDNT_CONNECT_GROUP_TO_PRODUCT = "Couldn't connect the product-group to the product.";
+    public static $COULDNT_CONNECT_SUBGROUP_TO_PRODUCT = "Couldn't connect the product-subgroup to the product.";
 }

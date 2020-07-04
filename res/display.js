@@ -57,7 +57,6 @@ $(document).ready((_) => {
 		);
 	});
 	$('.my-add-newproduct-button').on('click', () => {
-		
 		$('#dialogs').fadeOut(100, () => {
 			$('#dialogs #newproduct').hide();
 		});
@@ -66,6 +65,37 @@ $(document).ready((_) => {
 		$('#dialogs').fadeOut(100, () => {
 			$('#dialogs #newproduct').hide();
 		});
+	});
+	$('.add-new-group span').on('click', function () {
+		let inputGroup = document.createElement('input');
+		$(inputGroup).attr('type', 'text');
+		$(inputGroup).addClass('my-add-productgroup-input');
+		$(inputGroup).on('keydown', (e) => {
+			if ((e.key = 'Enter')) {
+				e.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "https://api.ev-op.de/company/product/",
+					data: "data",
+					dataType: "dataType",
+					success: function (response) {
+						
+					}
+				});
+			}
+		});
+		$(this).replaceWith(inputGroup);
+	});
+	$('.add-new-subgroup span').on('click', function () {
+		let inputSubgroup = document.createElement('input');
+		$(inputSubgroup).attr('type', 'text');
+		$(inputSubgroup).addClass('my-add-productsubgroup-input');
+		$(inputSubgroup).on('keydown', (e) => {
+			if ((e.key = 'Enter')) {
+				e.preventDefault();
+			}
+		});
+		$(this).replaceWith(inputSubgroup);
 	});
 	$('.my-add-product-button').on('click', function () {
 		$('#dialogs').css('display', 'flex');

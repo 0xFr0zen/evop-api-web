@@ -128,3 +128,9 @@ function ActionMaker(title, text) {
 	$(action1).text(text);
 	return action1;
 }
+
+function wait(timeout) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, timeout);
+	});
+}

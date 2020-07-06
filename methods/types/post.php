@@ -12,6 +12,27 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_ALREADY_EXISTS);
                 }
                 break;
+            case 'add-product':
+                if (!$this->exists) {
+                    if($this->details !== null && count($this->details) > 0){
+                        $values = explode(",", $_REQUEST['values']);
+                        $vals = array();
+                        foreach ($values as $value) {
+                            $splitted = explode(":", $value);
+                            $vals[$splitted[0]] = $splitted[1];
+                        }
+                        $val = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
+                        
+                        $created = $this->company->addProduct($this->details, $val);
+                        $this->result = array("result" => array("created" => $created));
+                    }else {
+                        $error = array("error" => "You need to put a productname.");
+                    }
+                    
+                } else {
+                    $this->result = array("error" => Company::$COMPANY_ALREADY_EXISTS);
+                }
+                break;
             case 'configuration':
                 if ($this->exists) {
                     if (!isset($_REQUEST['values'])) {

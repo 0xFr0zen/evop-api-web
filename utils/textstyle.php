@@ -34,7 +34,7 @@ class TextStyle extends Resourcer
                     (SELECT textstyle.id FROM textstyle WHERE textstyle.name = ?),
                     (SELECT company.id FROM company WHERE company.name = ?)
                 )";
-                $result = $dbconn->insert($sqlConnectTextStyleWithCompany, $this->resourcename, $this->companyname);
+                $result = $dbconn->insert($sqlConnectTextStyleWithCompany, $this->companyname."-".$this->resourcename, $this->companyname);
             }
         }
 
@@ -44,17 +44,17 @@ class TextStyle extends Resourcer
     {
         $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM textstyle WHERE `name` = ?";
-        return $dbconn->deleteRow($sql, $this->resourcename);
+        return $dbconn->deleteRow($sql, $this->companyname."-".$this->resourcename);
     }
     public function upd(string $oldname, $value): bool
     {
         $stpos = strpos($this->companyname, $oldname);
         if (gettype($stpos) === "boolean" && $stpos == false) {
-            $oldname = $this->companyname . "_" . $oldname;
+            $oldname = $this->companyname . "-" . $oldname;
         }
 
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE textstyle SET `name` = ?, fontsize = ?, fontfamily = ?, fontweight = ? WHERE `name` = ?";
-        return $dbconn->update($sql, $this->resourcename, $value['fontsize'], $value['fontfamily'], $value['fontweight'], $oldname);
+        return $dbconn->update($sql, $this->companyname."-".$this->resourcename, $value['fontsize'], $value['fontfamily'], $value['fontweight'], $oldname);
     }
 }

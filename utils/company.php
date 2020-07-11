@@ -194,6 +194,7 @@ class Company
             $this->name
         );
         while (($r = $resultStrings->fetch_assoc()) != null) {
+            $r['name'] = str_replace($this->name."-", "", $r['name']);
             array_push($result, $r);
         }
 
@@ -208,6 +209,7 @@ class Company
             $this->name
         );
         while (($r = $resultTextStyles->fetch_assoc()) != null) {
+            $r['name'] = str_replace($this->name."-", "", $r['name']);
             array_push($result, $r);
         }
 

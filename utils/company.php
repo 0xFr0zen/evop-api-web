@@ -387,7 +387,12 @@ class Company
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         if($groupid == -1){
-            $res = $dbconn->query(Queries::get('products','all-from-company'),
+            $res = $dbconn->query(Queries::get('company','products'),
+                $this->name
+            );
+        }else {
+            $res = $dbconn->query(Queries::get('company','products-from-group'),
+                $groupid,
                 $this->name
             );
         }

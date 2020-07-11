@@ -74,6 +74,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
+            
             case 'list':
                 if ($this->exists) {
                     switch ($this->details) {
@@ -86,7 +87,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                             $this->result = array("result" => array("product-subgroups" => $productsSubgroups));
                             break;
                         case 'products':
-                            $products = $this->company->getProducts();
+                            $products = $this->company->getProducts($this->details);
                             $this->result = array("result" => array("products" => $products));
                             break;
                         default:

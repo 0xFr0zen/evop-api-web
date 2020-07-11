@@ -383,19 +383,22 @@ class Company
         );
         return $result;
     }
-    public function getProducts(){
+    public function getProducts(int $groupid = -1){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        $res = $dbconn->query(Queries::get('products','all-from-company'),
-            $this->name
-        );
+        if($groupid == -1){
+            $res = $dbconn->query(Queries::get('products','all-from-company'),
+                $this->name
+            );
+        }
+        
         while(($row = $res->fetch_assoc()) != null){
             array_push($result, $row);
         }
         return $result;
     }
     
-    public function getProductGroups($name = ""){
+    public function getProductGroups(string $name = ""){
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         if($name === ""){

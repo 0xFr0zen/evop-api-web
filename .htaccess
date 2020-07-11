@@ -18,7 +18,7 @@ RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?login&sid=$1&did=$2
 
 # images
 RewriteRule ^image\/logo(?:\/)?$ res/images/logo.png
-RewriteRule ^image\/company\-logo\/([a-zA-Z0-9-_\s]+)(?:\/)?$ res/company-logos/$1.png
+RewriteRule ^image\/company\-logo\/([a-zA-Z0-9-_\s]+)(?:\/)?$ res/company-images/$1.png
 RewriteRule ^image\/devices(?:\/all)?(?:\/)?$ res/images/all-devices.png
 RewriteRule ^image\/devices\/ios(?:\/)?$ res/images/ios-device.png
 RewriteRule ^image\/devices\/android(?:\/)?$ res/images/ios-device.png

@@ -211,7 +211,7 @@ class Company
         while (($r = $resultTextStyles->fetch_assoc()) != null) {
             $r['name'] = str_replace($this->name."-", "", $r['name']);
             $r['color'] = str_replace($this->name."-", "", $r['color']);
-            $r['background-color'] = str_replace($this->name."-", "", $r['color']);
+            $r['background-color'] = str_replace($this->name."-", "", $r['background-color']);
             array_push($result, $r);
         }
 

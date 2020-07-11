@@ -82,10 +82,10 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                             $productsGroups = $this->company->getProductGroups();
                             $this->result = array("result" => array("product-groups" => $productsGroups));
                             break;
-                        case 'product-subgroups':
-                            $productsSubgroups = $this->company->getProductSubgroups();
-                            $this->result = array("result" => array("product-subgroups" => $productsSubgroups));
-                            break;
+                        // case 'product-subgroups':
+                        //     $productsSubgroups = $this->company->getProductSubgroups();
+                        //     $this->result = array("result" => array("product-subgroups" => $productsSubgroups));
+                        //     break;
                         case 'products':
                             if(empty($this->details) || strlen($this->details) == 0){
 

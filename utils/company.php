@@ -427,10 +427,10 @@ class Company
         }
         return $result;
     }
-    public function getProductSubgroups(string $groupname){
-        $productgroup = new ProductGroup($groupname);
-        return $productgroup->getSubgroups();
-    }
+    // public function getProductSubgroups(string $groupname){
+    //     $productgroup = new ProductGroup($groupname);
+    //     return $productgroup->getSubgroups();
+    // }
     public static function find(string $name){
         $result = array();
         $dbconn = new MyCompanyDBConnector();

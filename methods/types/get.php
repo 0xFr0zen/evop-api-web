@@ -88,9 +88,8 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                         //     break;
                         case 'products':
                             if(empty($this->value) || strlen($this->value) == 0){
-
                                 $products = $this->company->getProducts();
-                                $this->result = array("result" => array("products" => $products));
+                                $this->result = array("result" => array("all-products" => $products));
                             }else {
                                 if(is_numeric($this->value)){
                                     $products = $this->company->getProducts(intval($this->value));

@@ -179,7 +179,7 @@ class Company
         );
 
         while (($r = $resultColors->fetch_assoc()) != null) {
-            $r['name'] = str_replace($this->name, "", $r['name']);
+            $r['name'] = str_replace($this->name."-", "", $r['name']);
             array_push($result, $r);
         }
 

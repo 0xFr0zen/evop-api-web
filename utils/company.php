@@ -398,7 +398,7 @@ class Company
         $dbconn = new MyCompanyDBConnector();
         if($name === ""){
             $res = $dbconn->query(
-                Queries::get('products','get-groups'),
+                Queries::get('company','product-groups'),
                 $this->name
             );
             while(($row = $res->fetch_assoc()) != null){

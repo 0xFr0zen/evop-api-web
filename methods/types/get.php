@@ -93,7 +93,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                                 $this->result = array("result" => array("products" => $products));
                             }else {
                                 $products = $this->company->getProducts(intval($this->value));
-                                $this->result = array("result" => array("products" => $products));
+                                $this->result = array("result" => array("products-from-group" => $products));
                             }
                             break;
                         default:

@@ -31,7 +31,9 @@ class Tester {
         array_walk(
             $this->testlinks,
             function($item, $index) { 
-                $results[$item] = $this->post_request($item);
+                // $res = $this->post_request($item);
+                $results[$item] = "testing...";
+
             }
         );
         var_dump($results);

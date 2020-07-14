@@ -11,7 +11,7 @@ class Tester {
 
     private function post_request($url, array $params = array()) {
         $query_content = http_build_query($params);
-        $fp = fopen($url, 'r', FALSE, // do not use_include_path
+        $fp = fopen(Tester::$BASE_URL.$url, 'r', FALSE, // do not use_include_path
             stream_context_create([
             'http' => [
             'header'  => [ // header array does not need '\r\n'
@@ -34,12 +34,14 @@ class Tester {
     }
 
     public function run(){
+        $results = array();
         array_walk(
             $this->testlinks,
             function($item, $index) { 
-                var_dump($this->post_request(Tester::$BASE_URL.$item, array()));
+                $results[$item] = $this->post_request($item);
             }
         );
+        var_dump($results);
     }
 
 }

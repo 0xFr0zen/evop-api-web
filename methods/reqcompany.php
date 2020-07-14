@@ -14,7 +14,7 @@ class ReqCompany {
     protected array $values;
     private string $comp;
     public bool $exists;
-    public mixed $result;
+    public $result;
     public function __construct(){
         $this->mode = $_REQUEST['mode'];
         $this->details = $_REQUEST['details'];

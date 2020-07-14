@@ -1,7 +1,7 @@
 <?php
 class Tester {
 
-    private static string $BASE_URL = "https://api.ev-op.de";
+    private static string $BASE_URL = "http://api.ev-op.de";
     private array $testlinks;
 
     public function __construct(){

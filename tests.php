@@ -21,18 +21,14 @@ class Tester {
 
             // Receive server response ...
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        } catch (Exception $e) {
-            var_dump($e);
-        }
-        try {
             $result = curl_exec($ch);
+            if ($result === false) {
+                throw new Exception(curl_error($ch), curl_errno($ch));
+            }
         } catch (Exception $e) {
-            echo "??";
             var_dump($e);
         }
-        if ($result === false) {
-            throw new Exception(curl_error($ch), curl_errno($ch));
-        }
+        
 
         curl_close($ch);
         return $result;

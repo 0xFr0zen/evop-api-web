@@ -1,5 +1,4 @@
 <?php
-set_time_limit(5);
 class Tester {
 
     private static string $BASE_URL = "https://api.ev-op.de";

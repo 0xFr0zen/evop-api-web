@@ -6,8 +6,8 @@ RewriteRule ^qr-code\/(.*)(?:\/)?$ utils/qr-code.php?data=$1
 
 
 # analytics
-RewriteRule ^analytics\/([a-zA-Z0-9-_\s]+)(?:\/)?$ analytics.php?interest=$1&query=all
-RewriteRule ^analytics\/([a-zA-Z0-9-_\s]+)\:([a-zA-Z0-9-_\s]+)(?:\/)?$ analytics.php?interest=$1&query=$2
+RewriteRule ^analytics\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ analytics.php?interest=$1&query=all
+RewriteRule ^analytics\/([a-zA-Z0-9-À-ž-_\-\s]+)\:([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ analytics.php?interest=$1&query=$2
 
 # mod/admin
 RewriteRule ^mod\/requests\/(.*)\/(.*)(?:\/)?$ moderator.php?modrequests&did=$1&sid=$2
@@ -18,8 +18,8 @@ RewriteRule ^mod\/login\/(.*)\/(.*)(?:\/)?$ moderator.php?login&sid=$1&did=$2
 
 # images
 RewriteRule ^image\/logo(?:\/)?$ res/images/logo.png
-RewriteRule ^image\/pg\/([a-zA-Z0-9-_\s]+)(?:\/)?$ res/images/product-groups/$1.svg
-RewriteRule ^image\/company\-logo\/([a-zA-Z0-9-_\s]+)(?:\/)?$ res/company-images/$1.png
+RewriteRule ^image\/pg\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ res/images/product-groups/$1.svg
+RewriteRule ^image\/company\-logo\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ res/company-images/$1.png
 RewriteRule ^image\/devices(?:\/all)?(?:\/)?$ res/images/all-devices.png
 RewriteRule ^image\/devices\/ios(?:\/)?$ res/images/ios-device.png
 RewriteRule ^image\/devices\/android(?:\/)?$ res/images/ios-device.png
@@ -29,8 +29,8 @@ RewriteRule ^image\/devices\/tablet(?:\/)?$ res/images/tablet-device.png
 # company
 RewriteRule ^companies(?:\/)?$ index.php?companies
 
-RewriteRule ^company\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=information
-RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)(?:\/)?$ index.php?company=$1&mode=$2&details=minimum
-RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3
-RewriteRule ^company\/([a-zA-Z0-9-_\s]+)\/(\w+)\/([a-zA-Z0-9-_\s]+)\/(.*)(?:\/)?$ index.php?company=$1&mode=$2&details=$3&values=$4
-RewriteRule ^company-resolver\/([a-zA-Z0-9-_\s]+)(?:\/)?$ index.php?resolver&name=$1
+RewriteRule ^company\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ index.php?company=$1&mode=information
+RewriteRule ^company\/([a-zA-Z0-9-À-ž-_\-\s]+)\/(\w+)(?:\/)?$ index.php?company=$1&mode=$2&details=minimum
+RewriteRule ^company\/([a-zA-Z0-9-À-ž-_\-\s]+)\/(\w+)\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3
+RewriteRule ^company\/([a-zA-Z0-9-À-ž-_\-\s]+)\/(\w+)\/([a-zA-Z0-9-À-ž-_\-\s]+)\/(.*)(?:\/)?$ index.php?company=$1&mode=$2&details=$3&values=$4
+RewriteRule ^company-resolver\/([a-zA-Z0-9-À-ž-_\-\s]+)(?:\/)?$ index.php?resolver&name=$1

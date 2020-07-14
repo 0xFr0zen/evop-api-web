@@ -2,7 +2,7 @@
 
 class Tester {
 
-    private string $BASE_URL = "https://api.ev-op.de";
+    private static string $BASE_URL = "https://api.ev-op.de";
     private array $testlinks;
 
     public function __construct(){
@@ -34,7 +34,7 @@ class Tester {
 
     public function run(){
         foreach ($this->testlinks as $key => $value) {
-            print($value);
+            var_dump(post_request(Tester::$BASE_URL.$value));
         }
     }
 

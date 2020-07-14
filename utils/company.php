@@ -29,9 +29,9 @@ class Company
     /**
      * Check if the company exists on the database
      * 
-     * @return boolean
+     * @return bool
      */
-    public function exists():boolean
+    public function exists():bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -67,9 +67,9 @@ class Company
     /**
      * Adds a table for reservations on the database
      * 
-     * @return boolean
+     * @return bool
      */
-    public function addTable(string $name):boolean
+    public function addTable(string $name):bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -84,9 +84,9 @@ class Company
     /**
      * Updates a table name on the database
      * 
-     * @return boolean
+     * @return bool
      */
-    public function updateTable(string $oldname, string $newname):boolean
+    public function updateTable(string $oldname, string $newname):bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -103,9 +103,9 @@ class Company
     /**
      * Removes a table name on the database
      * 
-     * @return boolean
+     * @return bool
      */
-    public function removeTable(string $name):boolean
+    public function removeTable(string $name):bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -120,9 +120,9 @@ class Company
     /**
      * Checks if the company is activated
      * 
-     * @return boolean
+     * @return bool
      */
-    public function isActive():boolean
+    public function isActive():bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -136,9 +136,9 @@ class Company
     /**
      * Deactivates the company
      * 
-     * @return boolean
+     * @return bool
      */
-    public function deactivate():boolean
+    public function deactivate():bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -157,9 +157,9 @@ class Company
     /**
      * Activates the company
      * 
-     * @return boolean
+     * @return bool
      */
-    public function activate():boolean
+    public function activate():bool
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -438,9 +438,9 @@ class Company
      * @param string $group
      * @param string|null $subgroup
      * 
-     * @return boolean
+     * @return bool
      */
-    public function addProduct(string $name, string $description = null, $price, string $group, string $subgroup = null):boolean
+    public function addProduct(string $name, string $description = null, $price, string $group, string $subgroup = null):bool
     {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
@@ -495,9 +495,9 @@ class Company
      * @param string $name
      * @param string|null $icon
      * 
-     * @return boolean
+     * @return bool
      */
-    public function addProductGroup(string $name, string $icon = null):boolean
+    public function addProductGroup(string $name, string $icon = null):bool
     {
         $result = false;
         
@@ -516,9 +516,9 @@ class Company
      * Adds product subgroup.
      * @param string $name subgroup name
      * 
-     * @return boolean
+     * @return bool
      */
-    public function addProductSubgroup(string $name):boolean
+    public function addProductSubgroup(string $name):bool
     {
         $result = false;
         
@@ -688,9 +688,9 @@ class ProductGroup {
 
     /**
      * Checks if the product-group exists or not
-     * @return boolean
+     * @return bool
      */
-    public function exists():boolean
+    public function exists():bool
     {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
@@ -701,9 +701,9 @@ class ProductGroup {
 
     /**
      * Creates the product-group
-     * @return boolean
+     * @return bool
      */
-    public function create():boolean
+    public function create():bool
     {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
@@ -768,7 +768,7 @@ class ProductGroup {
     //     return $result;
     // }
 
-    // public function addSubgroup(string $name):boolean 
+    // public function addSubgroup(string $name):bool 
     // {
     //     $result = false;
     //     $dbconn = new MyCompanyDBConnector();

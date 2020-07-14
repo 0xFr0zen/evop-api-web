@@ -30,11 +30,11 @@ class Tester {
             echo "??";
             var_dump($e);
         }
-        curl_close($ch);
         if ($result === false) {
             throw new Exception(curl_error($ch), curl_errno($ch));
         }
 
+        curl_close($ch);
         return $result;
 
     }

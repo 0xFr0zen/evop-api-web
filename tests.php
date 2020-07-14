@@ -34,7 +34,7 @@ class Tester {
 
     public function run(){
         foreach ($this->testlinks as $key => $value) {
-            var_dump(post_request(Tester::$BASE_URL.$value));
+            var_dump($this->post_request(Tester::$BASE_URL.$value));
         }
     }
 

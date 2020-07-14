@@ -34,7 +34,10 @@ class Tester {
             $this->testlinks,
             function($item, $index) {
                 // $res = $this->post_request($item);
-                array_push($results, array($item => "testing..."));
+                array_push(
+                    $results,
+                    array($item => "testing...")
+                );
             }
         );
         return $results;

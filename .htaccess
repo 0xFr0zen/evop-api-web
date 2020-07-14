@@ -3,7 +3,7 @@ Header set Access-Control-Allow-Methods "POST, GET, DELETE, PUT"
 RewriteEngine On
 
 RewriteRule ^qr-code\/(.*)(?:\/)?$ utils/qr-code.php?data=$1
-RewriteRule ^tests$ tests.php
+RewriteRule ^run-tests$ tests.php
 
 
 # analytics

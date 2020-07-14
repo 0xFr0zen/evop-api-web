@@ -35,9 +35,10 @@ class Tester {
             function($item, $index) {
                 echo $item;
                 // $res = $this->post_request($item);
+                $r = array($item => "testing...");
                 array_push(
                     $results,
-                    array($item => "testing...")
+                    $r
                 );
             }
         );

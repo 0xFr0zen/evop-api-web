@@ -1,5 +1,7 @@
 <?php
 set_time_limit(2);
+header("Content-Type: application/javascript");
+
 class Tester {
 
     private static string $BASE_URL = "http://api.ev-op.de";
@@ -32,15 +34,14 @@ class Tester {
             $this->testlinks,
             function($item, $index) { 
                 // $res = $this->post_request($item);
-                $results[$item] = "testing...";
-
+                array_push($results, array($item, "testing..."));
             }
         );
-        var_dump($results);
+        return $results;
     }
 
 }
 
 
 $tester = new Tester();
-$tester->run();
+print(json_encode($tester->run(), JSON_NUMERIC_CHECK));

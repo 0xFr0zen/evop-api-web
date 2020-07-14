@@ -1,10 +1,8 @@
 <?php
-set_time_limit(2);
-header("Content-Type: application/javascript");
 
 class Tester {
 
-    private static string $BASE_URL = "http://api.ev-op.de";
+    private static string $BASE_URL = "https://api.ev-op.de";
     private array $testlinks;
 
     public function __construct(){
@@ -29,18 +27,16 @@ class Tester {
     }
 
     public function run(){
-        $results = array();
-        array_walk(
-            $this->testlinks,
-            function($item, $index) {
-                // $res = $this->post_request($item);
-                $results[$item] = "testing...";
-            }
+        return array_map(
+            function($item) { 
+                return $this->post_request(Tester::$BASE_URL.$item, array());
+            },
+            $this->testlinks
         );
-        return $results;
     }
 
 }
+
 
 
 $tester = new Tester();

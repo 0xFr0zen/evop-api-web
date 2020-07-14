@@ -9,25 +9,27 @@ class Tester {
     }
 
     private function post_request($url, array $params = array()) {
-        // $ch = curl_init();
-        // if ($ch === false) {
-        //     throw new Exception('failed to initialize');
-        // }
-        echo Tester::$BASE_URL.$url."\n";
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
-        // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
+        $ch = curl_init();
+        if ($ch === false) {
+            throw new Exception('failed to initialize');
+        }
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
 
-        // // Receive server response ...
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        try {
+            $result = curl_exec($ch);
+        } catch (Exception $e) {
+            var_dump($e);
+        }
+        curl_close ($ch);
+        if ($result === false) {
+            throw new Exception(curl_error($ch), curl_errno($ch));
+        }
 
-        // $result = curl_exec($ch);
-        // curl_close ($ch);
-        // if ($result === false) {
-        //     throw new Exception(curl_error($ch), curl_errno($ch));
-        // }
-
-        // return $result;
+        return $result;
 
     }
 

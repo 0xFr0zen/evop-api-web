@@ -18,7 +18,7 @@ class ReqCompany {
     public function __construct(){
         $this->mode = $_REQUEST['mode'];
         $this->details = $_REQUEST['details'];
-        $this->values = $this->valuesParser($_REQUEST['values']);
+        $this->values = $this->valuesParser($_REQUEST['values'] != null ? $_REQUEST['values'] : "");
         $this->comp = $_REQUEST['company'];
         $reqs = array_keys($_REQUEST);
         $found = false;
@@ -65,6 +65,7 @@ class ReqCompany {
     }
     public function valuesParser(string $data):array {
         $vals = array();
+        $result = array();
         if( strpos( $data, ":" ) !== false && strpos( $data, "," ) !== false) {
             $values = explode(",", $data);
             foreach ($values as $value) {

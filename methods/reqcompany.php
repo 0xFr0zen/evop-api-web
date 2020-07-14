@@ -13,7 +13,7 @@ class ReqCompany {
     protected string $details;
     protected array $values;
     private string $comp;
-    public boolean $exists;
+    public bool $exists;
     public mixed $result;
     public function __construct(){
         $this->mode = $_REQUEST['mode'];

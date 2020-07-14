@@ -11,6 +11,7 @@ class ReqCompany {
     protected Company $company;
     protected string $mode;
     protected string $details;
+    protected array $values;
     private string $comp;
     public boolean $exists;
     public mixed $result;

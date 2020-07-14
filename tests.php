@@ -18,19 +18,19 @@ class Tester {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
+
+            // Receive server response ...
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         } catch (Exception $e) {
             var_dump($e);
         }
-
-        // Receive server response ...
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         try {
             $result = curl_exec($ch);
         } catch (Exception $e) {
             echo "??";
             var_dump($e);
         }
-        curl_close ($ch);
+        curl_close($ch);
         if ($result === false) {
             throw new Exception(curl_error($ch), curl_errno($ch));
         }

@@ -26,7 +26,7 @@ class Tester {
                 throw new Exception(curl_error($ch), curl_errno($ch));
             }
         } catch (Exception $e) {
-            var_dump($e);
+            $result = array("error" => $e->getMessage());
         }
         
 

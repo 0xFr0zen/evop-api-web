@@ -33,7 +33,7 @@ class Tester {
     }
 
     public function run(){
-        foreach ($testlinks as $key => $value) {
+        foreach ($this->testlinks as $key => $value) {
             print($value);
         }
     }

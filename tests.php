@@ -8,7 +8,7 @@ class Tester {
         $this->testlinks = json_decode(file_get_contents(__DIR__.'/tests/links.json'), true);
     }
 
-    private function post_request($url, array $params = array()) {
+    private function hr($url, array $params = array()) {
         $ch = curl_init();
         if ($ch === false) {
             throw new Exception('failed to initialize');
@@ -42,7 +42,7 @@ class Tester {
     public function run(){
         return array_map(
             function($item) {
-                return array($item => $this->post_request($item));
+                return array($item => $this->hr($item));
             },
             $this->testlinks
         );

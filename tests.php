@@ -29,13 +29,17 @@ class Tester {
 
         $result = stream_get_contents($fp); // no maxlength/offset
         fclose($fp);
+        
         return $result;
     }
 
     public function run(){
-        foreach ($this->testlinks as $key => $value) {
-            var_dump($this->post_request(Tester::$BASE_URL.$value));
-        }
+        array_walk(
+            $this->testlinks,
+            function($item, $index) { 
+                var_dump($this->post_request(Tester::$BASE_URL.$item, array()));
+            }
+        );
     }
 
 }

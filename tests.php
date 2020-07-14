@@ -6,7 +6,7 @@ class Tester {
     private array $testlinks;
 
     public function __construct(){
-        $this->testlinks = json_decode(file_get_contents(__DIR__.PATH_SEPARATOR.'tests'.PATH_SEPARATOR.'links.json'), true);
+        $this->testlinks = json_decode(file_get_contents(__DIR__.'/tests/links.json'), true);
     }
 
     private function post_request($url, array $params = array()) {

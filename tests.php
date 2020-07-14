@@ -1,7 +1,7 @@
 <?php
 class Tester {
 
-    private static string $BASE_URL = "http://api.ev-op.de";
+    private static string $BASE_URL = "http://localhost";
     private array $testlinks;
 
     public function __construct(){
@@ -13,9 +13,7 @@ class Tester {
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
-        curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
 
         // Receive server response ...
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

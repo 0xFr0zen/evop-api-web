@@ -551,7 +551,7 @@ class Company
             );
         }else if(is_string($groupid)){
             $res = $dbconn->query(Queries::get('company','products-from-group-like'),
-                $groupid,
+                "%".$groupid."%",
                 $this->name
             );
         }

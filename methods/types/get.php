@@ -91,13 +91,8 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                                 $products = $this->company->getProducts();
                                 $this->result = array("result" => array("all-products" => $products));
                             }else {
-                                if(is_numeric($this->values[0])){ 
-                                    $products = $this->company->getProducts($this->values[0]);
-                                    $this->result = array("result" => array("products-from-group" => $products));
-                                }else {
-                                    $this->result = array("result" => array("error" => Company::$SPECIFY_A_VALUE_ERROR));
-                                }
-                                
+                                $products = $this->company->getProducts($this->values[0]);
+                                $this->result = array("result" => array("products-from-group" => $products));
                             }
                             break;
                         default:

@@ -13,7 +13,7 @@ class Tester {
         // if ($ch === false) {
         //     throw new Exception('failed to initialize');
         // }
-        echo Tester::$BASE_URL.$url;
+        echo Tester::$BASE_URL.$url."\n";
         // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         // curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
         // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 2500);

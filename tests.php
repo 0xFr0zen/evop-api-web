@@ -33,6 +33,7 @@ class Tester {
         array_walk(
             $this->testlinks,
             function($item, $index) {
+                echo $item;
                 // $res = $this->post_request($item);
                 array_push(
                     $results,

@@ -29,7 +29,7 @@ class Tester {
     public function run(){
         return array_map(
             function($item) { 
-                return $this->post_request(Tester::$BASE_URL.$item, array());
+                return $this->post_request($item, array());
             },
             $this->testlinks
         );

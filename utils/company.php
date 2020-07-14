@@ -536,16 +536,21 @@ class Company
      * 
      * @return array
      */
-    public function getProducts(int $groupid = -1):array
+    public function getProducts($groupid = -1):array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
-        if($groupid == -1){
+        if(is_numeric($groupid) && $groupid == -1){
             $res = $dbconn->query(Queries::get('company','products'),
                 $this->name
             );
-        }else {
+        }else if(is_numeric($groupid) && $groupid != -1){
             $res = $dbconn->query(Queries::get('company','products-from-group'),
+                $groupid,
+                $this->name
+            );
+        }else if(is_string($groupid)){
+            $res = $dbconn->query(Queries::get('company','products-from-group-like'),
                 $groupid,
                 $this->name
             );

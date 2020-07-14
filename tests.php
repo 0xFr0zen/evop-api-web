@@ -30,7 +30,7 @@ class Tester {
 
     public function run(){
         return array_map(
-            function($item) { 
+            function($item) {
                 return $this->post_request($item);
             },
             $this->testlinks

@@ -17,7 +17,7 @@ class ReqCompany {
     public $result;
     public function __construct(){
         $this->mode = $_REQUEST['mode'];
-        $this->details = $_REQUEST['details'];
+        $this->details = $_REQUEST['details'] != null ? $_REQUEST['details'] : "";
         $this->values = $this->valuesParser($_REQUEST['values'] != null ? $_REQUEST['values'] : "");
         $this->comp = $_REQUEST['company'];
         $reqs = array_keys($_REQUEST);

@@ -1,16 +1,23 @@
 <?php
 include_once __DIR__.'/../utils/mydb.php';
 include_once __DIR__.'/../utils/company.php';
+
+/**
+ * [Description ReqCompany]
+ * Requirements of the company
+ */
 class ReqCompany {
-    protected $company;
-    protected $mode;
-    protected $details;
-    private $comp;
-    public $exists;
-    public $result;
+
+    protected Company $company;
+    protected string $mode;
+    protected string $details;
+    private string $comp;
+    public boolean $exists;
+    public mixed $result;
     public function __construct(){
         $this->mode = $_REQUEST['mode'];
         $this->details = $_REQUEST['details'];
+        $this->values = valuesParser($_REQUEST['values']);
         $this->comp = $_REQUEST['company'];
         $reqs = array_keys($_REQUEST);
         $found = false;
@@ -54,5 +61,26 @@ class ReqCompany {
         
         
         
+    }
+    public function valuesParser(string $data):array {
+        $vals = array();
+        if( strpos( $data, ":" ) !== false && strpos( $data, "," ) !== false) {
+            $values = explode(",", $data);
+            foreach ($values as $value) {
+                $splitted = explode(":", $value);
+                $vals[$splitted[0]] = $splitted[1];
+            }
+            $result = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
+        }else {
+            if(is_numeric($data)){
+                $result = array(intval($data));
+            }else if(strpos( $data, "," ) !== false){
+                $result = $values = explode(",", $data);
+            }else {
+                $result = array($data);
+            }
+        }
+        
+        return $result;
     }
 }

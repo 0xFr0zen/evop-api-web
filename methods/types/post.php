@@ -13,41 +13,30 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                 }
                 break;
             case 'add-product':
-                if (!$this->exists) {
+                if ($this->exists) {
                     if($this->details !== null && count($this->details) > 0){
-                        $values = explode(",", $_REQUEST['values']);
-                        $vals = array();
-                        foreach ($values as $value) {
-                            $splitted = explode(":", $value);
-                            $vals[$splitted[0]] = $splitted[1];
+                        if(!isset($this->values) || empty($this->values)){
+                            $this->result = array("result" => array("error" => Product::$PRODUCT_VALUES_MISSING));
+                        }else {
+                            $created = $this->company->addProduct($this->details, $this->values);
+                            $this->result = array("result" => array("created" => $created));
+
                         }
-                        $val = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
-                        
-                        $created = $this->company->addProduct($this->details, $val);
-                        $this->result = array("result" => array("created" => $created));
                     }else {
-                        $error = array("error" => "You need to put a productname.");
+                        $this->result = array("result" => array("error" => Product::$PRODUCTNAME_MISSING));
                     }
-                    
                 } else {
-                    $this->result = array("error" => Company::$COMPANY_ALREADY_EXISTS);
+                    $this->result = array("error" => Company::$COMPANY_NONEXISTING);
                 }
                 break;
             case 'configuration':
                 if ($this->exists) {
-                    if (!isset($_REQUEST['values'])) {
+                    if (!isset($this->values) || empty($this->values)) {
                         $this->result = array("error" => "you need to put values");
                     } else {
-                        $values = explode(",", $_REQUEST['values']);
-                        $vals = array();
-                        foreach ($values as $value) {
-                            $splitted = explode(":", $value);
-                            $vals[$splitted[0]] = $splitted[1];
-                        }
-                        $val = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
-                        $valName = $val['name'];
-                        unset($val['name']);
-                        $valObj = array("name" => $valName, "values" => $val);
+                        $valName = $this->values['name'];
+                        unset($this->values['name']);
+                        $valObj = array("name" => $valName, "values" => $this->values);
                         $added = $this->company->addConfiguration($this->details, $valObj['name'], $valObj['values']);
                         if ($added) {
                             $this->result = array("result" => array("added" => $added));
@@ -65,7 +54,6 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     if (empty($this->details)) {
                         $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
                     } else {
-
                         $table = $this->company->addTable($this->details);
                         $this->result = array("result" => array("added" => $table));
                     }
@@ -78,7 +66,6 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     if (empty($this->details)) {
                         $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
                     } else {
-
                         $table = $this->company->removeTable($this->details);
                         $this->result = array("result" => array("removed" => $table));
                     }
@@ -91,11 +78,11 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     if (empty($this->details)) {
                         $this->result = array("error" => Company::$COMPANY_TABLENAME_MISSING);
                     } else {
-                        if(!isset($_REQUEST['values'])){
+                        if(!isset($this->values) || empty($this->values)){
                             $this->result = array("error" => Company::$COMPANY_NEW_TABLENAME_MISSING);
                         }else {
-                            $table = $this->company->updateTable($this->details, $_REQUEST['values']);
-                            $this->result = array("result" => array("removed" => $table));
+                            $table = $this->company->updateTable($this->details, $this->values[0]);
+                            $this->result = array("result" => array("updated" => $table));
                         }
                     }
                 } else {

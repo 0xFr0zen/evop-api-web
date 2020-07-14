@@ -13,6 +13,7 @@ class Company
     public static $COMPANY_EXISTING = "Company exists!";
     public static $COMPANY_ALREADY_EXISTS = "Company already exists!";
     public static $REMOVE_ERROR = "Couldn't remove company!";
+    public static $UPDATE_ERROR = "Couldn't update company settings!";
     public static $CONFIGURATION_ALREADY_EXISTS = "Ressource already exists!";
     public static $SPECIFY_A_VALUE_ERROR = "Please specify a value first!";
     public static $SPECIFY_A_TYPE_ERROR = "Please specify a type first!";
@@ -25,7 +26,12 @@ class Company
     {
         $this->name = $name;
     }
-    public function exists()
+    /**
+     * Check if the company exists on the database
+     * 
+     * @return boolean
+     */
+    public function exists():boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -35,7 +41,14 @@ class Company
         );
         return $res;
     }
-    public function create(int $tables = 1)
+    /**
+     * Creates the company on the database
+     * 
+     * The return value represents if the action is either done or has error.
+     * 
+     * @return array
+     */
+    public function create(int $tables = 1):array
     {
         $res = array();
         $dbconn = new MyCompanyDBConnector();
@@ -50,7 +63,13 @@ class Company
         }
         return $res;
     }
-    public function addTable(string $name)
+
+    /**
+     * Adds a table for reservations on the database
+     * 
+     * @return boolean
+     */
+    public function addTable(string $name):boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -61,7 +80,13 @@ class Company
         );
         return $res;
     }
-    public function updateTable(string $oldname, string $newname)
+
+    /**
+     * Updates a table name on the database
+     * 
+     * @return boolean
+     */
+    public function updateTable(string $oldname, string $newname):boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -74,7 +99,13 @@ class Company
 
         return $res;
     }
-    public function removeTable(string $name)
+
+    /**
+     * Removes a table name on the database
+     * 
+     * @return boolean
+     */
+    public function removeTable(string $name):boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -85,7 +116,13 @@ class Company
         );
         return $res;
     }
-    public function isActive()
+
+    /**
+     * Checks if the company is activated
+     * 
+     * @return boolean
+     */
+    public function isActive():boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
@@ -95,37 +132,57 @@ class Company
         );
         return $res;
     }
-    public function deactivate()
+
+    /**
+     * Deactivates the company
+     * 
+     * @return boolean
+     */
+    public function deactivate():boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
-        $removed = $dbconn->update(
+        $updated = $dbconn->update(
             Queries::get('company','deactivate'),
             $this->name
         );
 
-        $res = array("status" => $removed);
-        if (!$removed) {
-            $res['message'] = Company::$REMOVE_ERROR;
+        $res = array("status" => $updated);
+        if (!$updated) {
+            $res['message'] = Company::$UPDATE_ERROR;
         }
         return $res;
     }
-    public function activate()
+
+    /**
+     * Activates the company
+     * 
+     * @return boolean
+     */
+    public function activate():boolean
     {
         $res = false;
         $dbconn = new MyCompanyDBConnector();
-        $removed = $dbconn->update(
+        $updated = $dbconn->update(
             Queries::get('company','activate'),
             $this->name
         );
 
-        $res = array("status" => $removed);
-        if (!$removed) {
-            $res['message'] = Company::$REMOVE_ERROR;
+        $res = array("status" => $updated);
+        if (!$updated) {
+            $res['message'] = Company::$UPDATE_ERROR;
         }
         return $res;
     }
-    public function information($detailed = false)
+
+    /**
+     * Reads out information from the database
+     * 
+     * @param bool $detailed
+     * 
+     * @return array
+     */
+    public function information($detailed = false):array
     {
         $res = array();
         $dbconn = new MyCompanyDBConnector();
@@ -150,7 +207,12 @@ class Company
         
         return $res;
     }
-    public function getUsersCount()
+
+    /**
+     * Returns the amount of users connected to the company
+     * @return array
+     */
+    public function getUsersCount():array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -159,7 +221,13 @@ class Company
         )->fetch_assoc();
         return $result;
     }
-    public function getProductsCount()
+
+
+    /**
+     * Returns the amount of products
+     * @return array
+     */
+    public function getProductsCount():array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -169,7 +237,12 @@ class Company
         )->fetch_assoc();
         return $result;
     }
-    private function getColors()
+
+    /**
+     * Returns the colors from the company-configuration
+     * @return array
+     */
+    private function getColors():array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -185,7 +258,12 @@ class Company
 
         return $result;
     }
-    private function getStrings()
+
+    /**
+     * Returns the strings from the company-configuration
+     * @return array
+     */
+    private function getStrings():array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -200,7 +278,12 @@ class Company
 
         return $result;
     }
-    private function getTextStyles()
+
+    /**
+     * Returns the textstyles from the company-configuration
+     * @return array
+     */
+    private function getTextStyles():array
     {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
@@ -217,7 +300,14 @@ class Company
 
         return $result;
     }
-    public function getConfiguration(...$types)
+
+    /**
+     * Returns the company-configurations
+     * @param mixed ...$types
+     * 
+     * @return array
+     */
+    public function getConfiguration(...$types):array
     {
         $result = array();
         if (sizeof($types) > 0) {
@@ -244,7 +334,16 @@ class Company
 
         return $result;
     }
-    public function addConfiguration($type, $name, $value)
+
+    /**
+     * Adds a company-configuration
+     * @param mixed $type 'color','string','textstyle'
+     * @param mixed $name the name of the resource
+     * @param mixed $value values for the resource
+     * 
+     * @return array
+     */
+    public function addConfiguration($type, $name, $value):array
     {
         $result = array();
         switch ($type) {
@@ -266,7 +365,18 @@ class Company
         }
         return $result;
     }
-    public function updateConfiguration($type, $oldname, $name, $value)
+
+    /**
+     * Updates a company-configuration
+     * 
+     * @param mixed $type 'color','string','textstyle'
+     * @param mixed $oldname the old name of the resource
+     * @param mixed $name the name of the resource
+     * @param mixed $value values for the resource
+     * 
+     * @return array
+     */
+    public function updateConfiguration($type, $oldname, $name, $value):array
     {
         $result = array();
         switch ($type) {
@@ -290,7 +400,14 @@ class Company
         return $result;
     }
 
-    public function deleteConfiguration($type, $name)
+    /**
+     * Removes a company-configuration
+     * @param mixed $type 'color','string','textstyle'
+     * @param mixed $name the name of the resource
+     * 
+     * @return array
+     */
+    public function deleteConfiguration($type, $name):array
     {
         $result = array();
         switch ($type) {
@@ -312,7 +429,19 @@ class Company
         }
         return $result;
     }
-    public function addProduct(string $name, string $description = null, $price, string $group, string $subgroup = null){
+
+    /**
+     * Adds a product  to the company.
+     * @param string $name
+     * @param string|null $description
+     * @param mixed $price
+     * @param string $group
+     * @param string|null $subgroup
+     * 
+     * @return boolean
+     */
+    public function addProduct(string $name, string $description = null, $price, string $group, string $subgroup = null):boolean
+    {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->insert(
@@ -322,7 +451,6 @@ class Company
             doubleval($price),
             $this->name
         );
-
         if($result){
             $result &= $this->addProductGroup($group);
             if($result){
@@ -360,7 +488,17 @@ class Company
         }
         return $result;
     }
-    public function addProductGroup(string $name, string $icon = null){
+
+
+    /**
+     * Adds a product group to the company
+     * @param string $name
+     * @param string|null $icon
+     * 
+     * @return boolean
+     */
+    public function addProductGroup(string $name, string $icon = null):boolean
+    {
         $result = false;
         
         $pg = new ProductGroup($this->name, $name);
@@ -373,7 +511,15 @@ class Company
         }
         return $result;
     }
-    public function addProductSubgroup(string $name){
+
+    /**
+     * Adds product subgroup.
+     * @param string $name subgroup name
+     * 
+     * @return boolean
+     */
+    public function addProductSubgroup(string $name):boolean
+    {
         $result = false;
         
         $dbconn = new MyCompanyDBConnector();
@@ -383,7 +529,15 @@ class Company
         );
         return $result;
     }
-    public function getProducts(int $groupid = -1){
+
+    /**
+     * Returns all products (from the given group)
+     * @param int $groupid 
+     * 
+     * @return array
+     */
+    public function getProducts(int $groupid = -1):array
+    {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         if($groupid == -1){
@@ -403,7 +557,14 @@ class Company
         return $result;
     }
     
-    public function getProductGroups(string $name = ""){
+    /**
+     * Returns product-groups (or if given group-name, likewise product-groups)
+     * @param string $name 
+     * 
+     * @return array
+     */
+    public function getProductGroups(string $name = ""):array
+    {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         if($name === ""){
@@ -431,7 +592,16 @@ class Company
     //     $productgroup = new ProductGroup($groupname);
     //     return $productgroup->getSubgroups();
     // }
-    public static function find(string $name){
+
+
+    /**
+     * Returns likewise-companies
+     * @param string $name
+     * 
+     * @return array
+     */
+    public static function find(string $name):array
+    {
         $result = array();
         $dbconn = new MyCompanyDBConnector();
         $preparedname = "%".$name."%";
@@ -445,14 +615,25 @@ class Company
 
     }
 }
+/**
+ * [Description Product]
+ * Product class with static error messages
+ * 
+ */
 class Product {
     public static $PRODUCT_EXISTS_ALREADY = "This product exists already.";
+    public static $PRODUCT_VALUES_MISSING = "Please put in some product values.";
+    public static $PRODUCTNAME_MISSING = "Please put in a product name.";
     public static $PRODUCTGROUP_EXISTS_ALREADY = "This product-group exists already.";
     public static $PRODUCTSUBGROUP_EXISTS_ALREADY = "This product-subgroup exists already.";
     public static $COULDNT_CONNECT_GROUP_TO_PRODUCT = "Couldn't connect the product-group to the product.";
     public static $COULDNT_CONNECT_SUBGROUP_TO_PRODUCT = "Couldn't connect the product-subgroup to the product.";
 }
 
+/**
+ * [Description ProductGroup]
+ * Functions for product groups
+ */
 class ProductGroup {
     private $name;
     private $products = array();
@@ -460,6 +641,11 @@ class ProductGroup {
     private $companyname;
     private $icon;    
 
+    /**
+     * Constructor
+     * @param string $companyname
+     * @param string $name
+     */
     function __construct(string $companyname, string $name){
         $this->name = $name;
         $this->companyname = $companyname;
@@ -469,30 +655,69 @@ class ProductGroup {
             $this->subgroups = $this->loadSubgroups();
         }
     }
-    public function setIcon(string $name){
+
+    /**
+     * Sets the icon of the group
+     * @param string $name
+     * 
+     * @return void
+     */
+    public function setIcon(string $name):void
+    {
         $this->icon = $name;
     }
     
-    public function getIcon(){
+    /**
+     * Returns the icon-name
+     * @return string
+     */
+    public function getIcon():string
+    {
         return $this->icon;
     }
 
-    public function getProducts(){
+    /**
+     * Returns the products of the group
+     * @return array
+     */
+    public function getProducts():array
+    {
         return $this->products;
     }
-    public function exists(){
+
+
+    /**
+     * Checks if the product-group exists or not
+     * @return boolean
+     */
+    public function exists():boolean
+    {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->check(Queries::get('company', 'has-productgroup'));
         return $result;
     }
-    public function create(){
+
+
+    /**
+     * Creates the product-group
+     * @return boolean
+     */
+    public function create():boolean
+    {
         $result = false;
         $dbconn = new MyCompanyDBConnector();
         $result = $dbconn->insert(Queries::get('company', 'add-product-group'));
         return $result;
     }
-    private function loadProducts(){
+
+    
+    /**
+     * Loads all products
+     * @return array
+     */
+    private function loadProducts():array
+    {
         $dbconn = new MyCompanyDBConnector();
         $result = array();
         $res = $dbconn->query(
@@ -505,7 +730,14 @@ class ProductGroup {
         }
         return $result;
     }
-    private function loadIcon(){
+
+
+    /**
+     * Loads Icon-name
+     * @return string
+     */
+    private function loadIcon():string
+    {
         $dbconn = new MyCompanyDBConnector();
         $res = $dbconn->query(
             Queries::get('product', 'product-group-icon'),
@@ -515,29 +747,38 @@ class ProductGroup {
         $result = $res;
         return $result;
     }
-    private function loadSubgroups(){
-        $dbconn = new MyCompanyDBConnector();
-        $result = array();
-        $res = $dbconn->query(
-            Queries::get('company', 'get-product-subgroups-from-product-group'),
-            $this->name,
-            $this->companyname
-        );
-        while(($row = $res->fetch_assoc()) != null){
-            array_push($result, $row);
-        }
-        return $result;
-    }
-    public function addSubgroup(){
-        $result = false;
-        $dbconn = new MyCompanyDBConnector();
-        if(!$dbconn->check(Queries::get('company', 'product-has-subgroup'))){
-            $dbconn->insert(Queries::get('company', 'add-product-subgroup'));
-        }
-    }
-    public function getSubgroups(){
-        return $this->subgroups;
-    }
+
+
+    // /**
+    //  * Loads Subgroups
+    //  * @return array
+    //  */
+    // private function loadSubgroups():array
+    // {
+    //     $dbconn = new MyCompanyDBConnector();
+    //     $result = array();
+    //     $res = $dbconn->query(
+    //         Queries::get('company', 'get-product-subgroups-from-product-group'),
+    //         $this->name,
+    //         $this->companyname
+    //     );
+    //     while(($row = $res->fetch_assoc()) != null){
+    //         array_push($result, $row);
+    //     }
+    //     return $result;
+    // }
+
+    // public function addSubgroup(string $name):boolean 
+    // {
+    //     $result = false;
+    //     $dbconn = new MyCompanyDBConnector();
+    //     if(!$dbconn->check(Queries::get('company', 'product-has-subgroup'))){
+    //         $dbconn->insert(Queries::get('company', 'add-product-subgroup'), $this);
+    //     }
+    // }
+    // public function getSubgroups(){
+    //     return $this->subgroups;
+    // }
     
 
 }

@@ -6,21 +6,14 @@ class ReqMethod extends ReqCompany implements ReqInterface {
         switch ($this->mode) {
             case 'configuration':
                 if ($this->exists) {
-                    if (!isset($_REQUEST['values'])) {
+                    if (!isset($this->values) || empty($this->values)) {
                         $this->result = array("error" => "you need to put values");
                     } else {
-                        $values = explode(",", $_REQUEST['values']);
-                        $vals = array();
-                        foreach ($values as $value) {
-                            $splitted = explode(":", $value);
-                            $vals[$splitted[0]] = $splitted[1];
-                        }
-                        $val = json_decode(json_encode($vals, JSON_NUMERIC_CHECK), true);
-                        if (!isset($val['name'])) {
+                        if (!isset($this->values['name'])) {
                             $this->result = array("error" => "you need to specify a resource-name");
                             break;
                         }
-                        $configurationDeleted = $this->company->deleteConfiguration($this->details, $val['name']);
+                        $configurationDeleted = $this->company->deleteConfiguration($this->details, $this->values['name']);
                         $this->result = array("result" => $configurationDeleted);
                     }
                 } else {

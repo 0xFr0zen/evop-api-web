@@ -14,10 +14,6 @@ class Resourcer implements Resource
     public function __construct(string $companyname, string $resourcename)
     {
         $this->companyname = $companyname;
-        $stpos = strpos($this->companyname, $resourcename);
-        if (gettype($stpos) === "boolean" && $stpos == false) {
-            $resourcename = $this->companyname . "-" . $resourcename;
-        }
         $this->resourcename = $this->companyname . "-" . $resourcename;
     }
     public function del(): bool

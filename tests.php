@@ -8,20 +8,14 @@ class Tester {
         $this->testlinks = json_decode(file_get_contents(__DIR__.'/tests/links.json'), true);
     }
 
-    private function hr($url, array $params = array()) {
-        $postdata = http_build_query(
-            $params
-        );
+    private function hr($url) {
         $opts = array('http' =>
             array(
-                'method'  => 'GET',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $postdata
+                'method'  => 'GET'
             )
         );
         $context  = stream_context_create($opts);
         $result = file_get_contents(Tester::$BASE_URL.$url, false, $context);
-
         return json_encode($result, true);
     }
 

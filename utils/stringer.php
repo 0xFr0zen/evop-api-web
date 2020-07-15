@@ -22,7 +22,11 @@ class Stringer extends Resourcer
         if ($dbconn->check("SELECT * FROM `string` WHERE `name` = ?", $this->resourcename)) {
             $result = false;
         } else {
-            $result = $dbconn->insert($sql, $this->companyname."-".$this->resourcename, $value['text']);
+            $result = $dbconn->insert(
+                $sql, 
+                $this->resourcename, 
+                $value['text']
+            );
             if ($result) {
 
                 $sqlConnectStringWithCompany = "INSERT INTO company_has_string(string_id,company_id)
@@ -31,7 +35,7 @@ class Stringer extends Resourcer
                     (SELECT `string`.id FROM `string` WHERE `string`.name = ?),
                     (SELECT company.id FROM company WHERE company.name = ?)
                 )";
-                $result = $dbconn->insert($sqlConnectStringWithCompany, $this->companyname."-".$this->resourcename, $this->companyname);
+                $result = $dbconn->insert($sqlConnectStringWithCompany, $this->resourcename, $this->companyname);
             }
         }
         return $result;
@@ -41,7 +45,10 @@ class Stringer extends Resourcer
     {
         $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM `string` WHERE `name` = ?";
-        return $dbconn->deleteRow($sql, $this->companyname."-".$this->resourcename);
+        return $dbconn->deleteRow(
+            $sql, 
+            $this->resourcename
+        );
     }
 
     public function upd(string $oldname, $value): bool
@@ -52,6 +59,11 @@ class Stringer extends Resourcer
         }
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE `string` SET `name` = ?, `value` = ? WHERE `name` = ?";
-        return $dbconn->update($sql, $this->companyname."-".$this->resourcename, $value['text'], $oldname);
+        return $dbconn->update(
+            $sql, 
+            $this->resourcename, 
+            $value['text'], 
+            $oldname
+        );
     }
 }

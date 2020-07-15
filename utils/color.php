@@ -28,7 +28,14 @@ class Color extends Resourcer
         if ($dbconn->check($sqlCheck, $this->resourcename)) {
             $result = false;
         } else {
-            $result = $dbconn->insert($sql, $this->companyname."-".$this->resourcename, $value['r'], $value['g'], $value['b'], $value['a']);
+            $result = $dbconn->insert(
+                $sql, 
+                $this->resourcename, 
+                $value['r'], 
+                $value['g'], 
+                $value['b'], 
+                $value['a']
+            );
             if ($result) {
                 $sqlConnectColorWithCompany = "INSERT INTO company_has_color(color_id,company_id)
                 VALUES
@@ -53,13 +60,13 @@ class Color extends Resourcer
 
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE color SET `name` = ?, r = ?, g = ?, b = ?, a = ? WHERE `name` = ?";
-        return $dbconn->update($sql, $this->companyname."-".$this->resourcename, $value['r'], $value['g'], $value['b'], $value['a'], $oldname);
+        return $dbconn->update($sql, $this->resourcename, $value['r'], $value['g'], $value['b'], $value['a'], $oldname);
     }
     public function del(): bool
     {
         $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM color WHERE `name` = ?";
-        return $dbconn->deleteRow($sql, $this->companyname."-".$this->resourcename);
+        return $dbconn->deleteRow($sql, $this->resourcename);
     }
 
 }

@@ -28,7 +28,7 @@ class MyCompanyDBConnector extends DBConnector {
         );
     }
 }
-class MyUseryDBConnector extends DBConnector {
+class MyUserDBConnector extends DBConnector {
     
     private $json = null;
     private $myconfig = null;

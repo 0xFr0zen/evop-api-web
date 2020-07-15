@@ -38,10 +38,13 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                         unset($this->values['name']);
                         $valObj = array("name" => $valName, "values" => $this->values);
                         $added = $this->company->addConfiguration($this->details, $valObj['name'], $valObj['values']);
-                        if ($added) {
-                            $this->result = array("result" => array("added" => $added));
-                        } else {
-                            $this->result = array("result" => array("added" => $added, "message" => Company::$CONFIGURATION_ALREADY_EXISTS));
+                        if (isset($added["result"])) {
+                            $this->result = array("result" => array("added" => $added["result"]["added"]));
+
+                        } else if(isset($added["error"])){
+                            $this->result = array("result" => array("error" => $added["error"]));
+                        }else {
+                            $this->result = array("result" => array("error" => $added, "message" => Company::$CONFIGURATION_ALREADY_EXISTS));
 
                         }
                     }

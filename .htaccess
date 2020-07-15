@@ -35,3 +35,6 @@ RewriteRule ^company\/([a-zA-ZÀ-ž0-9-_\-\s]+)\/(\w+)(?:\/)?$ index.php?company
 RewriteRule ^company\/([a-zA-ZÀ-ž0-9-_\-\s]+)\/(\w+)\/([a-zA-ZÀ-ž0-9-_\-\s]+)(?:\/)?$ index.php?company=$1&mode=$2&details=$3
 RewriteRule ^company\/([a-zA-ZÀ-ž0-9-_\-\s]+)\/(\w+)\/([a-zA-ZÀ-ž0-9-_\-\s]+)\/(.*)(?:\/)?$ index.php?company=$1&mode=$2&details=$3&values=$4
 RewriteRule ^company-resolver\/([a-zA-ZÀ-ž0-9-_\-\s]+)(?:\/)?$ index.php?resolver&name=$1
+
+RewriteRule ^user\/([a-zA-ZÀ-ž0-9-_\-\s]+)(?:\/)?$ user.php?uuid=$1&mode=information&details=minimum
+RewriteRule ^user\/([a-zA-ZÀ-ž0-9-_\-\s]+)\/(\w+)\/(\w+)(?:\/)?$ user.php?uuid=$1&mode=$2&details=$3

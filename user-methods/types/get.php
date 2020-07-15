@@ -1,12 +1,11 @@
 <?php
 include_once __DIR__.'/../requirements.php';
-class ReqMethod extends ReqCompany implements ReqInterface {
+class ReqMethod extends ReqUser implements ReqInterface {
     public function execute(){
         switch ($this->mode) {
             case 'lookup':
                 $this->result = array("result" => true);
                 break;
-            
             case 'information':
                 if ($this->exists) {
                     switch ($this->details) {

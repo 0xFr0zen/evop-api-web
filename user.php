@@ -2,8 +2,8 @@
 header("Content-Type: application/javascript");
 
 $rmode = $_SERVER['REQUEST_METHOD'];
-if(file_exists(__DIR__.'/company-methods/types/'.strtolower($rmode).'.php')) {
-    include_once __DIR__.'/company-methods/types/'.strtolower($rmode).'.php';
+if(file_exists(__DIR__.'/user-methods/types/'.strtolower($rmode).'.php')) {
+    include_once __DIR__.'/user-methods/types/'.strtolower($rmode).'.php';
     $reqm = new ReqMethod();
     $reqm->execute();
     $enc = json_encode($reqm->result, JSON_NUMERIC_CHECK);

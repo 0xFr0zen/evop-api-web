@@ -28,3 +28,17 @@ class MyCompanyDBConnector extends DBConnector {
         );
     }
 }
+class MyUseryDBConnector extends DBConnector {
+    
+    private $json = null;
+    private $myconfig = null;
+    function __construct(){
+        $json = json_decode(file_get_contents(__DIR__."/../../essentials/config.json"), true);
+        $myconfig = $json['db']['connectors'];
+        parent::__construct(
+            $myconfig['user']['username'],
+            $myconfig['user']['password'],
+            $myconfig['user']['database']
+        );
+    }
+}

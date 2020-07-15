@@ -19,7 +19,7 @@ class ReqCompany {
         $this->mode = $_REQUEST['mode'] != null ? $_REQUEST['mode'] : "";
         $this->details = $_REQUEST['details'] != null ? $_REQUEST['details'] : "";
         $this->values = $this->valuesParser($_REQUEST['values'] != null ? $_REQUEST['values'] : "");
-        $this->comp = $_REQUEST['company'];
+        $this->comp = $_REQUEST['company']!= null ? $_REQUEST['company'] : "";
         $reqs = array_keys($_REQUEST);
         $found = false;
         foreach ($reqs as $key => $value) {

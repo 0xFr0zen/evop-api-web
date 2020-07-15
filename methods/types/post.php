@@ -47,7 +47,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                         } else if(isset($added["error"])){
                             $this->result = array("result" => array("error" => $added["error"]));
                         }else {
-                            $this->result = array("result" => array("error" => $added, "message" => Company::$UNEXPECTED_ERROR));
+                            $this->result = array("result" => array("error" => array("message" => Company::$UNEXPECTED_ERROR)));
                         }
                     }
                 } else {

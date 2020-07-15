@@ -57,6 +57,8 @@ class ReqCompany {
                         die(json_encode($this->result, JSON_NUMERIC_CHECK));
                         break;
                 }
+            }else {
+                break;
             }
         }
         

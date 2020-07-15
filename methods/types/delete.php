@@ -9,7 +9,6 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     if (!isset($this->values) || empty($this->values)) {
                         $this->result = array("error" => "you need to put values");
                     } else {
-                        var_dump($this->values);
                         if (!isset($this->values['name'])) {
                             $this->result = array("error" => "you need to specify a resource-name");
                             break;

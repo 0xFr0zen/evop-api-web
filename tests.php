@@ -9,30 +9,20 @@ class Tester {
     }
 
     private function hr($url, array $params = array()) {
-        $ch = curl_init();
-        if ($ch === false) {
-            throw new Exception('failed to initialize');
-        }
-        try {
-            
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_URL, Tester::$BASE_URL.$url);
-            // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 500);
+        $postdata = http_build_query(
+            $params
+        );
+        $opts = array('http' =>
+            array(
+                'method'  => 'GET',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            )
+        );
+        $context  = stream_context_create($opts);
+        $result = file_get_contents(Tester::$BASE_URL.$url, false, $context);
 
-            // Receive server response ...
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-            if ($result === false) {
-                throw new Exception(curl_error($ch), curl_errno($ch));
-            }
-        } catch (Exception $e) {
-            $result = array("error" => $e->getMessage());
-        }
-        
-
-        curl_close($ch);
-        return $result;
-
+        return json_encode($result, true);
     }
 
     public function run(){

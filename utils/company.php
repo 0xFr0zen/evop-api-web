@@ -349,15 +349,15 @@ class Company
         switch ($type) {
             case 'color':
                 $c = new Color($this->name, $name);
-                $result = $c->add($value);
+                $result = array("result" => array("added" =>$c->add($value)));
                 break;
             case 'string':
                 $s = new Stringer($this->name, $name);
-                $result = $s->add($value);
+                $result = array("result" => array("added" =>$s->add($value)));
                 break;
             case 'textstyle':
                 $tst = new TextStyle($this->name, $name);
-                $result = $tst->add($value);
+                $result = array("result" => array("added" =>$tst->add($value)));
                 break;
             default:
                 $result = array("error" => array("message" => Company::$SPECIFY_A_TYPE_ERROR));
@@ -382,15 +382,15 @@ class Company
         switch ($type) {
             case 'color':
                 $c = new Color($this->name, $name);
-                $result = $c->upd($oldname, $value);
+                $result = array("result" => array("updated" => $c->upd($oldname, $value)));
                 break;
             case 'string':
                 $s = new Stringer($this->name, $name);
-                $result = $s->upd($oldname, $value);
+                $result = array("result" => array("updated" => $s->upd($oldname, $value)));
                 break;
             case 'textstyle':
                 $tst = new TextStyle($this->name, $name);
-                $result = $tst->upd($oldname, $value);
+                $result = array("result" => array("updated" => $tst->upd($oldname, $value)));
                 break;
 
             default:
@@ -413,15 +413,15 @@ class Company
         switch ($type) {
             case 'color':
                 $c = new Color($this->name, $name);
-                $result = $c->del();
+                $result = array("result" => array("deleted" => $c->del()));
                 break;
             case 'string':
                 $s = new Stringer($this->name, $name);
-                $result = $s->del();
+                $result = array("result" => array("deleted" => $s->del()));
                 break;
             case 'textstyle':
                 $tst = new TextStyle($this->name, $name);
-                $result = $tst->del();
+                $result = array("result" => array("deleted" => $tst->del()));
                 break;
             default:
                 $result = array("error" => array("message" => Company::$SPECIFY_A_TYPE_ERROR));

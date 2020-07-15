@@ -16,7 +16,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                         unset($val['oldname']);
                         $valObj = array("name" => $valName, "oldname" => $valOldName, "values" => $this->values);
                         $updated = $this->company->updateConfiguration($this->details, $valObj['oldname'], $valObj['name'], $valObj['values']);
-                        $this->result = array("result" => array("updated" => $updated));
+                        $this->result = array("result" => array("updated" => $updated["result"]["updated"]));
                     }
                 }else {
                     $this->result = array("error" => Company::$COMPANY_NONEXISTING);

@@ -42,7 +42,7 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                             if($added["result"]["added"]){
                                 $this->result = array("result" => array("added" => $added["result"]["added"]));
                             }else {
-                                $this->result = array("result" => array("error" => $added, "message" => Company::$CONFIGURATION_ALREADY_EXISTS));
+                                $this->result = array("result" => array("error" => array("message" => Company::$CONFIGURATION_ALREADY_EXISTS)));
                             }
                         } else if(isset($added["error"])){
                             $this->result = array("result" => array("error" => $added["error"]));

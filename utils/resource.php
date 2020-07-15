@@ -16,9 +16,9 @@ class Resourcer implements Resource
         $this->companyname = $companyname;
         $stpos = strpos($this->companyname, $resourcename);
         if (gettype($stpos) === "boolean" && $stpos == false) {
-            $resourcename = $this->companyname . "_" . $resourcename;
+            $resourcename = $this->companyname . "-" . $resourcename;
         }
-        $this->resourcename = $resourcename;
+        $this->resourcename = $this->companyname . "-" . $resourcename;
     }
     public function del(): bool
     {

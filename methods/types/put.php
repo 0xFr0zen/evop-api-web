@@ -9,7 +9,6 @@ class ReqMethod extends ReqCompany implements ReqInterface {
                     if (!isset($this->values) || empty($this->values)) {
                         $this->result = array("error" => "you need to put values");
                     } else {
-                        
                         $valName = $this->values['name'];
                         $valOldName = $this->values['oldname'];
                         unset($val['name']);

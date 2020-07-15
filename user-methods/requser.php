@@ -10,7 +10,7 @@ class ReqUser {
     protected string $uuid;
     protected string $mode;
     protected string $details;
-    protected string $values;
+    protected array $values;
     protected User $user;
     public bool $exists;
     public $result;

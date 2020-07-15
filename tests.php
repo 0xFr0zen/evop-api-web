@@ -9,8 +9,8 @@ class Tester {
     }
 
     private function hr($url) {
-        $opts = array('http' =>
-            array(
+        $opts = array(
+            'http' => array(
                 'method'  => 'GET'
             )
         );

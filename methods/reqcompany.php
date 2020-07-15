@@ -61,14 +61,11 @@ class ReqCompany {
                 break;
             }
         }
-        
-        
-        
     }
     public function valuesParser(string $data):array {
         $vals = array();
         $result = array();
-        if( strpos( $data, ":" ) !== false && strpos( $data, "," ) !== false) {
+        if( strpos( $data, ":" ) !== false) {
             $values = explode(",", $data);
             foreach ($values as $value) {
                 $splitted = explode(":", $value);

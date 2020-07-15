@@ -53,10 +53,8 @@ class Stringer extends Resourcer
 
     public function upd(string $oldname, $value): bool
     {
-        $stpos = strpos($this->companyname, $oldname);
-        if (gettype($stpos) === "boolean" && $stpos == false) {
-            $oldname = $this->companyname . "-" . $oldname;
-        }
+        
+        $oldname = $this->companyname . "-" . $oldname;
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE `string` SET `name` = ?, `value` = ? WHERE `name` = ?";
         return $dbconn->update(

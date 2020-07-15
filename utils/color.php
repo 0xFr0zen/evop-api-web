@@ -53,10 +53,8 @@ class Color extends Resourcer
         if (!isset($value['r']) && !isset($value['g']) && !isset($value['b']) && !isset($value['a'])) {
             return false;
         }
-        $stpos = strpos($this->companyname, $oldname);
-        if (gettype($stpos) === "boolean" && $stpos == false) {
-            $oldname = $this->companyname . "-" . $oldname;
-        }
+        
+        $oldname = $this->companyname . "-" . $oldname;
 
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE color SET `name` = ?, r = ?, g = ?, b = ?, a = ? WHERE `name` = ?";

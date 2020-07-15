@@ -44,17 +44,14 @@ class TextStyle extends Resourcer
     {
         $dbconn = new MyCompanyDBConnector();
         $sql = "DELETE FROM textstyle WHERE `name` = ?";
-        return $dbconn->deleteRow($sql, $this->companyname."-".$this->resourcename);
+        return $dbconn->deleteRow($sql, $this->resourcename);
     }
     public function upd(string $oldname, $value): bool
     {
-        $stpos = strpos($this->companyname, $oldname);
-        if (gettype($stpos) === "boolean" && $stpos == false) {
-            $oldname = $this->companyname . "-" . $oldname;
-        }
+        $oldname = $this->companyname . "-" . $oldname;
 
         $dbconn = new MyCompanyDBConnector();
         $sql = "UPDATE textstyle SET `name` = ?, fontsize = ?, fontfamily = ?, fontweight = ? WHERE `name` = ?";
-        return $dbconn->update($sql, $this->companyname."-".$this->resourcename, $value['fontsize'], $value['fontfamily'], $value['fontweight'], $oldname);
+        return $dbconn->update($sql, $this->resourcename, $value['fontsize'], $value['fontfamily'], $value['fontweight'], $oldname);
     }
 }

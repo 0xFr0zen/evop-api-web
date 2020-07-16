@@ -25,17 +25,6 @@ class ReqUser {
         if($this->exists) {
             $this->user->load();
         }
-        switch ($mode) {
-            case 'status':
-                $this->result = array("status" => $this->user->status($this->details));
-                break;
-            default:
-            $this->result = array("status" => $this->user->status('online'));
-                break;
-        }
-
-        $reqs = array_keys($_REQUEST);
-        $found = false;
         
     }
     public function valuesParser(string $data):array {

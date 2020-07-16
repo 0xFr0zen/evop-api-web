@@ -11,7 +11,7 @@ class User
     private $osversion;
     private $personalinformation = array();
 
-    public static $USER_NONEXISTING = "Company doesnt exists!";
+    public static $USER_NONEXISTING = "User doesnt exists!";
     public static $UNEXPECTED_ERROR = "Sorry, something happend and we dont know quite yet why...";
     public static $STATUS_MISSING = "Please write a status name to check.";
     public function __construct(string $uuid, $type = null, $osname = null, $osversion = null, $personalinformation = array())

@@ -21,6 +21,10 @@ class ReqUser {
         $this->values = $this->valuesParser($_REQUEST['values'] != null ? $_REQUEST['values'] : "");
 
         $this->user = new User($this->uuid);
+        $this->exists = $this->user->exists();
+        if($this->exists) {
+            $this->user->load();
+        }
         switch ($mode) {
             case 'status':
                 $this->result = array("status" => $this->user->status($this->details));

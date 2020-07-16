@@ -21,10 +21,6 @@ class User
         $this->osname = $osname;
         $this->osversion = $osversion;
         $this->personalinformation = $personalinformation;
-
-        if($this->exists()){
-            $this->load();
-        }
     }
     /**
      * Check if the company exists on the database

@@ -104,6 +104,8 @@ body {
 #app {
   width: 100%;
   height: 100%;
+  position: fixed;
+  overflow: hidden;
 }
 #app #landingpageheader {
   position: fixed;
@@ -156,6 +158,10 @@ body {
   color: white;
 }
 @media only screen and (max-width: var(--device-max-width)) {
+  #app {
+    position: relative;
+    overflow: auto;
+  }
   #landingpageheader {
     height: auto;
     flex-direction: column;

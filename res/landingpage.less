@@ -128,7 +128,8 @@ body {
 #app {
 	width: 100%;
 	height: 100%;
-
+	position: fixed;
+	overflow: hidden;
 	#landingpageheader {
 		position: fixed;
 		top: 0px;
@@ -181,6 +182,10 @@ body {
 	}
 }
 @media only screen and (max-width: var(--device-max-width)) {
+	#app {
+		position: relative;
+		overflow: auto;
+	}
 	#landingpageheader {
 		height: auto;
 		flex-direction: column;

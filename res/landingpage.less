@@ -113,11 +113,13 @@
 	--mdc-theme-on-secondary: #2e3131;
 	--mdc-theme-surface: #fff;
 	--mdc-theme-on-surface: #2e3131;
-	--mdc-theme-background: #e8ecf1;
-	--mdc-theme-on-background: #2e3131;
+	--mdc-theme-background: #000;
+	--mdc-theme-on-background: #eee;
 }
 body {
-	margin: 0px;
+	background: var(--mdc-theme-background);
+	color: var(--mdc-theme-on-background);
+	margin: 0;
 }
 * {
 	box-sizing: border-box;
@@ -179,6 +181,14 @@ body {
 				}
 			}
 		}
+	}
+	#content {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+		padding-top: 80px;
+		font-family: 'Roboto';
 	}
 }
 @media only screen and (max-width: var(--device-max-width)) {

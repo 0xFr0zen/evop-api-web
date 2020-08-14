@@ -148,16 +148,15 @@ body {
   align-self: flex-end;
   height: 40px;
   background: transparent;
-  color: var(--mdc-theme-on-surface);
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   margin-left: 10px;
+  color: white;
 }
 #app #landingpageheader #right button:hover {
-  background-color: var(--mdc-theme-primary);
-  color: white;
+  color: var(--mdc-theme-primary);
 }
 #app #content {
   position: fixed;
